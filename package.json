@@ -1,0 +1,9 @@
+{
+  "name": "mcc",
+  "version": "0.0.0",
+  "description": "MCC, Matry Canvas Compiler",
+  "main": "index.js",
+  "repository": "https://github.com/matry/mcc.git",
+  "author": "danielbvaughn@gmail.com",
+  "license": "MIT"
+}
