@@ -1,0 +1,4 @@
+
+string PlaceholderButtonText: Click Me!
+string LoginPrompt: Sign In!
+string RegisterPrompt: Sign Up!

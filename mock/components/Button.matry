@@ -1,0 +1,22 @@
+
+info
+  title: Button
+  desc: A simple mock button for testing purposes
+
+elements
+  shape: Container
+  text: Label
+
+inputs
+  boolean Disabled: false
+  string TextContent: Click Me
+  string Size: small, *medium, large
+
+style Label
+  text-content: $TextContent
+  font: Helvetica
+  font-size: 12
+  fill-color: #007BFF
+
+style Label.Disabled
+  opacity: 0.5
