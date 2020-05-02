@@ -9,7 +9,7 @@
   "scripts": {
     "test": "jest",
     "start": "webpack-dev-server --mode development",
-    "storybook": "start-storybook -p 9001 -s ./src"
+    "storybook": "start-storybook -p 9001 -s ./bin/client"
   },
   "devDependencies": {
     "eslint": "^6.8.0",
@@ -18,9 +18,12 @@
   },
   "dependencies": {
     "@babel/preset-react": "^7.9.4",
+    "@emotion/core": "^10.0.28",
+    "@emotion/styled": "^10.0.27",
     "@storybook/react": "^5.3.18",
     "babel-loader": "^8.1.0",
     "css-loader": "^3.5.3",
+    "emotion": "^10.0.27",
     "html-loader": "^1.1.0",
     "html-webpack-plugin": "^4.3.0",
     "node-watch": "^0.6.4",

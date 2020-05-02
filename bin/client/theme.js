@@ -1,7 +1,7 @@
 const colors = {
   blue: '#072448',
   blueBright: '#156cd7',
-  aqua: '#54d2d2',
+  aqua: '#33e2e2',
   aquaDark: '#215454',
   aquaLight: '#dcf6f6',
   yellow: '#ffcb00',
