@@ -1,1 +1,49 @@
-{"tokens":{"Branding":{"PrimaryColor:":[{"title":"SecondaryColor","type":"color","value":"#BADA55"}]},"Copy":{"PlaceholderButtonText:":[{"title":"LoginPrompt","type":"string","value":"Sign In"},{"title":"RegisterPrompt","type":"string","value":"Sign Up"}]}},"components":{"Button":{"info":{"title:":"Button","desc:":"A simple mock button for testing purposes"},"elements":{"map":{"Container":{"type":"shape","title":"Container"}},"list":["Container"]},"styles":{"Container":[{"element":"Container","context":null,"key":"width","value":"200"},{"element":"Container","context":null,"key":"height","value":"200"},{"element":"Container","context":null,"key":"fillColor","value":"#007BFF"},{"element":"Container","context":null,"key":"borderRadius","value":"0"},{"element":"Container","context":null,"key":"borderColor","value":"#333"},{"element":"Container","context":null,"key":"borderWidth","value":"2"},{"element":"Container","context":"Disabled","key":"opacity","value":"0.5"}]},"inputs":{"map":{"Disabled":{"title":"Disabled","defaultValue":"false","options":[],"type":"boolean"}},"list":["Disabled"]}}}}
+{
+  "tokens": {
+    "Branding": {
+      "PrimaryColor:": [{ "title": "SecondaryColor", "type": "color", "value": "#BADA55" }]
+    },
+    "Copy": {
+      "PlaceholderButtonText:": [
+        { "title": "LoginPrompt", "type": "string", "value": "Sign In" },
+        { "title": "RegisterPrompt", "type": "string", "value": "Sign Up" }
+      ]
+    }
+  },
+  "components": {
+    "Button": {
+      "info": { "title:": "Button", "desc:": "A simple mock button for testing purposes" },
+      "elements": {
+        "map": { "Container": { "type": "shape", "title": "Container" } },
+        "list": ["Container"]
+      },
+      "styles": {
+        "Container": {
+          "_default": {
+            "borderRadius": null,
+            "borderStyle": null,
+            "borderWidth": null,
+            "centerX": null,
+            "centerY": null,
+            "fillColor": null,
+            "height": 200,
+            "opacity": null,
+            "width": 200
+          },
+          "Disabled": { "opacity": 0.5 }
+        }
+      },
+      "inputs": {
+        "map": {
+          "Disabled": {
+            "title": "Disabled",
+            "defaultValue": "false",
+            "options": [],
+            "type": "boolean"
+          }
+        },
+        "list": ["Disabled"]
+      }
+    }
+  }
+}

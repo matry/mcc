@@ -1,4 +1,25 @@
 const { parseKeyValue } = require('./line')
+const defaultStyles = require('./defaultStyles')
+
+const toCamelCase = (str) => str.replace(/-([a-z])/g, (g) => g[1].toUpperCase())
+
+const setDefaults = (styles) => {
+  console.log('setting defaults')
+  console.log(styles)
+  const result = {}
+
+  Object.keys(defaultStyles).forEach((key) => {
+    const camelCaseKey = toCamelCase(key)
+
+    if (styles.hasOwnProperty(key)) {
+      result[camelCaseKey] = styles[key]
+    } else {
+      result[camelCaseKey] = defaultStyles[camelCaseKey]
+    }
+  })
+
+  return result
+}
 
 const parseStyles = (styleGroups) => {
   const styles = {}
@@ -13,11 +34,15 @@ const parseStyles = (styleGroups) => {
       if (keyValue.key === 'style') {
         const declarationParts = keyValue.value.split('.')
         elementTarget = declarationParts[0]
-        contextTarget = declarationParts[1] || null
+        contextTarget = declarationParts[1] || '_default'
 
         if (elementTarget) {
-          styles[elementTarget] = styles[elementTarget] || []
+          styles[elementTarget] = styles[elementTarget] || {
+            _default: {},
+          }
         }
+
+        styles[elementTarget][contextTarget] = styles[elementTarget][contextTarget] || {}
 
         return
       }
@@ -26,13 +51,21 @@ const parseStyles = (styleGroups) => {
         return
       }
 
-      styles[elementTarget].push({
-        element: elementTarget,
-        context: contextTarget,
-        key: keyValue.key.replace(':', ''),
-        value: keyValue.value,
-      })
+      const key = keyValue.key.replace(':', '')
+
+      let value = keyValue.value
+      if (!isNaN(Number(value))) {
+        value = Number(value)
+      }
+
+      styles[elementTarget][contextTarget][key] = value
     })
+
+    console.log(styles[elementTarget][contextTarget])
+
+    if (contextTarget === '_default') {
+      styles[elementTarget][contextTarget] = setDefaults(styles[elementTarget][contextTarget])
+    }
   })
 
   return styles

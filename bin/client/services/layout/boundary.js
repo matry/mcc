@@ -1,11 +1,11 @@
 const getXCoordinates = (parentBoundary, styles) => {
   let left = 0
 
-  if (styles.left !== null) {
+  if (styles.left !== undefined) {
     left = parentBoundary[styles.left]
-  } else if (styles.centerX !== null) {
+  } else if (styles.centerX !== undefined) {
     left = parentBoundary[styles.centerX] - styles.width / 2
-  } else if (styles.right !== null) {
+  } else if (styles.right !== undefined) {
     left = parentBoundary[styles.right] - styles.width
   }
 
@@ -20,11 +20,11 @@ const getXCoordinates = (parentBoundary, styles) => {
 const getYCoordinates = (parentBoundary, styles) => {
   let top = 0
 
-  if (styles.top !== null) {
+  if (styles.top !== undefined) {
     top = parentBoundary[styles.top]
-  } else if (styles.centerY !== null) {
+  } else if (styles.centerY !== undefined) {
     top = parentBoundary[styles.centerY] - styles.height / 2
-  } else if (styles.bottom !== null) {
+  } else if (styles.bottom !== undefined) {
     top = parentBoundary[styles.bottom] - styles.height
   }
 
@@ -87,22 +87,24 @@ const generateContentBoundary = (layoutBoundary, styles) => {
     centerX: layoutBoundary.centerX,
     centerY: layoutBoundary.centerY,
     width,
-    height
+    height,
   }
 }
 
-const generateBoundarySet = fragments => {
+const generateBoundarySet = (fragments) => {
   const boundaryList = []
   const boundaryMap = {}
 
-  fragments.forEach(fragment => {
-    const parentContentBoundary = boundaryMap[fragment.parent] ? boundaryMap[fragment.parent].content : null
+  fragments.forEach((fragment) => {
+    const parentContentBoundary = boundaryMap[fragment.parent]
+      ? boundaryMap[fragment.parent].content
+      : null
     const layoutBoundary = generateLayoutBoundary(parentContentBoundary, fragment.styles)
 
     boundaryList.push(fragment.title)
     boundaryMap[fragment.title] = {
       layout: layoutBoundary,
-      content: generateContentBoundary(layoutBoundary, fragment.styles)
+      content: generateContentBoundary(layoutBoundary, fragment.styles),
     }
   })
 
@@ -112,4 +114,10 @@ const generateBoundarySet = fragments => {
   }
 }
 
-export { getXCoordinates, getYCoordinates, generateLayoutBoundary, generateContentBoundary, generateBoundarySet }
+export {
+  getXCoordinates,
+  getYCoordinates,
+  generateLayoutBoundary,
+  generateContentBoundary,
+  generateBoundarySet,
+}

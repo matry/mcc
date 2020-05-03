@@ -10,12 +10,12 @@ inputs
   boolean Disabled: false
 
 style Container
-  width 200
-  height 200
-  fillColor #007BFF
-  borderRadius 0
-  borderColor #333
-  borderWidth 2
+  width: 200
+  height: 200
+  fill-color: #007BFF
+  border-radius: 0
+  border-color: #333
+  border-width: 5
 
 style Container.Disabled
   opacity: 0.5
