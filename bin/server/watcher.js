@@ -1,10 +1,8 @@
-const watch = require('node-watch')
+const chokidar = require('chokidar')
 
-const watcher = srcDir => {
-  watch(srcDir, { recursive: true }, (event, name) => {
-    console.log(event)
-    console.log(name)
-  })
+const watcher = (srcDir, callback) => {
+  const watchProcess = chokidar.watch(srcDir)
+  watchProcess.on('all', callback)
 }
 
 module.exports = watcher

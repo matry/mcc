@@ -24,9 +24,11 @@ const ComponentViewer = ({ name, component }) => {
         </header>
         <form>
           <h3>Input</h3>
-          {inputs.map(({ type, name }) => (
-            <Field key={name} type={type} name={name} />
-          ))}
+          {inputs.list.map((inputTitle) => {
+            const input = inputs.map[inputTitle]
+
+            return <Field key={inputTitle} type={input.type} name={inputTitle} />
+          })}
         </form>
       </StyledDiv>
       <Canvas />

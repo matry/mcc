@@ -16,7 +16,12 @@ const getFile = (filePath) => {
   }
 }
 
+const writeJsonBundle = (filePath, jsonData) => {
+  fs.writeFileSync(`${filePath}/bundle.json`, JSON.stringify(jsonData), { flag: 'w' })
+}
+
 module.exports = {
   validateFileStructure,
   getFile,
+  writeJsonBundle,
 }

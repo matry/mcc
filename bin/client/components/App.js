@@ -16,26 +16,21 @@ const GridDiv = styled.div`
   grid-template-columns: max-content auto;
 `
 
-const Home = () => {
+const App = ({ bundle }) => {
   const [isNavOpen, setIsNavOpen] = useState(false)
   const [isGridOptionsOpen, setIsGridOptionsOpen] = useState(false)
   const [selectedItem, setSelectedItem] = useState('Button')
+
   const navItems = {
-    Tokens: ['Branding', 'Typography', 'Grid'],
-    Components: ['Button', 'TextInput', 'NumberInput', 'Dropdown'],
+    Tokens: Object.keys(bundle.tokens),
+    Components: Object.keys(bundle.components),
   }
 
-  const selectedEntity = {
-    inputs: [
-      {
-        name: 'Size',
-        type: 'string',
-      },
-      {
-        name: 'Disabled',
-        type: 'boolean',
-      },
-    ],
+  let selectedEntity = null
+  if (navItems.Tokens[selectedItem]) {
+    selectedEntity = bundle.tokens[selectedItem]
+  } else {
+    selectedEntity = bundle.components[selectedItem]
   }
 
   let type = null
@@ -65,4 +60,4 @@ const Home = () => {
   )
 }
 
-export default Home
+export default App

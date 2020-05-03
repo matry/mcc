@@ -1,4 +1,4 @@
-const { getFile, validateFileStructure } = require('./file')
+const { getFile, validateFileStructure, writeJsonBundle } = require('./file')
 const { captureBlock, captureBlocks } = require('./block')
 const { getDirFiles } = require('./dir')
 const { parseInfo } = require('./info')
@@ -54,9 +54,9 @@ const parseComponentFile = (filePath) => {
   return component
 }
 
-const parseProject = (projectPath) => {
-  const tokenFilePaths = getDirFiles(projectPath, 'tokens')
-  const componentFilePaths = getDirFiles(projectPath, 'components')
+const parseProject = (inputPath, outputPath) => {
+  const tokenFilePaths = getDirFiles(inputPath, 'tokens')
+  const componentFilePaths = getDirFiles(inputPath, 'components')
 
   let tokens = {}
   tokenFilePaths.forEach((tokenFilePath) => {
@@ -74,10 +74,10 @@ const parseProject = (projectPath) => {
     }
   })
 
-  return {
+  writeJsonBundle(outputPath, {
     tokens,
     components,
-  }
+  })
 }
 
 module.exports = {
