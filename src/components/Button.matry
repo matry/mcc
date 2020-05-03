@@ -7,14 +7,13 @@ elements
   shape: Container
   text: Label
 
-
 inputs
   boolean Disabled: false
   string TextContent: Click Me
   string Size: small, *medium, large
 
 style Label
-  text-content: $TextContent
+  text-content: @TextContent
   font: Helvetica
   font-size: 12
   fill-color: #007BFF

@@ -1,8 +1,14 @@
-*, *:before, *:after {
+*,
+*:before,
+*:after {
   font-family: 'Roboto', sans-serif;
   user-select: none;
+  margin: 0px;
+  box-sizing: border-box;
 }
 
-html, body {
+html,
+body,
+#app {
   height: 100%;
 }

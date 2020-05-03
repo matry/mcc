@@ -1,34 +1,20 @@
 import React, { useState } from 'react'
-import { makeStyles } from '@material-ui/core/styles'
-import { CssBaseline } from '@material-ui/core'
+import styled from '@emotion/styled'
 import AppHeader from './AppHeader'
 import AppNav from './AppNav'
-import GridOptions from './GridOptions'
+import Viewer from './Viewer'
 
-const useStyles = makeStyles((theme) => ({
-  appBar: {
-    background: 'linear-gradient(45deg, #FE6B8B 30%, #FF8E53 90%)',
-  },
-  root: {
-    backgroundColor: '#fafafa',
-    height: '100%',
-  },
-  toolBar: {
-    flexGrow: 1,
-  },
-  toolBarMenuButton: {
-    marginRight: theme.spacing(2),
-  },
-  toolBarTitle: {
-    flexGrow: 1,
-  },
-  leftDrawer: {
-    minWidth: '230px',
-  },
-  list: {
-    marginBottom: '32px',
-  },
-}))
+const AppMain = styled.main`
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+`
+
+const GridDiv = styled.div`
+  flex: 1;
+  display: grid;
+  grid-template-columns: max-content auto;
+`
 
 const Home = () => {
   const [isNavOpen, setIsNavOpen] = useState(false)
@@ -38,24 +24,44 @@ const Home = () => {
     Tokens: ['Branding', 'Typography', 'Grid'],
     Components: ['Button', 'TextInput', 'NumberInput', 'Dropdown'],
   }
-  const classes = useStyles()
+
+  const selectedEntity = {
+    inputs: [
+      {
+        name: 'Size',
+        type: 'string',
+      },
+      {
+        name: 'Disabled',
+        type: 'boolean',
+      },
+    ],
+  }
+
+  let type = null
+  if (navItems.Tokens.includes(selectedItem)) {
+    type = 'tokens'
+  } else if (navItems.Components.includes(selectedItem)) {
+    type = 'component'
+  }
 
   return (
-    <div className={classes.root}>
-      <CssBaseline />
+    <AppMain>
       <AppHeader
         onToggleNav={() => setIsNavOpen(!isNavOpen)}
         onToggleGrid={() => setIsGridOptionsOpen(!isGridOptionsOpen)}
       />
-      <AppNav
-        selectedItem={selectedItem}
-        navItems={navItems}
-        onSelect={setSelectedItem}
-        isOpen={isNavOpen}
-        onClose={() => setIsNavOpen(false)}
-      />
-      <GridOptions isOpen={isGridOptionsOpen} onClose={() => setIsGridOptionsOpen(false)} />
-    </div>
+      <GridDiv>
+        <AppNav
+          selectedItem={selectedItem}
+          navItems={navItems}
+          onSelect={setSelectedItem}
+          isOpen={isNavOpen}
+          onClose={() => setIsNavOpen(false)}
+        />
+        <Viewer name={selectedItem} type={type} entity={selectedEntity} />
+      </GridDiv>
+    </AppMain>
   )
 }
 
