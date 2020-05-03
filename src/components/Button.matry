@@ -5,18 +5,17 @@ info
 
 elements
   shape: Container
-  text: Label
 
 inputs
   boolean Disabled: false
-  string TextContent: Click Me
-  string Size: small, *medium, large
 
-style Label
-  text-content: @TextContent
-  font: Helvetica
-  font-size: 12
-  fill-color: #007BFF
+style Container
+  width 200
+  height 200
+  fillColor #007BFF
+  borderRadius 0
+  borderColor #333
+  borderWidth 2
 
-style Label.Disabled
+style Container.Disabled
   opacity: 0.5

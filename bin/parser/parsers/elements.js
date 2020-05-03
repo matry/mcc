@@ -14,7 +14,7 @@ const parseElements = (lines) => {
     }
 
     const element = {
-      type: elementDatum.key,
+      type: elementDatum.key.replace(':', ''),
       title: elementDatum.value,
     }
 

@@ -16,6 +16,24 @@ const StyledDiv = styled.div`
 const ComponentViewer = ({ name, component }) => {
   const { inputs } = component
 
+  const fragments = component.elements.list.map((title, index) => {
+    const element = component.elements.map[title]
+    const styles = {}
+
+    if (component.styles[title]) {
+      component.styles[title].forEach((style) => {
+        styles[style.key] = style.value
+      })
+    }
+
+    return {
+      title,
+      parent: 'root',
+      type: index === 0 ? 'group' : element.type,
+      styles,
+    }
+  })
+
   return (
     <StyledSection>
       <StyledDiv>
@@ -31,7 +49,7 @@ const ComponentViewer = ({ name, component }) => {
           })}
         </form>
       </StyledDiv>
-      <Canvas />
+      <Canvas gridOptions={{ gridPlacement: 'back' }} fragments={fragments} />
     </StyledSection>
   )
 }
