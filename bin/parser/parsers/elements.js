@@ -1,10 +1,7 @@
 const { parseKeyValue } = require('./line')
 
 const parseElements = (lines) => {
-  const elements = {
-    map: {},
-    list: [],
-  }
+  const elements = []
 
   lines.forEach((line) => {
     const elementDatum = parseKeyValue(line)
@@ -18,8 +15,7 @@ const parseElements = (lines) => {
       title: elementDatum.value,
     }
 
-    elements.map[element.title] = element
-    elements.list.push(element.title)
+    elements.push(element)
   })
 
   return elements

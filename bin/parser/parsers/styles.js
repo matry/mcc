@@ -4,8 +4,6 @@ const defaultStyles = require('./defaultStyles')
 const toCamelCase = (str) => str.replace(/-([a-z])/g, (g) => g[1].toUpperCase())
 
 const setDefaults = (styles) => {
-  console.log('setting defaults')
-  console.log(styles)
   const result = {}
 
   Object.keys(defaultStyles).forEach((key) => {
@@ -60,8 +58,6 @@ const parseStyles = (styleGroups) => {
 
       styles[elementTarget][contextTarget][key] = value
     })
-
-    console.log(styles[elementTarget][contextTarget])
 
     if (contextTarget === '_default') {
       styles[elementTarget][contextTarget] = setDefaults(styles[elementTarget][contextTarget])

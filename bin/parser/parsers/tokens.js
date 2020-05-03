@@ -1,6 +1,15 @@
-const parseTokens = (rawLines) => {
+const parseTokens = (rawLines, category) => {
   const tokens = {}
-  const { category, lines } = getLines(rawLines)
+
+  let lines = rawLines
+  let tokenCategory = category
+
+  if (!tokenCategory) {
+    const parsed = getLines(rawLines)
+    lines = parsed.lines
+    tokenCategory = parsed.category
+  }
+
   tokens[category] = []
 
   lines.forEach((line) => {

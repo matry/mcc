@@ -17,7 +17,10 @@ const parseTokenFile = (filePath) => {
   let result = {}
 
   if (tokenBlocks.length === 0) {
-    result[fileName] = parseTokens(lines.filter((line) => line !== ''))
+    result = parseTokens(
+      lines.filter((line) => line !== ''),
+      fileName
+    )
   } else {
     tokenBlocks.forEach((tokenBlock) => {
       const parsedTokenBlock = parseTokens(tokenBlock)
