@@ -1,10 +1,16 @@
 import React from 'react'
+import styled from '@emotion/styled'
+import { spacing } from '../theme'
+
+const StyledNav = styled.nav`
+  padding: ${spacing(1)}px;
+`
 
 const AppNav = ({ navItems, isOpen, onClose, selectedItem, onSelect }) => {
   const navKeys = Object.keys(navItems)
 
   return (
-    <nav>
+    <StyledNav>
       {navKeys.map((key, i) => {
         const items = navItems[key]
 
@@ -28,7 +34,7 @@ const AppNav = ({ navItems, isOpen, onClose, selectedItem, onSelect }) => {
           </React.Fragment>
         )
       })}
-    </nav>
+    </StyledNav>
   )
 }
 
