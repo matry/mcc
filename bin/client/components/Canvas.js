@@ -7,9 +7,6 @@ import { renderFragments } from '../services/canvas'
 const Canvas = ({ gridOptions, fragments }) => {
   const { context, width, height, canvasRef } = useCanvas()
 
-  console.log('fragments')
-  console.log(fragments)
-
   if (context) {
     renderFragments(context, width, height, gridOptions, fragments)
   }

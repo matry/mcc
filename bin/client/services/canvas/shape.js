@@ -1,11 +1,6 @@
 const paintShape = (ctx, boundary, styles) => {
   const { borderRadius, fillColor, borderColor, borderWidth } = styles
 
-  console.log('PAINTING SHAPE')
-  console.log(ctx)
-  console.log(boundary)
-  console.log(styles)
-
   let { top, right, bottom, left, width, height } = boundary.content
 
   ctx.fillStyle = fillColor
