@@ -5,9 +5,11 @@ info
 
 elements
   shape: Container
+  text: Label
 
 inputs
   boolean Disabled: false
+  string Size: small, *medium, large
 
 style Container
   width: 200
