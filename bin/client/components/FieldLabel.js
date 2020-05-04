@@ -1,7 +1,12 @@
 import React from 'react'
+import styled from '@emotion/styled'
+
+const StyledLabel = styled.label`
+  margin-right: 16px;
+`
 
 const FieldLabel = ({ children }) => {
-  return <label>{children}</label>
+  return <StyledLabel>{children}</StyledLabel>
 }
 
 export default FieldLabel
