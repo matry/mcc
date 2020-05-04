@@ -28,7 +28,8 @@ style Label
   font-size: 14
   font-weight: 400
   font-family: Helvetica
-  text-align-y: middle
-  text-align-x: left
+  text-align-y: top
+  text-align-x: center
   text-height: 1
   fill-color: black
+  width: 200
