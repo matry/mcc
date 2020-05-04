@@ -21,7 +21,7 @@ const paintGrid = (ctx, ctxBoundary, gridStyles) => {
     ctx.lineTo(currentX, maxY)
 
     if (currentX === layoutBoundary.centerX) {
-      ctx.strokeStyle = '#000000'
+      ctx.strokeStyle = '#aaaaaa'
       ctx.stroke()
       ctx.strokeStyle = gridColor
     } else {
@@ -49,7 +49,7 @@ const paintGrid = (ctx, ctxBoundary, gridStyles) => {
     ctx.lineTo(maxX, currentY)
 
     if (currentY === layoutBoundary.centerY) {
-      ctx.strokeStyle = '#000000'
+      ctx.strokeStyle = '#aaaaaa'
       ctx.stroke()
       ctx.strokeStyle = gridColor
     } else {

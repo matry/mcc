@@ -36,7 +36,7 @@ const getYCoordinates = (parentBoundary, styles) => {
   }
 }
 
-const generateLayoutBoundary = (parentBoundary, styles) => {
+const generateLayoutBoundary = (parentTitle, parentBoundary, styles) => {
   if (!parentBoundary) {
     return {
       width: styles.width,
@@ -47,6 +47,17 @@ const generateLayoutBoundary = (parentBoundary, styles) => {
       top: 0,
       centerY: styles.height / 2,
       bottom: styles.height,
+    }
+  } else if (parentTitle === 'root') {
+    return {
+      width: styles.width,
+      height: styles.height,
+      left: parentBoundary.width / 2 - styles.width / 2,
+      centerX: styles.width / 2,
+      right: parentBoundary.width / 2 + styles.width / 2,
+      top: parentBoundary.height / 2 - styles.height / 2,
+      centerX: parentBoundary.height / 2,
+      bottom: parentBoundary.height / 2 + styles.height / 2,
     }
   }
 
@@ -99,7 +110,13 @@ const generateBoundarySet = (fragments) => {
     const parentContentBoundary = boundaryMap[fragment.parent]
       ? boundaryMap[fragment.parent].content
       : null
-    const layoutBoundary = generateLayoutBoundary(parentContentBoundary, fragment.styles)
+    const layoutBoundary = generateLayoutBoundary(
+      fragment.parent,
+      parentContentBoundary,
+      fragment.styles
+    )
+
+    console.log(layoutBoundary)
 
     boundaryList.push(fragment.title)
     boundaryMap[fragment.title] = {
