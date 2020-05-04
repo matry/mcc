@@ -10,7 +10,29 @@ const StyledSection = styled.section`
 `
 
 const StyledDiv = styled.div`
-  padding: ${spacing(1)}px;
+  padding: 0px ${spacing(1)}px;
+`
+
+const StyledHeader = styled.header`
+  margin-top: ${spacing(1.5)}px;
+`
+
+const StyledSmall = styled.small`
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 20px;
+  color: #777777;
+  text-transform: uppercase;
+`
+
+const StyledH2 = styled.h2`
+  font-weight: 600;
+  font-size: 20px;
+  color: #333333;
+`
+
+const StyledForm = styled.form`
+  margin-top: ${spacing(1.5)}px;
 `
 
 const ComponentViewer = ({ name, component }) => {
@@ -34,15 +56,16 @@ const ComponentViewer = ({ name, component }) => {
   return (
     <StyledSection>
       <StyledDiv>
-        <header>
-          <h2>{name}</h2>
-        </header>
-        <form>
+        <StyledHeader>
+          <StyledSmall>Viewing</StyledSmall>
+          <StyledH2>{name}</StyledH2>
+        </StyledHeader>
+        <StyledForm>
           <h3>Input</h3>
           {inputs.map((input) => {
             return <Field key={input.title} type={input.type} name={input.title} />
           })}
-        </form>
+        </StyledForm>
       </StyledDiv>
       <Canvas gridOptions={{ gridPlacement: 'back' }} fragments={fragments} />
     </StyledSection>

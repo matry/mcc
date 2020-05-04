@@ -6,26 +6,28 @@ import { spacing } from '../theme'
 const StyledH3 = styled.h3`
   display: flex;
   align-items: center;
-  font-weight: 500;
+  font-weight: 400;
   font-size: 12px;
+  color: #777777;
   text-transform: uppercase;
   cursor: pointer;
+  margin-top: ${spacing(1.5)}px;
 `
 
 const StyledNav = styled.nav`
-  padding: ${spacing(1)}px;
+  padding: 0px ${spacing(1)}px;
 `
 
 const StyledList = styled.ul`
   list-style: none;
   padding-left: 0px;
-  margin-bottom: 8px;
 `
 
 const StyledItem = styled.li`
-  padding-left: 20px;
+  padding: 3px 0px 3px 20px;
   font-size: 14px;
   font-weight: 500;
+  cursor: pointer;
 `
 
 const AppNav = ({ navTitles, isOpen, onClose, selectedTitle, onSelect }) => {
