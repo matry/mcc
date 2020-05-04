@@ -67,7 +67,15 @@ const ComponentViewer = ({ name, component }) => {
           })}
         </StyledForm>
       </StyledDiv>
-      <Canvas gridOptions={{ gridPlacement: 'back' }} fragments={fragments} />
+      <Canvas
+        gridOptions={{
+          gridColor: '#ddd',
+          gridPlacement: 'back',
+          gridSpacing: 10,
+          gridLineWidth: 0.5,
+        }}
+        fragments={fragments}
+      />
     </StyledSection>
   )
 }

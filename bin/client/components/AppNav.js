@@ -4,14 +4,16 @@ import { ExpandLess, ExpandMore } from '@material-ui/icons'
 import { spacing } from '../theme'
 
 const StyledNav = styled.nav`
+  display: block;
   padding: 0px ${spacing(3)}px 0px ${spacing(1)}px;
   position: absolute;
   top: 0px;
   bottom: 0px;
   left: 0px;
-  background-color: #f0f0f0;
+  background-color: #ffffff;
   transition: all 150ms ease-in-out;
   transform: translateX(-100%);
+  box-shadow: 1px 0px 10px 0px #bbb;
 `
 
 const StyledH3 = styled.h3`
