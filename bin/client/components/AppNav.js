@@ -6,21 +6,21 @@ const StyledNav = styled.nav`
   padding: ${spacing(1)}px;
 `
 
-const AppNav = ({ navItems, isOpen, onClose, selectedItem, onSelect }) => {
-  const navKeys = Object.keys(navItems)
+const AppNav = ({ navTitles, isOpen, onClose, selectedTitle, onSelect }) => {
+  const navKeys = Object.keys(navTitles)
 
   return (
     <StyledNav>
       {navKeys.map((key, i) => {
-        const items = navItems[key]
+        const titles = navTitles[key]
 
         return (
           <React.Fragment key={key}>
             <h3>{key}</h3>
             <ul>
-              {items.map((item) => (
+              {titles.map((item) => (
                 <li
-                  style={{ color: item === selectedItem ? '#007bff' : '#000' }}
+                  style={{ color: item === selectedTitle ? '#007bff' : '#000' }}
                   key={`${key}_${item}`}
                   onClick={() => {
                     onSelect(item)

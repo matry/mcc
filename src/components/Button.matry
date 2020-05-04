@@ -15,9 +15,13 @@ style Container
   width: 200
   height: 200
   fill-color: #007BFF
-  border-radius: 0
-  border-color: #333
+  border-radius: 10
+  border-color: #88ADFF
   border-width: 5
+  border-align: inside
 
 style Container.Disabled
   opacity: 0.5
+
+style Label
+  text-content: Hello

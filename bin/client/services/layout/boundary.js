@@ -1,11 +1,11 @@
 const getXCoordinates = (parentBoundary, styles) => {
   let left = 0
 
-  if (styles.left !== undefined) {
+  if (styles.left !== null) {
     left = parentBoundary[styles.left]
-  } else if (styles.centerX !== undefined) {
+  } else if (styles.centerX !== null) {
     left = parentBoundary[styles.centerX] - styles.width / 2
-  } else if (styles.right !== undefined) {
+  } else if (styles.right !== null) {
     left = parentBoundary[styles.right] - styles.width
   }
 
@@ -20,11 +20,11 @@ const getXCoordinates = (parentBoundary, styles) => {
 const getYCoordinates = (parentBoundary, styles) => {
   let top = 0
 
-  if (styles.top !== undefined) {
+  if (styles.top !== null) {
     top = parentBoundary[styles.top]
-  } else if (styles.centerY !== undefined) {
+  } else if (styles.centerY !== null) {
     top = parentBoundary[styles.centerY] - styles.height / 2
-  } else if (styles.bottom !== undefined) {
+  } else if (styles.bottom !== null) {
     top = parentBoundary[styles.bottom] - styles.height
   }
 

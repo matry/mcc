@@ -6,12 +6,12 @@ import Viewer from './Viewer'
 
 const AppMain = styled.main`
   height: 100%;
-  display: flex;
-  flex-direction: column;
+  display: grid;
+  grid-template-columns: auto;
+  grid-template-rows: max-content auto;
 `
 
 const GridDiv = styled.div`
-  flex: 1;
   display: grid;
   grid-template-columns: max-content auto;
 `
@@ -19,24 +19,24 @@ const GridDiv = styled.div`
 const App = ({ bundle }) => {
   const [isNavOpen, setIsNavOpen] = useState(false)
   const [isGridOptionsOpen, setIsGridOptionsOpen] = useState(false)
-  const [selectedItem, setSelectedItem] = useState('Button')
+  const [selectedTitle, setselectedTitle] = useState('Button')
 
-  const navItems = {
+  const navTitles = {
     Tokens: Object.keys(bundle.tokens),
     Components: Object.keys(bundle.components),
   }
 
   let selectedEntity = null
-  if (navItems.Tokens[selectedItem]) {
-    selectedEntity = bundle.tokens[selectedItem]
+  if (bundle.tokens[selectedTitle]) {
+    selectedEntity = bundle.tokens[selectedTitle]
   } else {
-    selectedEntity = bundle.components[selectedItem]
+    selectedEntity = bundle.components[selectedTitle]
   }
 
   let type = null
-  if (navItems.Tokens.includes(selectedItem)) {
+  if (navTitles.Tokens.includes(selectedTitle)) {
     type = 'tokens'
-  } else if (navItems.Components.includes(selectedItem)) {
+  } else if (navTitles.Components.includes(selectedTitle)) {
     type = 'component'
   }
 
@@ -48,13 +48,13 @@ const App = ({ bundle }) => {
       />
       <GridDiv>
         <AppNav
-          selectedItem={selectedItem}
-          navItems={navItems}
-          onSelect={setSelectedItem}
+          selectedTitle={selectedTitle}
+          navTitles={navTitles}
+          onSelect={setselectedTitle}
           isOpen={isNavOpen}
           onClose={() => setIsNavOpen(false)}
         />
-        <Viewer name={selectedItem} type={type} entity={selectedEntity} />
+        <Viewer name={selectedTitle} type={type} entity={selectedEntity} />
       </GridDiv>
     </AppMain>
   )

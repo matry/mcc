@@ -1,17 +1,11 @@
 const paintShape = (ctx, boundary, styles) => {
-  const borderRadius = styles['border-radius']
-  const borderWidth = styles['border-width']
+  const { borderRadius, borderWidth, fillColor, borderColor } = styles
 
-  console.log('S')
-  console.log(ctx)
-  console.log(boundary)
-  console.log(styles)
+  let { top, right, bottom, left } = boundary.content
 
-  let { top, right, bottom, left, width, height } = boundary.content
-
-  ctx.fillStyle = styles['fill-color']
-  ctx.strokeStyle = styles['border-color']
-  ctx.lineWidth = styles['border-width']
+  ctx.fillStyle = fillColor
+  ctx.strokeStyle = borderColor
+  ctx.lineWidth = borderWidth
   ctx.beginPath()
   ctx.moveTo(left + borderRadius, top)
   ctx.lineTo(right - borderRadius, top)

@@ -5,14 +5,14 @@ import { useCanvas } from '../hooks'
 import { renderFragments } from '../services/canvas'
 
 const Canvas = ({ gridOptions, fragments }) => {
-  const { context, width, height, canvasRef } = useCanvas()
+  const { context, width, height, canvasRef, resizeRef } = useCanvas()
 
   if (context) {
     renderFragments(context, width, height, gridOptions, fragments)
   }
 
   return (
-    <div style={{ width: '100%', height: '100%' }}>
+    <div ref={resizeRef} style={{ width: '100%', height: '100%' }}>
       <canvas
         ref={canvasRef}
         className={css`

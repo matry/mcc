@@ -16,18 +16,15 @@ const StyledDiv = styled.div`
 const ComponentViewer = ({ name, component }) => {
   const { inputs } = component
 
-  const fragments = component.elements.list.map((title, index) => {
-    const element = component.elements.map[title]
-    const styles = {}
+  const fragments = component.elements.map((element, index) => {
+    let styles = {}
 
-    if (component.styles[title]) {
-      component.styles[title].forEach((style) => {
-        styles[style.key] = style.value
-      })
+    if (component.styles[element.title]) {
+      styles = component.styles[element.title]._default
     }
 
     return {
-      title,
+      title: element.title,
       parent: 'root',
       type: index === 0 ? 'group' : element.type,
       styles,
@@ -42,10 +39,8 @@ const ComponentViewer = ({ name, component }) => {
         </header>
         <form>
           <h3>Input</h3>
-          {inputs.list.map((inputTitle) => {
-            const input = inputs.map[inputTitle]
-
-            return <Field key={inputTitle} type={input.type} name={inputTitle} />
+          {inputs.map((input) => {
+            return <Field key={input.title} type={input.type} name={input.title} />
           })}
         </form>
       </StyledDiv>

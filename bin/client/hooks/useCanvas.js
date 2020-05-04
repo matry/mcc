@@ -8,6 +8,7 @@ const useCanvas = () => {
     context: null,
   })
   const canvasRef = useRef(null)
+  const resizeRef = useRef(null)
 
   useEffect(() => {
     const resizeListener = () => {
@@ -23,7 +24,7 @@ const useCanvas = () => {
         1
 
       const ratio = devicePixelRatio / backingStoreRatio
-      const { width, height } = current.getBoundingClientRect()
+      const { width, height } = resizeRef.current.getBoundingClientRect()
 
       current.width = width * ratio
       current.height = height * ratio
@@ -50,6 +51,7 @@ const useCanvas = () => {
   return {
     ...canvas,
     canvasRef,
+    resizeRef,
   }
 }
 
