@@ -9,6 +9,7 @@ const AppMain = styled.main`
   display: grid;
   grid-template-columns: auto;
   grid-template-rows: max-content auto;
+  position: relative;
 `
 
 const GridDiv = styled.div`
@@ -18,7 +19,6 @@ const GridDiv = styled.div`
 
 const App = ({ bundle }) => {
   const [isNavOpen, setIsNavOpen] = useState(false)
-  const [isGridOptionsOpen, setIsGridOptionsOpen] = useState(false)
   const [selectedTitle, setselectedTitle] = useState('Button')
 
   const navTitles = {
@@ -42,20 +42,15 @@ const App = ({ bundle }) => {
 
   return (
     <AppMain>
-      <AppHeader
-        onToggleNav={() => setIsNavOpen(!isNavOpen)}
-        onToggleGrid={() => setIsGridOptionsOpen(!isGridOptionsOpen)}
+      <AppHeader onToggleNav={() => setIsNavOpen(!isNavOpen)} />
+      <AppNav
+        selectedTitle={selectedTitle}
+        navTitles={navTitles}
+        onSelect={setselectedTitle}
+        isOpen={isNavOpen}
+        onClose={() => setIsNavOpen(false)}
       />
-      <GridDiv>
-        <AppNav
-          selectedTitle={selectedTitle}
-          navTitles={navTitles}
-          onSelect={setselectedTitle}
-          isOpen={isNavOpen}
-          onClose={() => setIsNavOpen(false)}
-        />
-        <Viewer name={selectedTitle} type={type} entity={selectedEntity} />
-      </GridDiv>
+      <Viewer name={selectedTitle} type={type} entity={selectedEntity} />
     </AppMain>
   )
 }

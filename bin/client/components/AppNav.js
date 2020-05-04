@@ -3,6 +3,17 @@ import styled from '@emotion/styled'
 import { ExpandLess, ExpandMore } from '@material-ui/icons'
 import { spacing } from '../theme'
 
+const StyledNav = styled.nav`
+  padding: 0px ${spacing(3)}px 0px ${spacing(1)}px;
+  position: absolute;
+  top: 0px;
+  bottom: 0px;
+  left: 0px;
+  background-color: #f0f0f0;
+  transition: all 150ms ease-in-out;
+  transform: translateX(-100%);
+`
+
 const StyledH3 = styled.h3`
   display: flex;
   align-items: center;
@@ -12,10 +23,6 @@ const StyledH3 = styled.h3`
   text-transform: uppercase;
   cursor: pointer;
   margin-top: ${spacing(1.5)}px;
-`
-
-const StyledNav = styled.nav`
-  padding: 0px ${spacing(1)}px;
 `
 
 const StyledList = styled.ul`
@@ -37,7 +44,7 @@ const AppNav = ({ navTitles, isOpen, onClose, selectedTitle, onSelect }) => {
   const [componentsOpen, setComponentsOpen] = useState(true)
 
   return (
-    <StyledNav>
+    <StyledNav style={{ transform: isOpen ? 'translateX(0)' : 'translateX(-100%)' }}>
       <StyledH3 onClick={() => setTokensOpen(!tokensOpen)}>
         {tokensOpen ? <ExpandLess fontSize="small" /> : <ExpandMore fontSize="small" />}
         Tokens
