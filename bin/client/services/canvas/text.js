@@ -33,7 +33,7 @@ const getLines = (ctx, textContent, width) => {
 const paintText = (
   ctx,
   { width, height, left, top },
-  { fontFamily, fontSize, fontWeight, textColor, textHeight, textAlignX, textAlignY, textContent },
+  { fontFamily, fontSize, fontWeight, fillColor, textHeight, textAlignX, textAlignY, textContent },
   ratio
 ) => {
   ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`
@@ -83,7 +83,7 @@ const paintText = (
   }
 
   // draw text
-  ctx.fillStyle = textColor
+  ctx.fillStyle = fillColor
 
   lines.map((line, i) => {
     ctx.fillText(line, textX, top + i * textHeight + textY)

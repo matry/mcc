@@ -25,3 +25,10 @@ style Container.Disabled
 
 style Label
   text-content: Hello
+  font-size: 14
+  font-weight: 400
+  font-family: Helvetica
+  text-align-y: middle
+  text-align-x: left
+  text-height: 1
+  fill-color: black
