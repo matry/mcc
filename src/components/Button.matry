@@ -1,17 +1,17 @@
 
-info
-  title: Button
+component Button
   desc: A simple mock button for testing purposes
 
 elements
-  shape: Container
-  text: Label
+  Container shape
+  Label text
 
 inputs
-  boolean Disabled: false
-  string Size: small, *medium, large
+  Size string: small, *medium, large
+  Disabled boolean: false
 
-style Container
+style
+  element: Container
   width: 100
   height: 42
   fill-color: #007BFF
@@ -20,10 +20,13 @@ style Container
   border-width: 2
   border-align: inside
 
-style Container.Disabled
+style
+  element: Container
+  context: Disabled
   opacity: 0.5
 
-style Label
+style
+  element: Label
   text-content: Hi there
   font-size: 14
   font-weight: 400

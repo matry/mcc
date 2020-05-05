@@ -1,7 +1,7 @@
 const { getFile, validateFileStructure, writeJsonBundle } = require('./file')
 const { captureBlock, captureBlocks } = require('./block')
 const { getDirFiles } = require('./dir')
-const { parseInfo } = require('./info')
+const { parseHeader } = require('./header')
 const { parseElements } = require('./elements')
 const { parseStyles } = require('./styles')
 const { parseInputs } = require('./inputs')
@@ -40,18 +40,18 @@ const parseComponentFile = (filePath) => {
 
   validateFileStructure(lines)
 
-  const infoBlock = captureBlock(lines, 'info')
+  const headerBlock = captureBlock(lines, 'component')
   const elementsBlock = captureBlock(lines, 'elements')
-  const styleBlocks = captureBlocks(lines, 'style')
   const inputsBlock = captureBlock(lines, 'inputs')
+  const styleBlocks = captureBlocks(lines, 'style')
 
   const component = {}
 
   component[fileName] = {
-    info: parseInfo(infoBlock),
+    header: parseHeader(headerBlock),
     elements: parseElements(elementsBlock),
-    styles: parseStyles(styleBlocks),
     inputs: parseInputs(inputsBlock),
+    styles: parseStyles(styleBlocks),
   }
 
   return component

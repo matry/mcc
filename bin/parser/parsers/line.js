@@ -10,7 +10,7 @@ const parseKeyValue = (line) => {
   const value = parts.slice(parts.findIndex((line, index) => line !== '' && index !== 0)).join(' ')
 
   return {
-    key,
+    key: key && typeof key === 'string' ? key.replace(':', '') : key,
     value,
   }
 }

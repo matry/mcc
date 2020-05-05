@@ -23,29 +23,25 @@ const parseStyles = (styleGroups) => {
   const styles = {}
 
   styleGroups.forEach((styleGroup) => {
+    styleGroup.shift()
+
     let elementTarget = null
-    let contextTarget = null
+    let contextTarget = '_default'
 
     styleGroup.forEach((line) => {
       const keyValue = parseKeyValue(line)
 
-      if (keyValue.key === 'style') {
-        const declarationParts = keyValue.value.split('.')
-        elementTarget = declarationParts[0]
-        contextTarget = declarationParts[1] || '_default'
-
-        if (elementTarget) {
-          styles[elementTarget] = styles[elementTarget] || {
-            _default: {},
-          }
+      if (keyValue.key === 'element') {
+        elementTarget = keyValue.value
+        styles[elementTarget] = styles[elementTarget] || {
+          _default: {},
         }
-
-        styles[elementTarget][contextTarget] = styles[elementTarget][contextTarget] || {}
-
         return
       }
 
-      if (elementTarget === null) {
+      if (keyValue.key === 'context') {
+        contextTarget = keyValue.value
+        styles[elementTarget][contextTarget] = styles[elementTarget][contextTarget] || {}
         return
       }
 

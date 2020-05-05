@@ -13,8 +13,8 @@ const parseInputs = (lines) => {
     const inputValue = parseInputValue(inputDatum.value)
 
     inputs.push({
+      title: inputDatum.key,
       ...inputValue,
-      type: inputDatum.key,
     })
   })
 
@@ -35,7 +35,7 @@ const parseInputValue = (line) => {
   })
 
   return {
-    title: parts[0].trim(),
+    type: parts[0].trim(),
     defaultValue: defaultValue.trim(),
     options: options.length > 1 ? formattedOptions : [],
   }
