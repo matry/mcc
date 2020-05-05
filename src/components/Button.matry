@@ -6,9 +6,12 @@ elements
   Container shape
   Label text
 
-inputs
+input public
   Size string: small, *medium, large
   Disabled boolean: false
+
+input private
+  Enabled boolean: is not Disabled
 
 style
   element: Container

@@ -1,20 +1,23 @@
 const { parseKeyValue } = require('./line')
 
-const parseInputs = (lines) => {
-  const inputs = []
+const parseInputs = (inputGroups) => {
+  const inputs = {
+    public: [],
+    private: [],
+  }
 
-  lines.forEach((line) => {
-    const inputDatum = parseKeyValue(line)
+  inputGroups.forEach((lines) => {
+    const declaration = parseKeyValue(lines.shift())
+    const inputType = declaration && declaration.value === 'private' ? 'private' : 'public'
 
-    if (inputDatum === null) {
-      return
-    }
+    lines.forEach((line) => {
+      const inputDatum = parseKeyValue(line)
+      const inputValue = parseInputValue(inputDatum.value)
 
-    const inputValue = parseInputValue(inputDatum.value)
-
-    inputs.push({
-      title: inputDatum.key,
-      ...inputValue,
+      inputs[inputType].push({
+        title: inputDatum.key,
+        ...inputValue,
+      })
     })
   })
 

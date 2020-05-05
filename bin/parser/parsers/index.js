@@ -42,7 +42,7 @@ const parseComponentFile = (filePath) => {
 
   const headerBlock = captureBlock(lines, 'component')
   const elementsBlock = captureBlock(lines, 'elements')
-  const inputsBlock = captureBlock(lines, 'inputs')
+  const inputBlocks = captureBlocks(lines, 'input')
   const styleBlocks = captureBlocks(lines, 'style')
 
   const component = {}
@@ -50,7 +50,7 @@ const parseComponentFile = (filePath) => {
   component[fileName] = {
     header: parseHeader(headerBlock),
     elements: parseElements(elementsBlock),
-    inputs: parseInputs(inputsBlock),
+    input: parseInputs(inputBlocks),
     styles: parseStyles(styleBlocks),
   }
 
