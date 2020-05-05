@@ -116,8 +116,6 @@ const generateBoundarySet = (fragments) => {
       fragment.styles
     )
 
-    console.log(layoutBoundary)
-
     boundaryList.push(fragment.title)
     boundaryMap[fragment.title] = {
       layout: layoutBoundary,

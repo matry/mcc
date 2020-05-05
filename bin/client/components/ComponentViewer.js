@@ -1,7 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { spacing } from '../theme'
-import Field from './Field'
+import InputForm from './InputForm'
 import Canvas from './Canvas'
 
 const StyledSection = styled.section`
@@ -26,13 +26,9 @@ const StyledSmall = styled.small`
 `
 
 const StyledH2 = styled.h2`
-  font-weight: 600;
+  font-weight: 500;
   font-size: 20px;
   color: #333333;
-`
-
-const StyledForm = styled.form`
-  margin-top: ${spacing(1.5)}px;
 `
 
 const ComponentViewer = ({ name, component }) => {
@@ -60,12 +56,7 @@ const ComponentViewer = ({ name, component }) => {
           <StyledSmall>Viewing</StyledSmall>
           <StyledH2>{name}</StyledH2>
         </StyledHeader>
-        <StyledForm>
-          <h3>Input</h3>
-          {inputs.map((input) => {
-            return <Field key={input.title} type={input.type} name={input.title} />
-          })}
-        </StyledForm>
+        <InputForm inputs={inputs} />
       </StyledDiv>
       <Canvas
         gridOptions={{

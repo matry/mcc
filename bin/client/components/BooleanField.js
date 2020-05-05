@@ -5,15 +5,21 @@ import CheckboxInput from './CheckboxInput'
 
 const StyledDiv = styled.div`
   display: flex;
-  justify-content: space-between;
+  flex-direction: row-reverse;
+
+  & input {
+    display: block;
+  }
 `
 
 const BooleanField = ({ name }) => {
   return (
-    <StyledDiv>
+    <>
       <FieldLabel>{name}</FieldLabel>
-      <CheckboxInput value={false} onChange={() => {}} />
-    </StyledDiv>
+      <StyledDiv>
+        <CheckboxInput value={false} onChange={() => {}} />
+      </StyledDiv>
+    </>
   )
 }
 
