@@ -11,12 +11,13 @@ input public
   Disabled boolean: false
 
 input private
-  Enabled boolean: is not Disabled
+  EnabledContext boolean: is not Disabled
+  ContainerHeight number: 42
 
 style
   element: Container
   width: 100
-  height: 42
+  height: $ContainerHeight
   fill-color: #007BFF
   border-radius: 10
   border-color: #88ADFF
@@ -25,7 +26,7 @@ style
 
 style
   element: Container
-  context: Disabled
+  context: EnabledContext
   opacity: 0.5
 
 style
@@ -36,6 +37,8 @@ style
   font-family: Helvetica
   text-align-y: middle
   text-align-x: center
-  text-height: 1
+  text-height: $ContainerHeight
   fill-color: #ffffff
-  width: 200
+  left: 10 inside Container.left
+  right: 10 inside Container.right
+  rotate: 90deg

@@ -26,6 +26,8 @@ MCC is intended to be the reference implementation of the Matry language.
 - is < Num
 - is <= Num
 - is not > Num
+- is MyColor1.saturation > MyColor2.saturation
+- is MyColor.lightness < 50%
 
 #### math expressions
 
@@ -44,3 +46,10 @@ MCC is intended to be the reference implementation of the Matry language.
 - DARKEN( MyColor, 80% )
 - ROTATEHUE( MyColor, 24deg )
 - MIX( MyColor1, MyColor2 )
+
+#### layout expressions
+
+- 50% of Elem.width
+- 10 inside Elem.left
+- 20 outside Elem.right
+- Elem1.left: Elem2.right
