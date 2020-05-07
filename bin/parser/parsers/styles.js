@@ -23,25 +23,19 @@ const parseStyles = (styleGroups) => {
   const styles = {}
 
   styleGroups.forEach((styleGroup) => {
-    styleGroup.shift()
-
+    const styleBlock = {
+      contexts: [],
+      rules: {},
+    }
     let elementTarget = null
-    let contextTarget = '_default'
 
-    styleGroup.forEach((line) => {
+    styleGroup.forEach((line, index) => {
       const keyValue = parseKeyValue(line)
 
-      if (keyValue.key === 'element') {
-        elementTarget = keyValue.value
-        styles[elementTarget] = styles[elementTarget] || {
-          _default: {},
-        }
-        return
-      }
-
-      if (keyValue.key === 'context') {
-        contextTarget = keyValue.value
-        styles[elementTarget][contextTarget] = styles[elementTarget][contextTarget] || {}
+      if (index === 0) {
+        const targetMatch = keyValue.value.split('.')
+        elementTarget = targetMatch.shift()
+        styleBlock.contexts = targetMatch
         return
       }
 
@@ -52,12 +46,15 @@ const parseStyles = (styleGroups) => {
         value = Number(value)
       }
 
-      styles[elementTarget][contextTarget][key] = value
+      styleBlock.rules[key] = value
     })
 
-    if (contextTarget === '_default') {
-      styles[elementTarget][contextTarget] = setDefaults(styles[elementTarget][contextTarget])
+    if (styleBlock.contexts.length === 0) {
+      styleBlock.rules = setDefaults(styleBlock.rules)
     }
+
+    styles[elementTarget] = styles[elementTarget] || []
+    styles[elementTarget].push(styleBlock)
   })
 
   return styles

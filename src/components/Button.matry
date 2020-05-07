@@ -11,11 +11,11 @@ input public
   Disabled boolean: false
 
 input private
-  EnabledContext boolean: is not Disabled
+  Enabled boolean: is not Disabled
   ContainerHeight number: 42
+  IsLarge boolean: Size is large
 
-style
-  element: Container
+style Container
   width: 100
   height: $ContainerHeight
   fill-color: #007BFF
@@ -24,13 +24,10 @@ style
   border-width: 2
   border-align: inside
 
-style
-  element: Container
-  context: EnabledContext
+style Container.Enabled.IsLarge
   opacity: 0.5
 
-style
-  element: Label
+style Label
   text-content: Hi there
   font-size: 14
   font-weight: 400
