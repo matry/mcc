@@ -4,8 +4,9 @@ const { getDirFiles } = require('./dir')
 const { parseHeader } = require('./header')
 const { parseElements } = require('./elements')
 const { parseStyles } = require('./styles')
-const { parseInputs } = require('./inputs')
+const { parseOptions } = require('./options')
 const { parseTokens } = require('./tokens')
+const { parseValues } = require('./values')
 
 const parseTokenFile = (filePath) => {
   const { lines, fileName } = getFile(filePath)
@@ -42,15 +43,17 @@ const parseComponentFile = (filePath) => {
 
   const headerBlock = captureBlock(lines, 'component')
   const elementsBlock = captureBlock(lines, 'elements')
-  const inputBlocks = captureBlocks(lines, 'options')
+  const optionsBlock = captureBlock(lines, 'options')
   const styleBlocks = captureBlocks(lines, 'style')
+  const valuesBlock = captureBlock(lines, 'values')
 
   const component = {}
 
   component[fileName] = {
     header: parseHeader(headerBlock),
     elements: parseElements(elementsBlock),
-    input: parseInputs(inputBlocks),
+    options: parseOptions(optionsBlock),
+    values: parseValues(valuesBlock),
     styles: parseStyles(styleBlocks),
   }
 

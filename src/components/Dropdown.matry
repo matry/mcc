@@ -1,0 +1,35 @@
+
+component Dropdown
+  desc: A simple dropdown
+
+elements
+  Container boundary
+    Fill shape
+    Label text
+    DropdownContents hole
+
+options
+  Content content: empty
+
+values
+  ContainerHeight number: 28
+
+style Container
+  height: $ContainerHeight
+
+style Fill
+  height: $ContainerHeight
+  width: @Container.width
+  fill-color: #efefef
+  border-color: #888888
+  border-width: 1
+  border-style: solid
+
+style Label
+  font-family: Helvetica
+  font-size: $ContainerHeight / 2
+  text-height: $ContainerHeight
+
+style DropdownContents
+  top: 10 from @Container.bottom
+  content: Content

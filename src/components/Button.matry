@@ -1,45 +1,40 @@
 
 component Button
-  desc: A simple mock button for testing purposes
 
 elements
-  Container shape
-  Label text
+  Container boundary
+    Fill shape
+    Label text
 
-options public
+options
   Size string: small, *medium, large
   Disabled boolean: false
+  BtnText string: Click me
 
-options private
-  Enabled boolean: is not Disabled
-  ContainerHeight number: 42
+values
+  ButtonHeight number: 30
+  IsSmall boolean: Size is small
   IsLarge boolean: Size is large
 
-style Container
-  width: 100
-  height: $ContainerHeight
-  fill-color: #007BFF
-  border-radius: 10
-  border-color: #88ADFF
-  border-width: 2
-  border-align: inside
+values when IsSmall
+  ButtonHeight: 20
 
-style Container when Enabled
-  opacity: 0.5
+values when IsLarge
+  ButtonHeight: 40
+
+style Container
+  height: $ButtonHeight
+
+style Fill
+  fill-color: $tokens.PrimaryBlue
+  width: @Container.width
+  height: $ButtonHeight
 
 style Label
-  text-content: Hi there
-  font-size: 14
+  width: @Container.width
+  height: @ButtonHeight
+  content: $BtnText
+  font-size: $ButtonHeight / 2
   font-weight: 400
   font-family: Helvetica
-  text-align-y: middle
-  text-align-x: center
-  text-height: $ContainerHeight
   fill-color: #ffffff
-  left: 10 inside Container.left
-  right: 10 inside Container.right
-  rotate: 90deg
-
-style Label when IsLarge
-  opacity: 0.5
-  font-size: 22

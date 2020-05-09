@@ -1,0 +1,7 @@
+
+component SiteOptionsDropdown
+
+elements
+  Container boundary
+    DropdownContainer Dropdown
+      Option text[]

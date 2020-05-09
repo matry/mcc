@@ -17,7 +17,7 @@ const parseElements = (lines) => {
     if (currentLineIndentation > previousLineIndentation) {
       const parentElement = elements[elements.length - 1]
       if (parentElement) {
-        if (parentElement.type !== 'group') {
+        if (parentElement.type !== 'boundary') {
           throw new Error(
             `Invalid syntax: unable to nest element ${elementDatum.key} inside a ${parentElement.type}`
           )

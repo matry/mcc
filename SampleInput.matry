@@ -1,0 +1,66 @@
+
+story SuccessfulLogin
+
+frame Default
+LoginForm
+  UsernameField
+    LabelText: Enter your username here
+  PasswordField
+    LabelText: Enter your password here
+  SubmitButton
+    LabelText: Log In
+    Disabled: true
+
+frame UsernameSubmitted
+LoginForm
+  UsernameField
+    LabelText: johndoe@gmail.com
+    Placeholder: false
+  PasswordField
+    LabelText: Enter your password here
+  SubmitButton
+    LabelText: Log In
+    Disabled: true
+
+frame UsernameAndPasswordSubmitted
+LoginForm
+  UsernameField
+    LabelText: johndoe@gmail.com
+    Placeholder: false
+  PasswordField
+    LabelText: 123456
+    Placeholder: false
+  SubmitButton
+    LabelText: Log In
+    Disabled: false
+
+frame Completed
+LoginForm {
+  UsernameField {
+    LabelText: johndoe@gmail.com
+    Placeholder: false
+  }
+  PasswordField {
+    LabelText: 123456
+    Placeholder: false
+  }
+  SubmitButton {
+    LabelText: Success
+    Disabled: false
+  }
+}
+
+frame ShowDropdown
+SiteOptionsDropdown {
+  Dropdown {
+    Option {
+      content: Option 1
+    }
+    Option {
+      content: Option 2
+    }
+    Option {
+      content: Option 2
+    }
+  }
+}

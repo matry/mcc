@@ -35,7 +35,7 @@ const parseStyles = (styleGroups) => {
       if (index === 0) {
         const targetMatch = keyValue.value.split('when')
         elementTarget = targetMatch.shift().trim()
-        styleBlock.contexts = targetMatch.map((m) => m.trim())
+        styleBlock.contexts = targetMatch.map((m) => m.trim()).filter((m) => m !== 'and')
         return
       }
 
