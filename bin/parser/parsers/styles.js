@@ -33,9 +33,9 @@ const parseStyles = (styleGroups) => {
       const keyValue = parseKeyValue(line)
 
       if (index === 0) {
-        const targetMatch = keyValue.value.split('.')
-        elementTarget = targetMatch.shift()
-        styleBlock.contexts = targetMatch
+        const targetMatch = keyValue.value.split('when')
+        elementTarget = targetMatch.shift().trim()
+        styleBlock.contexts = targetMatch.map((m) => m.trim())
         return
       }
 

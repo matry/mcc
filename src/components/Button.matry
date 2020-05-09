@@ -6,11 +6,11 @@ elements
   Container shape
   Label text
 
-input public
+options public
   Size string: small, *medium, large
   Disabled boolean: false
 
-input private
+options private
   Enabled boolean: is not Disabled
   ContainerHeight number: 42
   IsLarge boolean: Size is large
@@ -24,7 +24,7 @@ style Container
   border-width: 2
   border-align: inside
 
-style Container.Enabled.IsLarge
+style Container when Enabled
   opacity: 0.5
 
 style Label
@@ -39,3 +39,7 @@ style Label
   left: 10 inside Container.left
   right: 10 inside Container.right
   rotate: 90deg
+
+style Label when IsLarge
+  opacity: 0.5
+  font-size: 22
