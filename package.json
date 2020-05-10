@@ -7,7 +7,7 @@
   "author": "danielbvaughn@gmail.com",
   "license": "MIT",
   "scripts": {
-    "test": "jest",
+    "test": "jest bin/parser",
     "start": "webpack-dev-server --mode development",
     "storybook": "start-storybook -p 9001 -s ./bin/client",
     "matry": "node bin/server"

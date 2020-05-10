@@ -30,7 +30,7 @@ style Fill
   width: @Container.width
   height: $ButtonHeight
 
-style Label
+style Label when Disabled
   width: @Container.width
   height: @ButtonHeight
   content: $BtnText

@@ -1,1 +1,125 @@
-{"tokens":{"Branding":[{"title":"PrimaryColor","type":"color","value":"#007BFF"},{"title":"SecondaryColor","type":"color","value":"#BADA55"}],"Copy":[{"title":"PlaceholderButtonText","type":"string","value":"Click Me"},{"title":"LoginPrompt","type":"string","value":"Sign In"},{"title":"RegisterPrompt","type":"string","value":"Sign Up"}]},"components":{"Button":{"header":{"title":"Button","desc":"A simple mock button for testing purposes"},"elements":[{"title":"Container","type":"boundary","parent":null},{"title":"Label","type":"text","parent":"Container"}],"options":[{"title":"Size","type":"string","defaultValue":"medium","options":["small","medium","large"]},{"title":"variant","type":"string","defaultValue":"filled","options":["filled","dotted"]},{"title":"Disabled","type":"boolean","defaultValue":"false","options":[]}],"values":[{"title":"Enabled","type":"boolean","value":"is not Disabled"},{"title":"ContainerHeight","type":"number","value":"42"},{"title":"IsLarge","type":"boolean","value":"Size is large"},{"title":"IsDarkMode","type":"boolean","value":"Mode is dark"},{"title":"IsLightMode","type":"boolean","value":"Mode is light"}],"styles":{"Container":[{"contexts":[],"rules":{"borderAlign":"inside","borderColor":"#88ADFF","borderRadius":10,"borderStyle":null,"borderWidth":2,"bottom":null,"centerX":null,"centerY":null,"fillColor":"#007BFF","fontFamily":null,"fontSize":null,"fontWeight":null,"height":"$ContainerHeight","left":null,"opacity":null,"right":null,"textAlignX":null,"textAlignY":null,"textContent":null,"textHeight":null,"top":null,"width":100}},{"contexts":["Disabled"],"rules":{"opacity":0.5,"fill-color":"#dddddd"}},{"contexts":["IsDarkMode"],"rules":{"fill-color":"#867530"}},{"contexts":["IsDarkMode and Disabled"],"rules":{"fill-color":"#230933"}}],"Label":[{"contexts":[],"rules":{"borderAlign":null,"borderColor":null,"borderRadius":null,"borderStyle":null,"borderWidth":null,"bottom":null,"centerX":null,"centerY":null,"fillColor":"#ffffff","fontFamily":"Helvetica","fontSize":14,"fontWeight":400,"height":null,"left":"10 inside Container.left","opacity":null,"right":"10 inside Container.right","textAlignX":"center","textAlignY":"middle","textContent":"Hi there","textHeight":"$ContainerHeight","top":null,"width":null}},{"contexts":["IsLarge"],"rules":{"font-size":22}}]}}}}
+{
+  "tokens": {
+    "Branding": [
+      { "title": "color", "type": "PrimaryColor", "value": "#007BFF" },
+      { "title": "color", "type": "SecondaryColor", "value": "#BADA55" }
+    ],
+    "Copy": [
+      { "title": "string", "type": "PlaceholderButtonText", "value": "Click Me" },
+      { "title": "string", "type": "LoginPrompt", "value": "Sign In" },
+      { "title": "string", "type": "RegisterPrompt", "value": "Sign Up" }
+    ]
+  },
+  "components": {
+    "Button": {
+      "header": {},
+      "elements": [
+        { "title": "Container", "type": "boundary", "parent": null },
+        { "title": "Fill", "type": "shape", "parent": "Container" },
+        { "title": "Label", "type": "text", "parent": "Container" }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "type": "string",
+          "defaultValue": "medium",
+          "options": ["small", "medium", "large"]
+        },
+        { "title": "Disabled", "type": "boolean", "defaultValue": "false", "options": [] },
+        { "title": "BtnText", "type": "string", "defaultValue": "Click me", "options": [] }
+      ],
+      "values": [
+        {
+          "contexts": [],
+          "values": {
+            "ButtonHeight": { "title": "ButtonHeight", "type": "number", "value": "30" },
+            "IsSmall": { "title": "IsSmall", "type": "boolean", "value": "Size is small" },
+            "IsLarge": { "title": "IsLarge", "type": "boolean", "value": "Size is large" }
+          }
+        },
+        {
+          "contexts": ["IsSmall"],
+          "values": { "ButtonHeight": { "title": "ButtonHeight", "value": "20" } }
+        },
+        {
+          "contexts": ["IsLarge"],
+          "values": { "ButtonHeight": { "title": "ButtonHeight", "value": "40" } }
+        }
+      ],
+      "styles": {
+        "Container": [
+          {
+            "contexts": [],
+            "rules": {
+              "borderAlign": null,
+              "borderColor": null,
+              "borderRadius": null,
+              "borderStyle": null,
+              "borderWidth": null,
+              "bottom": null,
+              "centerX": null,
+              "centerY": null,
+              "fillColor": null,
+              "fontFamily": null,
+              "fontSize": null,
+              "fontWeight": null,
+              "height": "$ButtonHeight",
+              "left": null,
+              "opacity": null,
+              "right": null,
+              "textAlignX": null,
+              "textAlignY": null,
+              "textContent": null,
+              "textHeight": null,
+              "top": null,
+              "width": null
+            }
+          }
+        ],
+        "Fill": [
+          {
+            "contexts": [],
+            "rules": {
+              "borderAlign": null,
+              "borderColor": null,
+              "borderRadius": null,
+              "borderStyle": null,
+              "borderWidth": null,
+              "bottom": null,
+              "centerX": null,
+              "centerY": null,
+              "fillColor": "$tokens.PrimaryBlue",
+              "fontFamily": null,
+              "fontSize": null,
+              "fontWeight": null,
+              "height": "$ButtonHeight",
+              "left": null,
+              "opacity": null,
+              "right": null,
+              "textAlignX": null,
+              "textAlignY": null,
+              "textContent": null,
+              "textHeight": null,
+              "top": null,
+              "width": "@Container.width"
+            }
+          }
+        ],
+        "Label": [
+          {
+            "contexts": ["Disabled"],
+            "rules": {
+              "width": "@Container.width",
+              "height": "@ButtonHeight",
+              "content": "$BtnText",
+              "font-size": "$ButtonHeight / 2",
+              "font-weight": 400,
+              "font-family": "Helvetica",
+              "fill-color": "#ffffff"
+            }
+          }
+        ]
+      }
+    }
+  }
+}

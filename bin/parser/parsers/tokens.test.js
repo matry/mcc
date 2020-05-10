@@ -4,8 +4,8 @@ describe('tokens', () => {
   it('correctly parses tokens', () => {
     const result = parseTokens([
       'tokens Brand',
-      'color PrimaryColor: #007BFF',
-      'image Logo: branding/logo.svg',
+      'PrimaryColor color: #007BFF',
+      'Logo image: branding/logo.svg',
     ])
 
     expect(result).toMatchObject({

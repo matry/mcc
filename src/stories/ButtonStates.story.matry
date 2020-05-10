@@ -1,0 +1,7 @@
+
+story  ButtonStates
+
+states Button
+  size: small, medium, large
+  Disabled: false
+  BtnText: short text, some medium text, some very very long text
