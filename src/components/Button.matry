@@ -10,6 +10,7 @@ options
   Size string: small, *medium, large
   Disabled boolean: false
   BtnText string: Click me
+  BGColor color: #007BFF
 
 values
   ButtonHeight number: 30

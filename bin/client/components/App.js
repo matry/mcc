@@ -50,7 +50,7 @@ const App = ({ bundle }) => {
         isOpen={isNavOpen}
         onClose={() => setIsNavOpen(false)}
       />
-      <Viewer name={selectedTitle} type={type} entity={selectedEntity} />
+      <Viewer bundle={bundle} name={selectedTitle} type={type} entity={selectedEntity} />
     </AppMain>
   )
 }

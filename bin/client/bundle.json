@@ -26,15 +26,71 @@
           "options": ["small", "medium", "large"]
         },
         { "title": "Disabled", "type": "boolean", "defaultValue": "false", "options": [] },
-        { "title": "BtnText", "type": "string", "defaultValue": "Click me", "options": [] }
+        { "title": "BtnText", "type": "string", "defaultValue": "Click me", "options": [] },
+        { "title": "BGColor", "type": "color", "defaultValue": "#007BFF", "options": [] }
       ],
       "values": [
         {
           "contexts": [],
           "values": {
-            "ButtonHeight": { "title": "ButtonHeight", "type": "number", "value": "30" },
-            "IsSmall": { "title": "IsSmall", "type": "boolean", "value": "Size is small" },
-            "IsLarge": { "title": "IsLarge", "type": "boolean", "value": "Size is large" }
+            "ButtonHeight": {
+              "title": "ButtonHeight",
+              "type": "number",
+              "value": {
+                "type": "assignment",
+                "value": "30",
+                "operands": { "left": null, "operator": null, "right": null }
+              }
+            },
+            "IsSmall": {
+              "title": "IsSmall",
+              "type": "boolean",
+              "value": {
+                "type": "boolean",
+                "value": "Size = small",
+                "operands": { "left": "Size", "operator": "=", "right": "small" }
+              }
+            },
+            "IsLarge": {
+              "title": "IsLarge",
+              "type": "boolean",
+              "value": {
+                "type": "boolean",
+                "value": "Size = large",
+                "operands": { "left": "Size", "operator": "=", "right": "large" }
+              }
+            },
+            "PctY": {
+              "title": "PctY",
+              "type": "percent",
+              "value": {
+                "type": "percent",
+                "value": "@Label.center-x of @Container.height",
+                "operands": {
+                  "left": "@Label.center-x",
+                  "operator": "of",
+                  "right": "@Container.height"
+                }
+              }
+            },
+            "CalcVal": {
+              "title": "CalcVal",
+              "type": "color",
+              "value": {
+                "type": "color",
+                "value": "$tokens.PrimaryBlue value $PctY",
+                "operands": { "left": "$tokens.PrimaryBlue", "operator": "value", "right": "$PctY" }
+              }
+            },
+            "IsSmallWidth": {
+              "title": "IsSmallWidth",
+              "type": "boolean",
+              "value": {
+                "type": "boolean",
+                "value": "Container.width <= 800px",
+                "operands": { "left": "Container.width", "operator": "<=", "right": "800px" }
+              }
+            }
           }
         },
         {
@@ -63,7 +119,11 @@
               "fontFamily": null,
               "fontSize": null,
               "fontWeight": null,
-              "height": "$ButtonHeight",
+              "height": {
+                "type": "assignment",
+                "value": "$ButtonHeight",
+                "operands": { "left": null, "operator": null, "right": null }
+              },
               "left": null,
               "opacity": null,
               "right": null,
@@ -88,11 +148,19 @@
               "bottom": null,
               "centerX": null,
               "centerY": null,
-              "fillColor": "$tokens.PrimaryBlue",
+              "fillColor": {
+                "type": "assignment",
+                "value": "$CalcVal",
+                "operands": { "left": null, "operator": null, "right": null }
+              },
               "fontFamily": null,
               "fontSize": null,
               "fontWeight": null,
-              "height": "$ButtonHeight",
+              "height": {
+                "type": "assignment",
+                "value": "$ButtonHeight",
+                "operands": { "left": null, "operator": null, "right": null }
+              },
               "left": null,
               "opacity": null,
               "right": null,
@@ -101,7 +169,21 @@
               "textContent": null,
               "textHeight": null,
               "top": null,
-              "width": "@Container.width"
+              "width": {
+                "type": "assignment",
+                "value": "100%",
+                "operands": { "left": null, "operator": null, "right": null }
+              }
+            }
+          },
+          {
+            "contexts": ["IsSmallWidth"],
+            "rules": {
+              "width": {
+                "type": "assignment",
+                "value": "800px",
+                "operands": { "left": null, "operator": null, "right": null }
+              }
             }
           }
         ],
@@ -109,13 +191,41 @@
           {
             "contexts": ["Disabled"],
             "rules": {
-              "width": "@Container.width",
-              "height": "@ButtonHeight",
-              "content": "$BtnText",
-              "font-size": "$ButtonHeight / 2",
-              "font-weight": 400,
-              "font-family": "Helvetica",
-              "fill-color": "#ffffff"
+              "width": {
+                "type": "assignment",
+                "value": "@Container.width",
+                "operands": { "left": null, "operator": null, "right": null }
+              },
+              "height": {
+                "type": "assignment",
+                "value": "@ButtonHeight",
+                "operands": { "left": null, "operator": null, "right": null }
+              },
+              "content": {
+                "type": "assignment",
+                "value": "$BtnText",
+                "operands": { "left": null, "operator": null, "right": null }
+              },
+              "font-size": {
+                "type": "math",
+                "value": "$ButtonHeight / 2",
+                "operands": { "left": null, "operator": null, "right": null }
+              },
+              "font-weight": {
+                "type": "assignment",
+                "value": 400,
+                "operands": { "left": null, "operator": null, "right": null }
+              },
+              "font-family": {
+                "type": "assignment",
+                "value": "Helvetica",
+                "operands": { "left": null, "operator": null, "right": null }
+              },
+              "fill-color": {
+                "type": "assignment",
+                "value": "#ffffff",
+                "operands": { "left": null, "operator": null, "right": null }
+              }
             }
           }
         ]

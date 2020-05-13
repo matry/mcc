@@ -2,13 +2,13 @@ import React from 'react'
 import PropTypes from 'prop-types'
 import { css } from 'emotion'
 import { useCanvas } from '../hooks'
-import { renderFragments } from '../services/canvas'
+import { render } from '../services/webrender'
 
-const Canvas = ({ gridOptions, fragments }) => {
+const Canvas = ({ gridOptions, bundle }) => {
   const { context, width, height, canvasRef, resizeRef } = useCanvas()
 
   if (context) {
-    renderFragments(context, width, height, gridOptions, fragments)
+    const renderer = render(context, bundle, width, height)
   }
 
   return (
@@ -26,18 +26,12 @@ const Canvas = ({ gridOptions, fragments }) => {
 }
 
 Canvas.propTypes = {
-  fragments: PropTypes.arrayOf(
-    PropTypes.shape({
-      title: PropTypes.string,
-      type: PropTypes.oneOf(['group', 'shape', 'text']),
-      parent: PropTypes.string,
-      styles: PropTypes.object,
-    })
-  ),
+  bundle: PropTypes.object,
 }
 
 Canvas.defaultProps = {
   fragments: [],
+  bundle: {},
 }
 
 export default Canvas

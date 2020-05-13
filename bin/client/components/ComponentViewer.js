@@ -1,4 +1,4 @@
-import React from 'react'
+import React, { useState } from 'react'
 import styled from '@emotion/styled'
 import { spacing } from '../theme'
 import InputForm from './InputForm'
@@ -31,23 +31,15 @@ const StyledH2 = styled.h2`
   color: #333333;
 `
 
-const ComponentViewer = ({ name, component }) => {
-  const { inputs } = component
-
-  const fragments = component.elements.map((element, index) => {
-    let styles = {}
-
-    if (component.styles[element.title]) {
-      styles = component.styles[element.title]._default
-    }
-
-    return {
-      title: element.title,
-      parent: 'root',
-      type: index === 0 ? 'group' : element.type,
-      styles,
-    }
-  })
+const ComponentViewer = ({ name, component, bundle }) => {
+  let [options, setOptions] = useState(
+    component.options.map((opt) => {
+      return {
+        ...opt,
+        value: opt.defaultValue,
+      }
+    })
+  )
 
   return (
     <StyledSection>
@@ -56,16 +48,24 @@ const ComponentViewer = ({ name, component }) => {
           <StyledSmall>Viewing</StyledSmall>
           <StyledH2>{name}</StyledH2>
         </StyledHeader>
-        <InputForm inputs={inputs} />
+        <InputForm
+          options={options}
+          onChange={(value, title) => {
+            const newOptions = [...options]
+            const index = newOptions.findIndex((opt) => opt.title === title)
+            newOptions[index].value = value
+            setOptions(newOptions)
+          }}
+        />
       </StyledDiv>
       <Canvas
+        bundle={bundle}
         gridOptions={{
           gridColor: '#ddd',
           gridPlacement: 'back',
           gridSpacing: 10,
           gridLineWidth: 0.5,
         }}
-        fragments={fragments}
       />
     </StyledSection>
   )
