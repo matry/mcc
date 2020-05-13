@@ -1,4 +1,5 @@
 const { parseKeyValue } = require('./line')
+const { parseExpression } = require('./expression')
 const defaultStyles = require('./defaultStyles')
 
 const toCamelCase = (str) => str.replace(/-([a-z])/g, (g) => g[1].toUpperCase())
@@ -46,7 +47,7 @@ const parseStyles = (styleGroups) => {
         value = Number(value)
       }
 
-      styleBlock.rules[key] = value
+      styleBlock.rules[key] = parseExpression(value)
     })
 
     if (styleBlock.contexts.length === 0) {

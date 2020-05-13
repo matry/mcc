@@ -13,8 +13,11 @@ options
 
 values
   ButtonHeight number: 30
-  IsSmall boolean: Size is small
-  IsLarge boolean: Size is large
+  IsSmall boolean: Size = small
+  IsLarge boolean: Size = large
+  PctY percent: @Label.center-x of @Container.height
+  CalcVal color: $tokens.PrimaryBlue value $PctY
+  IsSmallWidth boolean: Container.width <= 800px
 
 values when IsSmall
   ButtonHeight: 20
@@ -26,9 +29,12 @@ style Container
   height: $ButtonHeight
 
 style Fill
-  fill-color: $tokens.PrimaryBlue
-  width: @Container.width
+  fill-color: $CalcVal
+  width: 100%
   height: $ButtonHeight
+
+style Fill when IsSmallWidth
+  width: 800px
 
 style Label when Disabled
   width: @Container.width

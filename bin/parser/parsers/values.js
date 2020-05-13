@@ -1,3 +1,4 @@
+const { parseExpression } = require('./expression')
 const { parseKeyValue } = require('./line')
 
 const parseValues = (valueGroups) => {
@@ -59,7 +60,7 @@ const parseValue = (line) => {
   const parts = line.trim().split(':')
   return {
     type: parts[0].trim(),
-    value: parts[1].trim(),
+    value: parseExpression(parts[1].trim()),
   }
 }
 
