@@ -1,7 +1,8 @@
 const { parseKeyValue } = require('./line')
 
-const parseElements = (lines) => {
-  const elements = []
+const parseElements = (lines, componentName) => {
+  const map = {}
+  const list = []
 
   let previousLineIndentation = 0
   let parents = [null]
@@ -15,7 +16,8 @@ const parseElements = (lines) => {
     const currentLineIndentation = line.search(/\S|$/)
 
     if (currentLineIndentation > previousLineIndentation) {
-      const parentElement = elements[elements.length - 1]
+      const parentKey = list[list.length - 1]
+      const parentElement = map[parentKey]
       if (parentElement) {
         if (parentElement.type !== 'boundary') {
           throw new Error(
@@ -23,7 +25,7 @@ const parseElements = (lines) => {
           )
         }
 
-        parents.push(parentElement.title)
+        parents.push(parentKey)
       }
       previousLineIndentation = currentLineIndentation
     } else if (currentLineIndentation < previousLineIndentation) {
@@ -37,10 +39,15 @@ const parseElements = (lines) => {
       parent: parents[parents.length - 1],
     }
 
-    elements.push(element)
+    const elementKey = `${componentName}.${elementDatum.key}`
+    map[elementKey] = element
+    list.push(elementKey)
   })
 
-  return elements
+  return {
+    map,
+    list,
+  }
 }
 
 module.exports = {

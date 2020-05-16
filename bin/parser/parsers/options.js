@@ -1,7 +1,8 @@
 const { parseKeyValue } = require('./line')
 
-const parseOptions = (optionsGroup) => {
-  const options = []
+const parseOptions = (optionsGroup, componentName) => {
+  const map = {}
+  const list = []
 
   optionsGroup.shift()
 
@@ -9,13 +10,18 @@ const parseOptions = (optionsGroup) => {
     const optionDatum = parseKeyValue(line)
     const optionValue = parseOptionValue(optionDatum.value)
 
-    options.push({
+    const optionKey = `${componentName}.${optionDatum.key}`
+    map[optionKey] = {
       title: optionDatum.key,
       ...optionValue,
-    })
+    }
+    list.push(optionKey)
   })
 
-  return options
+  return {
+    map,
+    list,
+  }
 }
 
 const parseOptionValue = (line) => {

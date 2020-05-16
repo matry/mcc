@@ -1,4 +1,5 @@
 import { getBoundary } from './boundary'
+import { resolveConstraints } from './constraints'
 
 /*
 
@@ -16,11 +17,12 @@ render pipeline
 */
 
 const render = (ctx, bundle, componentName, width, height) => {
-  let renderer = loadEnvironment(bundle)
+  let renderer = resolveTokens({}, bundle)
+  renderer = resolveDimensions(renderer, width, height)
+  renderer = resolveZoomLevel(renderer)
+  renderer = resolveViewBoundary(renderer)
 
-  renderer = loadDimensions(renderer, width, height)
-  renderer = loadZoomLevel(renderer)
-  renderer = loadViewBoundary(renderer)
+  resolveConstraints(renderer, bundle, componentName)
 
   const component = bundle.components[componentName]
 
@@ -41,7 +43,22 @@ const loadEnvironment = (bundle, renderer = {}) => {
   }
 }
 
-const loadDimensions = (renderer, width, height) => {
+const resolveTokens = (renderer, bundle) => {
+  renderer.tokens = {}
+
+  Object.entries(bundle.tokens).forEach(([key, value]) => {
+    const tokenGroup = {}
+    value.forEach((token) => {
+      tokenGroup[token.title] = token.value
+    })
+
+    renderer.tokens[key] = tokenGroup
+  })
+
+  return renderer
+}
+
+const resolveDimensions = (renderer, width, height) => {
   return {
     ...renderer,
     window: {
@@ -51,7 +68,7 @@ const loadDimensions = (renderer, width, height) => {
   }
 }
 
-const loadZoomLevel = (renderer) => {
+const resolveZoomLevel = (renderer) => {
   return {
     ...renderer,
     window: {
@@ -61,19 +78,19 @@ const loadZoomLevel = (renderer) => {
   }
 }
 
-const loadViewBoundary = (renderer, bundle) => {
+const resolveViewBoundary = (renderer, bundle) => {
   return {
     ...renderer,
     rootBoundary: getBoundary(),
   }
 }
 
-export { render, loadEnvironment, loadDimensions, loadZoomLevel, loadViewBoundary }
+export { render, loadEnvironment, resolveDimensions, resolveZoomLevel, resolveViewBoundary }
 
 export default {
   render,
   loadEnvironment,
-  loadDimensions,
-  loadZoomLevel,
-  loadViewBoundary,
+  resolveDimensions,
+  resolveZoomLevel,
+  resolveViewBoundary,
 }

@@ -20,23 +20,21 @@ const setDefaults = (styles) => {
   return result
 }
 
-const parseStyles = (styleGroups) => {
-  const styles = {}
+const parseStyles = (styleGroups, componentName) => {
+  const map = {}
+  const list = []
 
   styleGroups.forEach((styleGroup) => {
-    const styleBlock = {
-      contexts: [],
-      rules: {},
-    }
     let elementTarget = null
+    let contextTarget = 'root'
 
     styleGroup.forEach((line, index) => {
       const keyValue = parseKeyValue(line)
 
       if (index === 0) {
         const targetMatch = keyValue.value.split('when')
-        elementTarget = targetMatch.shift().trim()
-        styleBlock.contexts = targetMatch.map((m) => m.trim()).filter((m) => m !== 'and')
+        elementTarget = targetMatch[0].trim()
+        contextTarget = targetMatch[1] ? targetMatch[1].trim() : contextTarget
         return
       }
 
@@ -47,18 +45,17 @@ const parseStyles = (styleGroups) => {
         value = Number(value)
       }
 
-      styleBlock.rules[key] = parseExpression(value)
+      const styleKey = `${componentName}.${elementTarget}.${contextTarget}.${key}`
+
+      map[styleKey] = parseExpression(value)
+      list.push(styleKey)
     })
-
-    if (styleBlock.contexts.length === 0) {
-      styleBlock.rules = setDefaults(styleBlock.rules)
-    }
-
-    styles[elementTarget] = styles[elementTarget] || []
-    styles[elementTarget].push(styleBlock)
   })
 
-  return styles
+  return {
+    map,
+    list,
+  }
 }
 
 module.exports = {

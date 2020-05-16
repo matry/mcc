@@ -1,5 +1,6 @@
 
 component Button
+  desc: This is a sample button
 
 elements
   Container boundary
@@ -15,9 +16,10 @@ options
 values
   IsSmall boolean: Size = small
   IsLarge boolean: Size = large
-  PctY percent: Label.center-x of Container.height
-  CalcVal color: $Branding.PrimaryBlue value PctY
-  IsSmallWidth boolean: Container.width <= 800px
+  ButtonHeight number: 20
+
+values when IsSmall
+  ButtonHeight: 10
 
 style Container
   height: 30

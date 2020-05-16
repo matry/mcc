@@ -1,251 +1,203 @@
 {
   "tokens": {
-    "Branding": [
-      { "title": "color", "type": "PrimaryColor", "value": "#007BFF" },
-      { "title": "color", "type": "SecondaryColor", "value": "#BADA55" }
-    ],
-    "Copy": [
-      { "title": "string", "type": "PlaceholderButtonText", "value": "Click Me" },
-      { "title": "string", "type": "LoginPrompt", "value": "Sign In" },
-      { "title": "string", "type": "RegisterPrompt", "value": "Sign Up" }
+    "map": {
+      "Branding.PrimaryColor": { "title": "PrimaryColor", "type": "color", "value": "#007BFF" },
+      "Branding.SecondaryColor": { "title": "SecondaryColor", "type": "color", "value": "#BADA55" },
+      "Copy.PlaceholderButtonText": {
+        "title": "PlaceholderButtonText",
+        "type": "string",
+        "value": "Click Me"
+      },
+      "Copy.LoginPrompt": { "title": "LoginPrompt", "type": "string", "value": "Sign In" },
+      "Copy.RegisterPrompt": { "title": "RegisterPrompt", "type": "string", "value": "Sign Up" }
+    },
+    "list": [
+      "Branding.PrimaryColor",
+      "Branding.SecondaryColor",
+      "Copy.PlaceholderButtonText",
+      "Copy.LoginPrompt",
+      "Copy.RegisterPrompt"
     ]
   },
   "components": {
-    "Button": {
-      "header": {},
-      "elements": [
-        { "title": "Container", "type": "boundary", "parent": null },
-        { "title": "Fill", "type": "shape", "parent": "Container" },
-        { "title": "Label", "type": "text", "parent": "Container" }
-      ],
-      "options": [
-        {
-          "title": "Size",
-          "type": "string",
-          "defaultValue": "medium",
-          "options": ["small", "medium", "large"]
-        },
-        { "title": "Disabled", "type": "boolean", "defaultValue": "false", "options": [] },
-        { "title": "BtnText", "type": "string", "defaultValue": "Click me", "options": [] },
-        { "title": "BGColor", "type": "color", "defaultValue": "#007BFF", "options": [] }
-      ],
-      "values": [
-        {
-          "contexts": [],
-          "values": {
-            "IsSmall": {
-              "title": "IsSmall",
-              "type": "boolean",
-              "value": {
-                "type": "boolean",
-                "value": "Size = small",
-                "operands": { "left": "Size", "operator": "=", "right": "small" }
-              }
-            },
-            "IsLarge": {
-              "title": "IsLarge",
-              "type": "boolean",
-              "value": {
-                "type": "boolean",
-                "value": "Size = large",
-                "operands": { "left": "Size", "operator": "=", "right": "large" }
-              }
-            },
-            "PctY": {
-              "title": "PctY",
-              "type": "percent",
-              "value": {
-                "type": "percent",
-                "value": "Label.center-x of Container.height",
-                "operands": {
-                  "left": "Label.center-x",
-                  "operator": "of",
-                  "right": "Container.height"
-                }
-              }
-            },
-            "CalcVal": {
-              "title": "CalcVal",
-              "type": "color",
-              "value": {
-                "type": "color",
-                "value": "$Branding.PrimaryBlue value PctY",
-                "operands": {
-                  "left": "$Branding.PrimaryBlue",
-                  "operator": "value",
-                  "right": "PctY"
-                }
-              }
-            },
-            "IsSmallWidth": {
-              "title": "IsSmallWidth",
-              "type": "boolean",
-              "value": {
-                "type": "boolean",
-                "value": "Container.width <= 800px",
-                "operands": { "left": "Container.width", "operator": "<=", "right": "800px" }
-              }
-            }
-          }
-        }
-      ],
-      "styles": {
-        "Container": [
-          {
-            "contexts": [],
-            "rules": {
-              "borderAlign": null,
-              "borderColor": null,
-              "borderRadius": null,
-              "borderStyle": null,
-              "borderWidth": null,
-              "bottom": null,
-              "centerX": null,
-              "centerY": null,
-              "fillColor": null,
-              "fontFamily": null,
-              "fontSize": null,
-              "fontWeight": null,
-              "height": {
-                "type": "assignment",
-                "value": 30,
-                "operands": { "left": null, "operator": null, "right": null }
-              },
-              "left": null,
-              "opacity": null,
-              "right": null,
-              "textAlignX": null,
-              "textAlignY": null,
-              "textContent": null,
-              "textHeight": null,
-              "top": null,
-              "width": null
-            }
-          },
-          {
-            "contexts": ["IsSmall"],
-            "rules": {
-              "height": {
-                "type": "assignment",
-                "value": 20,
-                "operands": { "left": null, "operator": null, "right": null }
-              }
-            }
-          },
-          {
-            "contexts": ["IsLarge"],
-            "rules": {
-              "height": {
-                "type": "assignment",
-                "value": 40,
-                "operands": { "left": null, "operator": null, "right": null }
-              }
-            }
-          }
-        ],
-        "Fill": [
-          {
-            "contexts": [],
-            "rules": {
-              "borderAlign": null,
-              "borderColor": null,
-              "borderRadius": null,
-              "borderStyle": null,
-              "borderWidth": null,
-              "bottom": null,
-              "centerX": null,
-              "centerY": null,
-              "fillColor": {
-                "type": "assignment",
-                "value": "BGColor",
-                "operands": { "left": null, "operator": null, "right": null }
-              },
-              "fontFamily": null,
-              "fontSize": null,
-              "fontWeight": null,
-              "height": {
-                "type": "assignment",
-                "value": "Container.height",
-                "operands": { "left": null, "operator": null, "right": null }
-              },
-              "left": null,
-              "opacity": null,
-              "right": null,
-              "textAlignX": null,
-              "textAlignY": null,
-              "textContent": null,
-              "textHeight": null,
-              "top": null,
-              "width": {
-                "type": "assignment",
-                "value": 100,
-                "operands": { "left": null, "operator": null, "right": null }
-              }
-            }
-          }
-        ]
+    "map": {
+      "Button": { "title": "Button", "desc": "This is a sample button" },
+      "Icon": { "title": "Icon" }
+    },
+    "list": ["Button", "Icon"]
+  },
+  "elements": {
+    "map": {
+      "Button.Container": { "title": "Container", "type": "boundary", "parent": null },
+      "Button.Fill": { "title": "Fill", "type": "shape", "parent": "Button.Container" },
+      "Button.Label": { "title": "Label", "type": "text", "parent": "Button.Container" },
+      "Icon.Container": { "title": "Container", "type": "boundary", "parent": null },
+      "Icon.IconImage": { "title": "IconImage", "type": "image", "parent": "Icon.Container" }
+    },
+    "list": ["Button.Container", "Button.Fill", "Button.Label", "Icon.Container", "Icon.IconImage"]
+  },
+  "options": {
+    "map": {
+      "Button.Size": {
+        "title": "Size",
+        "type": "string",
+        "defaultValue": "medium",
+        "options": ["small", "medium", "large"]
+      },
+      "Button.Disabled": {
+        "title": "Disabled",
+        "type": "boolean",
+        "defaultValue": "false",
+        "options": []
+      },
+      "Button.BtnText": {
+        "title": "BtnText",
+        "type": "string",
+        "defaultValue": "Click me",
+        "options": []
+      },
+      "Button.BGColor": {
+        "title": "BGColor",
+        "type": "color",
+        "defaultValue": "#007BFF",
+        "options": []
+      },
+      "Icon.Size": {
+        "title": "Size",
+        "type": "string",
+        "defaultValue": "medium",
+        "options": ["small", "medium", "large"]
+      },
+      "Icon.Variant": {
+        "title": "Variant",
+        "type": "string",
+        "defaultValue": "filled",
+        "options": ["outlined", "filled"]
       }
     },
-    "Icon": {
-      "header": {},
-      "elements": [
-        { "title": "Container", "type": "boundary", "parent": null },
-        { "title": "IconImage", "type": "image", "parent": "Container" }
-      ],
-      "options": [
-        {
-          "title": "Size",
-          "type": "string",
-          "defaultValue": "medium",
-          "options": ["small", "medium", "large"]
-        },
-        {
-          "title": "Variant",
-          "type": "string",
-          "defaultValue": "filled",
-          "options": ["outlined", "filled"]
-        }
-      ],
-      "values": [],
-      "styles": {
-        "Container": [
-          {
-            "contexts": [],
-            "rules": {
-              "borderAlign": null,
-              "borderColor": null,
-              "borderRadius": null,
-              "borderStyle": null,
-              "borderWidth": null,
-              "bottom": null,
-              "centerX": null,
-              "centerY": null,
-              "fillColor": null,
-              "fontFamily": null,
-              "fontSize": null,
-              "fontWeight": null,
-              "height": {
-                "type": "assignment",
-                "value": 100,
-                "operands": { "left": null, "operator": null, "right": null }
-              },
-              "left": null,
-              "opacity": null,
-              "right": null,
-              "textAlignX": null,
-              "textAlignY": null,
-              "textContent": null,
-              "textHeight": null,
-              "top": null,
-              "width": {
-                "type": "assignment",
-                "value": 100,
-                "operands": { "left": null, "operator": null, "right": null }
-              }
-            }
-          }
-        ]
+    "list": [
+      "Button.Size",
+      "Button.Disabled",
+      "Button.BtnText",
+      "Button.BGColor",
+      "Icon.Size",
+      "Icon.Variant"
+    ]
+  },
+  "values": {
+    "map": {
+      "Button.root.IsSmall": {
+        "title": "IsSmall",
+        "type": "boolean",
+        "value": "Size = small",
+        "operation": "boolean",
+        "leftOperand": "Size",
+        "operator": "=",
+        "rightOperand": "small"
+      },
+      "Button.root.IsLarge": {
+        "title": "IsLarge",
+        "type": "boolean",
+        "value": "Size = large",
+        "operation": "boolean",
+        "leftOperand": "Size",
+        "operator": "=",
+        "rightOperand": "large"
+      },
+      "Button.root.ButtonHeight": {
+        "title": "ButtonHeight",
+        "type": "number",
+        "value": "20",
+        "operation": "assignment",
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
+      },
+      "Button.IsSmall.ButtonHeight": {
+        "title": "ButtonHeight",
+        "type": "number",
+        "operation": "assignment",
+        "value": "10",
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
       }
-    }
+    },
+    "list": [
+      "Button.root.IsSmall",
+      "Button.root.IsLarge",
+      "Button.root.ButtonHeight",
+      "Button.IsSmall.ButtonHeight"
+    ]
+  },
+  "styles": {
+    "map": {
+      "Button.Container.root.height": {
+        "operation": "assignment",
+        "value": 30,
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
+      },
+      "Button.Container.IsSmall.height": {
+        "operation": "assignment",
+        "value": 20,
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
+      },
+      "Button.Container.IsLarge.height": {
+        "operation": "assignment",
+        "value": 40,
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
+      },
+      "Button.Fill.root.fill-color": {
+        "operation": "assignment",
+        "value": "BGColor",
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
+      },
+      "Button.Fill.root.width": {
+        "operation": "assignment",
+        "value": 100,
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
+      },
+      "Button.Fill.root.height": {
+        "operation": "assignment",
+        "value": "Container.height",
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
+      },
+      "Icon.Container.root.width": {
+        "operation": "assignment",
+        "value": 100,
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
+      },
+      "Icon.Container.root.height": {
+        "operation": "assignment",
+        "value": 100,
+        "leftOperand": null,
+        "operator": null,
+        "rightOperand": null
+      }
+    },
+    "list": [
+      "Button.Container.root.height",
+      "Button.Container.IsSmall.height",
+      "Button.Container.IsLarge.height",
+      "Button.Fill.root.fill-color",
+      "Button.Fill.root.width",
+      "Button.Fill.root.height",
+      "Icon.Container.root.width",
+      "Icon.Container.root.height"
+    ]
   }
 }

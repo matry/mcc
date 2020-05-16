@@ -1,66 +1,74 @@
 const { parseExpression } = require('./expression')
 const { parseKeyValue } = require('./line')
 
-const parseValues = (valueGroups) => {
-  const values = []
+const parseValues = (valueGroups, componentName) => {
+  const map = {}
+  const list = []
 
   valueGroups.forEach((valueGroup) => {
-    const valueBlock = {
-      contexts: [],
-      values: {},
-    }
+    let contextTarget = null
 
     valueGroup.forEach((line, index) => {
-      let keyValue
-
-      if (valueBlock.contexts.length) {
-        keyValue = parseContextValue(line)
-      } else {
-        keyValue = parseKeyValue(line)
-      }
+      let keyValue = contextTarget ? parseContextLine(line) : parseKeyValue(line)
 
       if (keyValue === null) {
         return
       }
 
       if (index === 0) {
-        valueBlock.contexts = keyValue.value
-          .split('when')
-          .slice(1)
-          .map((c) => c.trim())
-          .filter((c) => c !== 'and')
+        const targetMatch = keyValue.value.split('when').map((c) => c.trim())
+
+        if (targetMatch.length > 1) {
+          contextTarget = targetMatch[1]
+        }
         return
       }
 
-      if (valueBlock.contexts.length) {
-        valueBlock.values[keyValue.title] = keyValue
+      const entryKey = `${componentName}.${contextTarget || 'root'}.${keyValue.key}`
+      const rootValue = map[`${componentName}.root.${keyValue.key}`]
+
+      if (rootValue) {
+        map[entryKey] = {
+          title: keyValue.key,
+          type: rootValue.type,
+          ...parseContextValue(keyValue.value),
+        }
       } else {
-        valueBlock.values[keyValue.key] = {
+        map[entryKey] = {
           title: keyValue.key,
           ...parseValue(keyValue.value),
         }
       }
-    })
 
-    values.push(valueBlock)
+      list.push(entryKey)
+    })
   })
 
-  return values
+  return {
+    map,
+    list,
+  }
 }
 
-const parseContextValue = (line) => {
+const parseContextLine = (line) => {
   const parts = line.trim().split(':')
   return {
-    title: parts[0].trim(),
+    key: parts[0].trim(),
     value: parts[1].trim(),
   }
 }
 
+const parseContextValue = (value) => {
+  return parseExpression(value)
+}
+
 const parseValue = (line) => {
   const parts = line.trim().split(':')
+  const value = parts[1].trim()
   return {
     type: parts[0].trim(),
-    value: parseExpression(parts[1].trim()),
+    value,
+    ...parseExpression(value),
   }
 }
 

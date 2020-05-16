@@ -1,0 +1,16 @@
+{
+  "title": "Button",
+  "elements": [
+    { "title": "Container", "type": "boundary", "parent": null },
+    { "title": "Fill", "type": "shape", "parent": "Container" },
+    { "title": "Label", "type": "text", "parent": "Container" }
+  ],
+  "values": {
+    "default": {
+      "IsSmall": true,
+      "IsLarge": false,
+      "PctY": 23,
+      "CalcVal": "#bada55"
+    }
+  }
+}

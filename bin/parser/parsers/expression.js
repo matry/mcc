@@ -9,31 +9,29 @@ const OP_TYPES = {
 
 const parseExpression = (value) => {
   const result = {
-    type: OP_TYPES.assignment,
+    operation: OP_TYPES.assignment,
     value,
-    operands: {
-      left: null,
-      operator: null,
-      right: null,
-    },
+    leftOperand: null,
+    operator: null,
+    rightOperand: null,
   }
 
   if (typeof value !== 'string') {
     return result
   }
 
-  result.type = getOperation(value)
+  result.operation = getOperation(value)
 
-  switch (result.type) {
+  switch (result.operation) {
     case OP_TYPES.assignment:
       break
     case OP_TYPES.math:
       break
     default:
       const operands = value.trim().split(' ')
-      result.operands.left = operands[0]
-      result.operands.operator = operands[1]
-      result.operands.right = operands[2]
+      result.leftOperand = operands[0]
+      result.operator = operands[1]
+      result.rightOperand = operands[2]
       break
   }
 

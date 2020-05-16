@@ -1,16 +1,13 @@
-const parseTokens = (rawLines, category) => {
-  const tokens = {}
+const parseTokens = (lines, key) => {
+  const map = {}
+  const list = []
 
-  let lines = rawLines
-  let tokenCategory = category
-
-  if (!tokenCategory) {
-    const parsed = getLines(rawLines)
-    lines = parsed.lines
-    tokenCategory = parsed.category
-  }
-
-  tokens[category] = []
+  // let lines = rawLines
+  // if (!tokenCategory) {
+  //   const parsed = getLines(rawLines)
+  //   lines = parsed.lines
+  //   tokenCategory = parsed.category
+  // }
 
   lines.forEach((line) => {
     const data = parseTypeKeyValue(line)
@@ -19,14 +16,21 @@ const parseTokens = (rawLines, category) => {
       return
     }
 
-    tokens[category].push({
+    const tokenKey = `${key}.${data.key}`
+
+    map[tokenKey] = {
       title: data.key,
       type: data.type,
       value: data.value,
-    })
+    }
+
+    list.push(tokenKey)
   })
 
-  return tokens
+  return {
+    map,
+    list,
+  }
 }
 
 const getLines = (lines) => {
