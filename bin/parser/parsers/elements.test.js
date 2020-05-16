@@ -15,7 +15,7 @@ describe('elements', () => {
     expect(result[1]).toMatchObject({
       title: 'Label',
       type: 'text',
-      parent: 'Container',
+      parent: null,
     })
   })
 })

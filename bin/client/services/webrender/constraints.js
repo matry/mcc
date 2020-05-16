@@ -1,4 +1,6 @@
-const resolveConstraints = (renderer, bundle) => {}
+const resolveConstraints = (renderer, bundle) => {
+  return true
+}
 
 export { resolveConstraints }
 

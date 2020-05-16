@@ -9,35 +9,7 @@ describe('styles', () => {
 
     const result = parseStyles(styleGroups)
 
-    expect(result).toMatchObject({
-      Container: [
-        {
-          element: 'Container',
-          context: null,
-          key: 'color',
-          value: 'red',
-        },
-        {
-          element: 'Container',
-          context: null,
-          key: 'font',
-          value: 'arial',
-        },
-      ],
-      Label: [
-        {
-          element: 'Label',
-          context: null,
-          key: 'width',
-          value: '200',
-        },
-        {
-          element: 'Label',
-          context: null,
-          key: 'height',
-          value: '100',
-        },
-      ],
-    })
+    expect(result.Container).toHaveLength(1)
+    expect(result.Label).toHaveLength(1)
   })
 })

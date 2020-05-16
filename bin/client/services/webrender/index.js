@@ -15,12 +15,21 @@ render pipeline
 
 */
 
-const render = (ctx, bundle, width, height) => {
+const render = (ctx, bundle, componentName, width, height) => {
   let renderer = loadEnvironment(bundle)
 
   renderer = loadDimensions(renderer, width, height)
   renderer = loadZoomLevel(renderer)
   renderer = loadViewBoundary(renderer)
+
+  const component = bundle.components[componentName]
+
+  component.elements.forEach((elem) => {})
+
+  ctx.moveTo(100, 100)
+  ctx.fillStyle = '#007BFF'
+  ctx.rect(0, 0, width, height)
+  ctx.fill()
 
   return renderer
 }

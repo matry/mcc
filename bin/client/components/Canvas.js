@@ -1,14 +1,13 @@
 import React from 'react'
-import PropTypes from 'prop-types'
 import { css } from 'emotion'
 import { useCanvas } from '../hooks'
 import { render } from '../services/webrender'
 
-const Canvas = ({ gridOptions, bundle }) => {
+const Canvas = ({ gridOptions, componentName, bundle }) => {
   const { context, width, height, canvasRef, resizeRef } = useCanvas()
 
   if (context) {
-    const renderer = render(context, bundle, width, height)
+    const renderer = render(context, bundle, componentName, width, height)
   }
 
   return (
@@ -23,15 +22,6 @@ const Canvas = ({ gridOptions, bundle }) => {
       ></canvas>
     </div>
   )
-}
-
-Canvas.propTypes = {
-  bundle: PropTypes.object,
-}
-
-Canvas.defaultProps = {
-  fragments: [],
-  bundle: {},
 }
 
 export default Canvas

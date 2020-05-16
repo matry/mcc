@@ -2,20 +2,20 @@ const { parseOptionValue } = require('./options')
 
 describe('options', () => {
   it('correctly parses single value option', () => {
-    const result = parseOptionValue('  Disabled: false')
+    const result = parseOptionValue('boolean: false')
 
     expect(result).toMatchObject({
-      title: 'Disabled',
+      type: 'boolean',
       defaultValue: 'false',
       options: [],
     })
   })
 
   it('correctly parses multi-value option', () => {
-    const result = parseOptionValue(' Size: small, *medium, large ')
+    const result = parseOptionValue(' string: small, *medium, large ')
 
     expect(result).toMatchObject({
-      title: 'Size',
+      type: 'string',
       defaultValue: 'medium',
       options: ['small', 'medium', 'large'],
     })

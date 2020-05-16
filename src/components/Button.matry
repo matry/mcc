@@ -13,35 +13,22 @@ options
   BGColor color: #007BFF
 
 values
-  ButtonHeight number: 30
   IsSmall boolean: Size = small
   IsLarge boolean: Size = large
-  PctY percent: @Label.center-x of @Container.height
-  CalcVal color: $tokens.PrimaryBlue value $PctY
+  PctY percent: Label.center-x of Container.height
+  CalcVal color: $Branding.PrimaryBlue value PctY
   IsSmallWidth boolean: Container.width <= 800px
 
-values when IsSmall
-  ButtonHeight: 20
-
-values when IsLarge
-  ButtonHeight: 40
-
 style Container
-  height: $ButtonHeight
+  height: 30
+
+style Container when IsSmall
+  height: 20
+
+style Container when IsLarge
+  height: 40
 
 style Fill
-  fill-color: $CalcVal
-  width: 100%
-  height: $ButtonHeight
-
-style Fill when IsSmallWidth
-  width: 800px
-
-style Label when Disabled
-  width: @Container.width
-  height: @ButtonHeight
-  content: $BtnText
-  font-size: $ButtonHeight / 2
-  font-weight: 400
-  font-family: Helvetica
-  fill-color: #ffffff
+  fill-color: BGColor
+  width: 100
+  height: Container.height

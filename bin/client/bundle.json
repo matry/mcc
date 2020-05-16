@@ -33,15 +33,6 @@
         {
           "contexts": [],
           "values": {
-            "ButtonHeight": {
-              "title": "ButtonHeight",
-              "type": "number",
-              "value": {
-                "type": "assignment",
-                "value": "30",
-                "operands": { "left": null, "operator": null, "right": null }
-              }
-            },
             "IsSmall": {
               "title": "IsSmall",
               "type": "boolean",
@@ -65,11 +56,11 @@
               "type": "percent",
               "value": {
                 "type": "percent",
-                "value": "@Label.center-x of @Container.height",
+                "value": "Label.center-x of Container.height",
                 "operands": {
-                  "left": "@Label.center-x",
+                  "left": "Label.center-x",
                   "operator": "of",
-                  "right": "@Container.height"
+                  "right": "Container.height"
                 }
               }
             },
@@ -78,8 +69,12 @@
               "type": "color",
               "value": {
                 "type": "color",
-                "value": "$tokens.PrimaryBlue value $PctY",
-                "operands": { "left": "$tokens.PrimaryBlue", "operator": "value", "right": "$PctY" }
+                "value": "$Branding.PrimaryBlue value PctY",
+                "operands": {
+                  "left": "$Branding.PrimaryBlue",
+                  "operator": "value",
+                  "right": "PctY"
+                }
               }
             },
             "IsSmallWidth": {
@@ -92,14 +87,6 @@
               }
             }
           }
-        },
-        {
-          "contexts": ["IsSmall"],
-          "values": { "ButtonHeight": { "title": "ButtonHeight", "value": "20" } }
-        },
-        {
-          "contexts": ["IsLarge"],
-          "values": { "ButtonHeight": { "title": "ButtonHeight", "value": "40" } }
         }
       ],
       "styles": {
@@ -121,7 +108,7 @@
               "fontWeight": null,
               "height": {
                 "type": "assignment",
-                "value": "$ButtonHeight",
+                "value": 30,
                 "operands": { "left": null, "operator": null, "right": null }
               },
               "left": null,
@@ -133,6 +120,26 @@
               "textHeight": null,
               "top": null,
               "width": null
+            }
+          },
+          {
+            "contexts": ["IsSmall"],
+            "rules": {
+              "height": {
+                "type": "assignment",
+                "value": 20,
+                "operands": { "left": null, "operator": null, "right": null }
+              }
+            }
+          },
+          {
+            "contexts": ["IsLarge"],
+            "rules": {
+              "height": {
+                "type": "assignment",
+                "value": 40,
+                "operands": { "left": null, "operator": null, "right": null }
+              }
             }
           }
         ],
@@ -150,7 +157,7 @@
               "centerY": null,
               "fillColor": {
                 "type": "assignment",
-                "value": "$CalcVal",
+                "value": "BGColor",
                 "operands": { "left": null, "operator": null, "right": null }
               },
               "fontFamily": null,
@@ -158,7 +165,7 @@
               "fontWeight": null,
               "height": {
                 "type": "assignment",
-                "value": "$ButtonHeight",
+                "value": "Container.height",
                 "operands": { "left": null, "operator": null, "right": null }
               },
               "left": null,
@@ -171,59 +178,68 @@
               "top": null,
               "width": {
                 "type": "assignment",
-                "value": "100%",
-                "operands": { "left": null, "operator": null, "right": null }
-              }
-            }
-          },
-          {
-            "contexts": ["IsSmallWidth"],
-            "rules": {
-              "width": {
-                "type": "assignment",
-                "value": "800px",
+                "value": 100,
                 "operands": { "left": null, "operator": null, "right": null }
               }
             }
           }
-        ],
-        "Label": [
+        ]
+      }
+    },
+    "Icon": {
+      "header": {},
+      "elements": [
+        { "title": "Container", "type": "boundary", "parent": null },
+        { "title": "IconImage", "type": "image", "parent": "Container" }
+      ],
+      "options": [
+        {
+          "title": "Size",
+          "type": "string",
+          "defaultValue": "medium",
+          "options": ["small", "medium", "large"]
+        },
+        {
+          "title": "Variant",
+          "type": "string",
+          "defaultValue": "filled",
+          "options": ["outlined", "filled"]
+        }
+      ],
+      "values": [],
+      "styles": {
+        "Container": [
           {
-            "contexts": ["Disabled"],
+            "contexts": [],
             "rules": {
-              "width": {
-                "type": "assignment",
-                "value": "@Container.width",
-                "operands": { "left": null, "operator": null, "right": null }
-              },
+              "borderAlign": null,
+              "borderColor": null,
+              "borderRadius": null,
+              "borderStyle": null,
+              "borderWidth": null,
+              "bottom": null,
+              "centerX": null,
+              "centerY": null,
+              "fillColor": null,
+              "fontFamily": null,
+              "fontSize": null,
+              "fontWeight": null,
               "height": {
                 "type": "assignment",
-                "value": "@ButtonHeight",
+                "value": 100,
                 "operands": { "left": null, "operator": null, "right": null }
               },
-              "content": {
+              "left": null,
+              "opacity": null,
+              "right": null,
+              "textAlignX": null,
+              "textAlignY": null,
+              "textContent": null,
+              "textHeight": null,
+              "top": null,
+              "width": {
                 "type": "assignment",
-                "value": "$BtnText",
-                "operands": { "left": null, "operator": null, "right": null }
-              },
-              "font-size": {
-                "type": "math",
-                "value": "$ButtonHeight / 2",
-                "operands": { "left": null, "operator": null, "right": null }
-              },
-              "font-weight": {
-                "type": "assignment",
-                "value": 400,
-                "operands": { "left": null, "operator": null, "right": null }
-              },
-              "font-family": {
-                "type": "assignment",
-                "value": "Helvetica",
-                "operands": { "left": null, "operator": null, "right": null }
-              },
-              "fill-color": {
-                "type": "assignment",
-                "value": "#ffffff",
+                "value": 100,
                 "operands": { "left": null, "operator": null, "right": null }
               }
             }

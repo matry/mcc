@@ -46,7 +46,7 @@ const parseTypeKeyValue = (line) => {
     return null
   }
 
-  const [type, key] = parts[0].trim().split(' ')
+  const [key, type] = parts[0].trim().split(' ')
 
   return {
     type: type.trim(),

@@ -1,0 +1,14 @@
+
+component Icon
+
+elements
+  Container boundary
+    IconImage image
+
+options
+  Size string: small, *medium, large
+  Variant string: outlined, *filled
+
+style Container
+  width: 100
+  height: 100

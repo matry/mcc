@@ -2,11 +2,10 @@ const { parseTokens, parseTypeKeyValue } = require('./tokens')
 
 describe('tokens', () => {
   it('correctly parses tokens', () => {
-    const result = parseTokens([
-      'tokens Brand',
-      'PrimaryColor color: #007BFF',
-      'Logo image: branding/logo.svg',
-    ])
+    const result = parseTokens(
+      ['PrimaryColor color: #007BFF', 'Logo image: branding/logo.svg'],
+      'Brand'
+    )
 
     expect(result).toMatchObject({
       Brand: [
@@ -25,10 +24,10 @@ describe('tokens', () => {
   })
 
   it('correctly parses type key value', () => {
-    const result = parseTypeKeyValue(' int HeaderHeight: 30')
+    const result = parseTypeKeyValue(' HeaderHeight integer: 30')
 
     expect(result).toMatchObject({
-      type: 'int',
+      type: 'integer',
       key: 'HeaderHeight',
       value: '30',
     })

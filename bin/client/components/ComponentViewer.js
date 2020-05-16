@@ -59,6 +59,7 @@ const ComponentViewer = ({ name, component, bundle }) => {
         />
       </StyledDiv>
       <Canvas
+        componentName={name}
         bundle={bundle}
         gridOptions={{
           gridColor: '#ddd',
