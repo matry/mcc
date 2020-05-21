@@ -7,6 +7,29 @@ import ColorField from './ColorField'
 
 const StyledForm = styled.form`
   margin-top: ${spacing(1.5)}px;
+
+  table {
+    font-family: sans-serif;
+    font-weight: 300;
+  }
+
+  td {
+    vertical-align: baseline;
+    padding-left: 8px;
+  }
+
+  td > div {
+    display: inline-block;
+  }
+
+  .name {
+    font-weight: bold;
+    padding-left: 0px;
+  }
+
+  .active {
+    color: #007bff;
+  }
 `
 
 const StyledH5 = styled.h5`
@@ -49,10 +72,55 @@ const generateField = ({ type, title, value }, onChange) => {
 const InputForm = ({ options, onChange }) => {
   return (
     <StyledForm>
-      <StyledH5>Options</StyledH5>
-      <StyledDiv>
-        {options.map((opt) => generateField(opt, (value) => onChange(value, opt.title)))}
-      </StyledDiv>
+      <table>
+        <tbody>
+          <tr>
+            <td class="name">Container</td>
+          </tr>
+          <tr>
+            <td>width</td>
+            <td class="active">
+              <div tabindex="0" contentEditable>
+                200px sdfhu dfihudfis fhudsi hufhudfhd
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td>height</td>
+            <td class="active">
+              <div tabindex="0" contentEditable>
+                100px
+              </div>
+            </td>
+          </tr>
+          <tr>
+            <td></td>
+            <td>
+              <table>
+                <tr>
+                  <td class="name">Icon</td>
+                </tr>
+                <tr>
+                  <td>width</td>
+                  <td class="active">
+                    <div tabindex="0" contentEditable>
+                      200px
+                    </div>
+                  </td>
+                </tr>
+                <tr>
+                  <td>height</td>
+                  <td class="active">
+                    <div tabindex="0" contentEditable>
+                      100px
+                    </div>
+                  </td>
+                </tr>
+              </table>
+            </td>
+          </tr>
+        </tbody>
+      </table>
     </StyledForm>
   )
 }

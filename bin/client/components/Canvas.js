@@ -1,7 +1,24 @@
 import React, { useEffect } from 'react'
+import styled from '@emotion/styled'
 import { css } from 'emotion'
 import { useCanvas } from '../hooks'
 import { paintGrid } from '../services/canvas/grid'
+
+const StyledDiv = styled.div`
+  max-height: 100%;
+  overflow: hidden;
+  position: relative;
+`
+
+const CanvasHeaderDiv = styled.div`
+  position: absolute;
+  top: 0px;
+  right: 0px;
+  left: 0px;
+  height: 32px;
+  background-color: rgba(255, 255, 255, 0.5);
+  border-bottom: 1px solid #aaa;
+`
 
 const Canvas = ({ gridOptions, renderer }) => {
   const { context, width, height, canvasRef, resizeRef } = useCanvas()
@@ -15,7 +32,8 @@ const Canvas = ({ gridOptions, renderer }) => {
   }, [width, height])
 
   return (
-    <div ref={resizeRef} style={{ overflow: 'hidden', maxHeight: '100%' }}>
+    <StyledDiv ref={resizeRef}>
+      <CanvasHeaderDiv></CanvasHeaderDiv>
       <canvas
         ref={canvasRef}
         className={css`
@@ -24,7 +42,7 @@ const Canvas = ({ gridOptions, renderer }) => {
           background-color: transparent;
         `}
       ></canvas>
-    </div>
+    </StyledDiv>
   )
 }
 
