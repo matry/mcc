@@ -1,7 +1,6 @@
-import React, { useState } from 'react'
+import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { spacing } from '../theme'
-import InputForm from './InputForm'
 import Canvas from './Canvas'
 
 const StyledSection = styled.section`
@@ -31,16 +30,7 @@ const StyledH2 = styled.h2`
   color: #333333;
 `
 
-const ComponentViewer = ({ name, component, bundle }) => {
-  let [options, setOptions] = useState(
-    component.options.map((opt) => {
-      return {
-        ...opt,
-        value: opt.defaultValue,
-      }
-    })
-  )
-
+const ComponentViewer = ({ name, renderer }) => {
   return (
     <StyledSection>
       <StyledDiv>
@@ -48,19 +38,9 @@ const ComponentViewer = ({ name, component, bundle }) => {
           <StyledSmall>Viewing</StyledSmall>
           <StyledH2>{name}</StyledH2>
         </StyledHeader>
-        <InputForm
-          options={options}
-          onChange={(value, title) => {
-            const newOptions = [...options]
-            const index = newOptions.findIndex((opt) => opt.title === title)
-            newOptions[index].value = value
-            setOptions(newOptions)
-          }}
-        />
       </StyledDiv>
       <Canvas
-        componentName={name}
-        bundle={bundle}
+        renderer={renderer}
         gridOptions={{
           gridColor: '#ddd',
           gridPlacement: 'back',

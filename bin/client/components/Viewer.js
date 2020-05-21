@@ -2,15 +2,15 @@ import React from 'react'
 import ComponentViewer from './ComponentViewer'
 import TokensViewer from './TokensViewer'
 
-const Viewer = ({ name, type, entity, bundle }) => {
+const Viewer = ({ name, type, bundle }) => {
   let rendered = null
 
   switch (type) {
     case 'component':
-      rendered = <ComponentViewer bundle={bundle} name={name} component={entity} />
+      rendered = <ComponentViewer bundle={bundle} name={name} />
       break
     case 'tokens':
-      rendered = <TokensViewer bundle={bundle} name={name} tokens={entity} />
+      rendered = <TokensViewer bundle={bundle} name={name} />
       break
     default:
       break

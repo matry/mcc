@@ -1,0 +1,16 @@
+
+component Squares
+
+elements
+  BigSquare boundary
+    LittleSquare shape
+
+style BigSquare
+  height: 100
+  width: 100
+  fill-color: lavender
+
+style LittleSquare
+  fill-color: red
+  width: 50
+  height: 50

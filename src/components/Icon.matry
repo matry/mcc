@@ -1,14 +1,15 @@
 
 component Icon
+  desc: This is a sample Icon
 
 elements
-  Container boundary
-    IconImage image
+  IconContainer boundary
+    IconFill shape
 
-options
-  Size string: small, *medium, large
-  Variant string: outlined, *filled
+style IconContainer
+  height: 40
 
-style Container
-  width: 100
-  height: 100
+style IconFill
+  fill-color: none
+  width: 200
+  height: 40

@@ -47,7 +47,13 @@ const parseStyles = (styleGroups, componentName) => {
 
       const styleKey = `${componentName}.${elementTarget}.${contextTarget}.${key}`
 
-      map[styleKey] = parseExpression(value)
+      map[styleKey] = {
+        component: componentName,
+        element: elementTarget,
+        context: contextTarget,
+        property: key,
+        ...parseExpression(value),
+      }
       list.push(styleKey)
     })
   })

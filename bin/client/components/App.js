@@ -1,8 +1,7 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from '@emotion/styled'
 import AppHeader from './AppHeader'
-import AppNav from './AppNav'
-import Viewer from './Viewer'
+import ComponentViewer from './ComponentViewer'
 
 const AppMain = styled.main`
   height: 100%;
@@ -12,45 +11,13 @@ const AppMain = styled.main`
   position: relative;
 `
 
-const GridDiv = styled.div`
-  display: grid;
-  grid-template-columns: max-content auto;
-`
-
-const App = ({ bundle }) => {
-  const [isNavOpen, setIsNavOpen] = useState(false)
-  const [selectedTitle, setselectedTitle] = useState('Button')
-
-  const navTitles = {
-    Tokens: Object.keys(bundle.tokens),
-    Components: Object.keys(bundle.components),
-  }
-
-  let selectedEntity = null
-  if (bundle.tokens[selectedTitle]) {
-    selectedEntity = bundle.tokens[selectedTitle]
-  } else {
-    selectedEntity = bundle.components[selectedTitle]
-  }
-
-  let type = null
-  if (navTitles.Tokens.includes(selectedTitle)) {
-    type = 'tokens'
-  } else if (navTitles.Components.includes(selectedTitle)) {
-    type = 'component'
-  }
+const App = ({ renderer }) => {
+  renderer.selectComponent('Squares')
 
   return (
     <AppMain>
-      <AppHeader onToggleNav={() => setIsNavOpen(!isNavOpen)} />
-      <AppNav
-        selectedTitle={selectedTitle}
-        navTitles={navTitles}
-        onSelect={setselectedTitle}
-        isOpen={isNavOpen}
-        onClose={() => setIsNavOpen(false)}
-      />
-      <Viewer bundle={bundle} name={selectedTitle} type={type} entity={selectedEntity} />
+      <AppHeader onToggleNav={() => {}} />
+      <ComponentViewer renderer={renderer} name={renderer.component.title} />
     </AppMain>
   )
 }

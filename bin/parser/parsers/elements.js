@@ -34,6 +34,7 @@ const parseElements = (lines, componentName) => {
     }
 
     const element = {
+      component: componentName,
       title: elementDatum.key,
       type: elementDatum.value,
       parent: parents[parents.length - 1],
