@@ -12,7 +12,7 @@ const Canvas = ({ gridOptions, renderer }) => {
   }, [context])
 
   return (
-    <div ref={resizeRef} style={{ width: '100%', height: '100%' }}>
+    <div ref={resizeRef} style={{ overflow: 'hidden', maxHeight: '100%' }}>
       <canvas
         ref={canvasRef}
         className={css`

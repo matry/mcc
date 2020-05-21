@@ -6,6 +6,7 @@ import Canvas from './Canvas'
 const StyledSection = styled.section`
   display: grid;
   grid-template-columns: max-content auto;
+  overflow: hidden;
 `
 
 const StyledDiv = styled.div`

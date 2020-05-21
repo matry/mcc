@@ -6,9 +6,7 @@ import ComponentViewer from './ComponentViewer'
 const AppMain = styled.main`
   height: 100%;
   display: grid;
-  grid-template-columns: auto;
   grid-template-rows: max-content auto;
-  position: relative;
 `
 
 const App = ({ renderer }) => {
