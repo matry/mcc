@@ -1,8 +1,13 @@
-const paintGrid = (ctx, ctxBoundary, gridStyles) => {
-  const { gridLineWidth, gridSpacing, gridColor } = gridStyles
-  const previousLineWidth = ctx.lineWidth
-  const previousStrokeStyle = ctx.strokeStyle
-  const layoutBoundary = ctxBoundary.layout
+const paintGrid = ({ ctx, width, height, gridOptions }) => {
+  const { gridLineWidth, gridSpacing, gridColor } = gridOptions
+  const layoutBoundary = {
+    left: 0,
+    right: width,
+    top: 0,
+    bottom: height,
+    centerX: width / 2,
+    centerY: height / 2,
+  }
 
   ctx.lineWidth = gridLineWidth
   ctx.strokeStyle = gridColor
