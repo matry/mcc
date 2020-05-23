@@ -1,9 +1,14 @@
 
 component Squares
+  desc A basic square for testing purposes
+
+options
+  Disabled boolean: false
 
 elements
   BigSquare boundary
     LittleSquare shape
+    LittleIcon instance: Icon
 
 style BigSquare
   height: 100

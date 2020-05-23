@@ -10,7 +10,7 @@ const AppMain = styled.main`
 `
 
 const App = ({ renderer }) => {
-  renderer.selectComponent('Squares')
+  renderer.selectComponent('Square')
 
   return (
     <AppMain>

@@ -19,12 +19,6 @@ const parseElements = (lines, componentName) => {
       const parentKey = list[list.length - 1]
       const parentElement = map[parentKey]
       if (parentElement) {
-        if (parentElement.type !== 'boundary') {
-          throw new Error(
-            `Invalid syntax: unable to nest element ${elementDatum.key} inside a ${parentElement.type}`
-          )
-        }
-
         parents.push(parentKey)
       }
       previousLineIndentation = currentLineIndentation
@@ -33,10 +27,19 @@ const parseElements = (lines, componentName) => {
       parents.pop()
     }
 
+    let type = elementDatum.value
+    let ref = null
+
+    if (type.includes('instance')) {
+      ref = type.split(':')[1].trim()
+      type = 'instance'
+    }
+
     const element = {
       component: componentName,
       title: elementDatum.key,
-      type: elementDatum.value,
+      type,
+      ref,
       parent: parents[parents.length - 1],
     }
 

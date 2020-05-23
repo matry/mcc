@@ -1,0 +1,13 @@
+
+component Square
+
+elements
+  Shape shape
+
+options
+  Dimension number: 30
+
+style Shape
+  fill-color: red
+  width: $Dimension
+  height: $Dimension
