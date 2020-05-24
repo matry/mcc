@@ -4,7 +4,10 @@ component Block
 elements
   Shape shape
 
+options
+  fill color: black
+
 style Shape
-  fill-color: red
+  fill-color: $fill
   width: 20
   height: 20
