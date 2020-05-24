@@ -1,5 +1,6 @@
 const OP_TYPES = {
   assignment: 'assignment',
+  reference: 'reference',
   layout: 'layout',
   color: 'color',
   math: 'math',
@@ -27,6 +28,8 @@ const parseExpression = (value) => {
       break
     case OP_TYPES.math:
       break
+    case OP_TYPES.reference:
+      break
     default:
       const operands = value.trim().split(' ')
       result.leftOperand = operands[0]
@@ -39,6 +42,10 @@ const parseExpression = (value) => {
 }
 
 const getOperation = (expression) => {
+  if (isReferenceOperation(expression)) {
+    return OP_TYPES.reference
+  }
+
   if (isLayoutOperation(expression)) {
     return OP_TYPES.layout
   }
@@ -60,6 +67,10 @@ const getOperation = (expression) => {
   }
 
   return OP_TYPES.assignment
+}
+
+const isReferenceOperation = (expression) => {
+  return expression.includes('$') || expression.includes('@')
 }
 
 const isLayoutOperation = (expression) => {

@@ -2,7 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { spacing } from '../theme'
 import Canvas from './Canvas'
-import renderNodes from '../services/new/renderNodes'
+import painter from '../services/painter'
 
 const StyledSection = styled.section`
   display: grid;
@@ -32,7 +32,7 @@ const StyledH2 = styled.h2`
   color: #333333;
 `
 
-const ComponentViewer = ({ name, renderer }) => {
+const ComponentViewer = ({ name, bundle }) => {
   return (
     <StyledSection>
       <StyledDiv>
@@ -42,7 +42,8 @@ const ComponentViewer = ({ name, renderer }) => {
         </StyledHeader>
       </StyledDiv>
       <Canvas
-        nodes={renderNodes}
+        bundle={bundle}
+        component={name}
         gridOptions={{
           gridColor: '#ddd',
           gridPlacement: 'back',

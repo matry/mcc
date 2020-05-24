@@ -3,8 +3,7 @@ import styled from '@emotion/styled'
 import { css } from 'emotion'
 import { useCanvas } from '../hooks'
 import { paintGrid } from '../services/canvas/grid'
-import renderShape from '../services/new/renderShape'
-import renderText from '../services/new/renderText'
+import painter from '../services/painter'
 
 const StyledDiv = styled.div`
   max-height: 100%;
@@ -37,13 +36,13 @@ const render = (ctx, nodes) => {
   })
 }
 
-const Canvas = ({ gridOptions, nodes }) => {
+const Canvas = ({ gridOptions, bundle, component }) => {
   const { context, width, height, canvasRef, resizeRef } = useCanvas()
 
   useEffect(() => {
     if (context) {
       paintGrid({ ctx: context, width, height, gridOptions })
-      render(context, nodes)
+      painter.render(context, width, height, bundle, component)
     }
   }, [width, height])
 

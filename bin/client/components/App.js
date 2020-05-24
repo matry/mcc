@@ -9,11 +9,13 @@ const AppMain = styled.main`
   grid-template-rows: max-content auto;
 `
 
-const App = () => {
+const App = ({ bundle }) => {
+  const name = bundle.components.list[0]
+
   return (
     <AppMain>
       <AppHeader onToggleNav={() => {}} />
-      <ComponentViewer name="Demo" />
+      <ComponentViewer bundle={bundle} name={name} />
     </AppMain>
   )
 }

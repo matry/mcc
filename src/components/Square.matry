@@ -2,13 +2,15 @@
 component Square
 
 elements
-  Shape shape
+  BigShape shape
+  LittleShape shape
 
-options
-  dimension number: 30
-  fill color: #000000
+style BigShape
+  fill-color: #FF7BFF
+  width: 200
+  height: 200
 
-style Shape
-  fill-color: $fill
-  width: $dimension
-  height: $dimension
+style LittleShape
+  fill-color: #00DDFF
+  width: 80
+  height: 80

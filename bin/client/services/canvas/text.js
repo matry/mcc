@@ -2,7 +2,9 @@ const calculateTextHeight = (document, fontStyle) => {
   var body = document.getElementsByTagName('body')[0]
   var dummy = document.createElement('div')
 
-  var dummyText = document.createTextNode('ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz')
+  var dummyText = document.createTextNode(
+    'ABCDEFGHIJKLMNOPQRSTUVWXYZabcdefghijklmnopqrstuvwxyz|[]{}?/`~+=\\'
+  )
   dummy.appendChild(dummyText)
   dummy.setAttribute(
     'style',
