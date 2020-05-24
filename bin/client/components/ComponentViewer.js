@@ -2,6 +2,7 @@ import React, { useState, useEffect } from 'react'
 import styled from '@emotion/styled'
 import { spacing } from '../theme'
 import Canvas from './Canvas'
+import renderNodes from '../services/new/renderNodes'
 
 const StyledSection = styled.section`
   display: grid;
@@ -41,7 +42,7 @@ const ComponentViewer = ({ name, renderer }) => {
         </StyledHeader>
       </StyledDiv>
       <Canvas
-        renderer={renderer}
+        nodes={renderNodes}
         gridOptions={{
           gridColor: '#ddd',
           gridPlacement: 'back',

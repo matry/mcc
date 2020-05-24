@@ -13,8 +13,6 @@ style Container
 
 style ChildSquare.1
   dimension: 100
-  fill: #3345AA
 
 style ChildSquare.2
   dimension: 20
-  fill: #BADA55

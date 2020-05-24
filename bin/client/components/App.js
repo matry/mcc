@@ -9,13 +9,11 @@ const AppMain = styled.main`
   grid-template-rows: max-content auto;
 `
 
-const App = ({ renderer }) => {
-  renderer.selectComponent('Square')
-
+const App = () => {
   return (
     <AppMain>
       <AppHeader onToggleNav={() => {}} />
-      <ComponentViewer renderer={renderer} name={renderer.component.title} />
+      <ComponentViewer name="Demo" />
     </AppMain>
   )
 }

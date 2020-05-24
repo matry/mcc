@@ -19,7 +19,7 @@ const paintGrid = ({ ctx, width, height, gridOptions }) => {
   const minY = layoutBoundary.top
 
   let currentX = layoutBoundary.centerX
-
+  console.log('centerX: ' + layoutBoundary.centerX)
   do {
     ctx.beginPath()
     ctx.moveTo(currentX, minY)
