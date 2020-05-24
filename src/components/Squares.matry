@@ -7,8 +7,8 @@ options
 
 elements
   BigSquare boundary
-    LittleSquare shape
     LittleIcon instance: Icon
+    LittleSquare shape
 
 style BigSquare
   height: 100

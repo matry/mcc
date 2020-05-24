@@ -1,0 +1,6 @@
+
+  VerticalRhythm number: 1.618
+  FontSize1 number: 12
+  FontSize2 number: $FontSize1 * $VerticalRhythm
+  FontSize3 number: $FontSize2 * $VerticalRhythm
+  FontSize4 number: $FontSize3 * $VerticalRhythm

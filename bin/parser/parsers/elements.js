@@ -35,7 +35,10 @@ const parseElements = (lines, componentName) => {
       type = 'instance'
     }
 
+    const elementKey = `${componentName}.${elementDatum.key}`
+
     const element = {
+      key: elementKey,
       component: componentName,
       title: elementDatum.key,
       type,
@@ -43,7 +46,6 @@ const parseElements = (lines, componentName) => {
       parent: parents[parents.length - 1],
     }
 
-    const elementKey = `${componentName}.${elementDatum.key}`
     map[elementKey] = element
     list.push(elementKey)
   })

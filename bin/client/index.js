@@ -5,9 +5,13 @@ import App from './components/App'
 import './index.css'
 import bundle from './bundle.json'
 import Renderer from './services/webrender/Renderer'
+import calculate from './services/new'
 
-const renderer = new Renderer(bundle)
+// const renderer = new Renderer(bundle)
 
-const rootElement = document.getElementById('app')
+calculate(bundle, 'Squares', {
+  Dimension: 50,
+})
 
-render(<App renderer={renderer} bundle={bundle} />, rootElement)
+// const rootElement = document.getElementById('app')
+// render(<App renderer={renderer} bundle={bundle} />, rootElement)
