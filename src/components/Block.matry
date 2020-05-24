@@ -1,0 +1,10 @@
+
+component Block
+
+elements
+  Shape shape
+
+style Shape
+  fill-color: red
+  width: 20
+  height: 20

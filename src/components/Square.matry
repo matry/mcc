@@ -3,14 +3,9 @@ component Square
 
 elements
   BigShape shape
-  LittleShape shape
+  LittleShape instance: Block
 
 style BigShape
   fill-color: #FF7BFF
   width: 200
   height: 200
-
-style LittleShape
-  fill-color: #00DDFF
-  width: 80
-  height: 80

@@ -10,7 +10,7 @@ const AppMain = styled.main`
 `
 
 const App = ({ bundle }) => {
-  const name = bundle.components.list[0]
+  const name = bundle.components.list[1]
 
   return (
     <AppMain>

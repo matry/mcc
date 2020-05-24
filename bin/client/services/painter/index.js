@@ -1,3 +1,5 @@
+import { element } from 'prop-types'
+
 const stylePropertyMap = {
   'fill-color': (value) => {
     return {
@@ -25,9 +27,23 @@ const getEntities = (bundle, entityKey, queryObj) => {
   return entities.filter((entity) => entity !== null)
 }
 
+const getElements = (bundle, componentTitle, results = []) => {
+  let elements = getEntities(bundle, 'elements', { component: componentTitle })
+
+  elements.forEach((element) => {
+    if (element.ref) {
+      results = getElements(bundle, element.ref, results)
+    } else {
+      results.push(element)
+    }
+  })
+
+  return results
+}
+
 const painter = {
   render: (ctx, width, height, bundle, componentTitle) => {
-    const elements = getEntities(bundle, 'elements', { component: componentTitle })
+    const elements = getElements(bundle, componentTitle)
     const renderNodes = [
       {
         width,
@@ -38,7 +54,7 @@ const painter = {
 
     elements.forEach((element) => {
       const styles = getEntities(bundle, 'styles', {
-        component: componentTitle,
+        component: element.component,
         element: element.title,
       })
 
