@@ -10,7 +10,28 @@ const stylePropertyMap = {
   height: (height) => ({ height }),
 }
 
-const getEntities = (bundle, entityKey, queryObj) => {
+const mapEntities = (bundle, entityKey, queryObj) => {
+  const entities = {}
+
+  bundle[entityKey].list.forEach((key) => {
+    const entity = bundle[entityKey].map[key]
+    let match = true
+
+    Object.entries(queryObj).forEach(([queryKey, queryValue]) => {
+      if (entity[queryKey] !== queryValue) {
+        match = false
+      }
+    })
+
+    if (match) {
+      entities[key] = entity
+    }
+  })
+
+  return entities
+}
+
+const listEntities = (bundle, entityKey, queryObj) => {
   const entities = bundle[entityKey].list.map((key) => {
     const entity = bundle[entityKey].map[key]
     let match = true
@@ -28,7 +49,7 @@ const getEntities = (bundle, entityKey, queryObj) => {
 }
 
 const getElements = (bundle, componentTitle, results = []) => {
-  let elements = getEntities(bundle, 'elements', { component: componentTitle })
+  let elements = listEntities(bundle, 'elements', { component: componentTitle })
 
   elements.forEach((element) => {
     if (element.ref) {
@@ -44,6 +65,7 @@ const getElements = (bundle, componentTitle, results = []) => {
 const painter = {
   render: (ctx, width, height, bundle, componentTitle) => {
     const elements = getElements(bundle, componentTitle)
+
     const renderNodes = [
       {
         width,
@@ -53,16 +75,31 @@ const painter = {
     ]
 
     elements.forEach((element) => {
-      const styles = getEntities(bundle, 'styles', {
+      const options = mapEntities(bundle, 'options', { component: element.component })
+      const styles = listEntities(bundle, 'styles', {
         component: element.component,
         element: element.title,
       })
 
       let node = {}
       styles.forEach((style) => {
-        if (stylePropertyMap[style.property]) {
-          node = { ...node, ...stylePropertyMap[style.property](style.value) }
+        let styleValue = style.value.toString()
+
+        if (styleValue.includes('$')) {
+          const option = options[`${element.component}.${styleValue.replace('$', '')}`]
+          if (option) {
+            switch (option.type) {
+              case 'number':
+                styleValue = Number(option.defaultValue)
+                break
+              default:
+                styleValue = option.defaultValue
+                break
+            }
+          }
         }
+
+        node = { ...node, ...stylePropertyMap[style.property](styleValue) }
       })
 
       renderNodes.push(node)

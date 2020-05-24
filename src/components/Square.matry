@@ -5,7 +5,10 @@ elements
   BigShape shape
   LittleShape instance: Block
 
+options
+  size number: 300
+
 style BigShape
   fill-color: #FF7BFF
-  width: 200
-  height: 200
+  width: $size
+  height: $size
