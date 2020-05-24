@@ -5,9 +5,10 @@ elements
   Shape shape
 
 options
-  Dimension number: 30
+  dimension number: 30
+  fill color: #000000
 
 style Shape
-  fill-color: red
-  width: $Dimension
-  height: $Dimension
+  fill-color: $fill
+  width: $dimension
+  height: $dimension

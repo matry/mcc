@@ -1,21 +1,20 @@
 
 component Squares
-  desc A basic square for testing purposes
-
-options
-  Disabled boolean: false
 
 elements
-  BigSquare boundary
-    LittleIcon instance: Icon
-    LittleSquare shape
+  Container boundary
+    ChildSquare... instance: Square
 
-style BigSquare
-  height: 100
-  width: 100
-  fill-color: lavender
+options
+  is-disabled boolean: false
 
-style LittleSquare
-  fill-color: red
-  width: 50
-  height: 50
+style Container
+  fill-color: #AA7DFF
+
+style ChildSquare.1
+  dimension: 100
+  fill: #3345AA
+
+style ChildSquare.2
+  dimension: 20
+  fill: #BADA55

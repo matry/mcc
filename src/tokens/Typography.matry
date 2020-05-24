@@ -1,6 +1,6 @@
 
-  VerticalRhythm number: 1.618
-  FontSize1 number: 12
-  FontSize2 number: $FontSize1 * $VerticalRhythm
-  FontSize3 number: $FontSize2 * $VerticalRhythm
-  FontSize4 number: $FontSize3 * $VerticalRhythm
+vertical-rhythm number: 1.618
+body-1 number: 12
+body-2 number: $body-1 * $vertical-rhythm
+body-3 number: $body-2 * $vertical-rhythm
+body-4 number: $body-3 * $vertical-rhythm
