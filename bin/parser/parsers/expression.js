@@ -1,6 +1,7 @@
 const OP_TYPES = {
   assignment: 'assignment',
-  reference: 'reference',
+  token: 'token',
+  property: 'property',
   layout: 'layout',
   color: 'color',
   math: 'math',
@@ -42,8 +43,16 @@ const parseExpression = (value) => {
 }
 
 const getOperation = (expression) => {
-  if (isReferenceOperation(expression)) {
-    return OP_TYPES.reference
+  if (isMathExpression(expression)) {
+    return OP_TYPES.math
+  }
+
+  if (isTokenOperation(expression)) {
+    return OP_TYPES.token
+  }
+
+  if (isPropertyOperation(expression)) {
+    return OP_TYPES.property
   }
 
   if (isLayoutOperation(expression)) {
@@ -62,15 +71,15 @@ const getOperation = (expression) => {
     return OP_TYPES.boolean
   }
 
-  if (isMathExpression(expression)) {
-    return OP_TYPES.math
-  }
-
   return OP_TYPES.assignment
 }
 
-const isReferenceOperation = (expression) => {
-  return expression.includes('$') || expression.includes('@')
+const isTokenOperation = (expression) => {
+  return expression.includes('$')
+}
+
+const isPropertyOperation = (expression) => {
+  return expression.includes('@')
 }
 
 const isLayoutOperation = (expression) => {

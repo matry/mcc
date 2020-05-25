@@ -15,14 +15,7 @@ const resolvers = {
 const resolveConstraints = (renderer, bundle, componentName) => {
   const bundleCopy = { ...bundle }
 
-  bundleCopy.components[componentName].values.forEach((value) => {
-    // if () {}
-    console.log('>')
-    console.log(value)
-    console.log('<')
-
-    // resolvers[value.type]
-  })
+  bundleCopy.components[componentName].values.forEach((value) => {})
 
   return bundleCopy
 }

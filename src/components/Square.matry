@@ -2,13 +2,17 @@
 component Square
 
 elements
-  BigShape shape
-  LittleShape instance: Block
+  Container boundary
+    Shape shape
 
 options
-  size number: 300
+  size number: 50
 
-style BigShape
-  fill-color: #FF7BFF
+style Container
+  width: 400
+  height: 100
+
+style Shape
   width: $size
   height: $size
+  fill-color: blue

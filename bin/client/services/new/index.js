@@ -75,14 +75,8 @@ const getOptions = (componentName, options, index = -1, result = {}) => {
 }
 
 const calculate = (bundle, componentName, options) => {
-  console.log('>')
-  console.log(bundle)
-  console.log('<')
-
   const targetComponent = bundle.components.map[componentName]
-
   const computedOptions = getOptions(componentName, options)
-  console.log(computedOptions)
 }
 
 const getElements = (bundle, componentName) => {

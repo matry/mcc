@@ -1,56 +1,74 @@
 import styleProperties from './styleProperties'
-import { mapEntities, listEntities } from './entity'
+import { listEntities } from './entity'
+import { retrieveTokenValue } from './expression'
 
-const generateRenderNode = (bundle, element) => {
-  const options = mapEntities(bundle, 'options', { component: element.component })
-  const styles = listEntities(bundle, 'styles', {
-    component: element.component,
-    element: element.title,
-  })
+const getComponentRenderNodes = (bundle, componentKey) => {
+  const initialNodes = initializeRenderNodes(bundle, componentKey)
+  const populatedNodes = populateRenderNodes(bundle, initialNodes)
 
-  let node = {}
-  styles.forEach((style) => {
-    let styleValue = style.value.toString()
-
-    if (styleValue.includes('$')) {
-      const option = options[`${element.component}.${styleValue.replace('$', '')}`]
-      if (option) {
-        switch (option.type) {
-          case 'number':
-            styleValue = Number(option.defaultValue)
-            break
-          default:
-            styleValue = option.defaultValue
-            break
-        }
-      }
-    }
-
-    node = { ...node, ...styleProperties[style.property](styleValue) }
-  })
-
-  return node
+  return populatedNodes
 }
 
-const getComponentRenderNodes = (bundle, componentKey, renderNodes) => {
+const initializeRenderNodes = (bundle, componentKey, renderNodes) => {
   const elements = listEntities(bundle, 'elements', { component: componentKey })
 
-  let results = [...renderNodes]
+  let results = renderNodes
+    ? [...renderNodes]
+    : [
+        {
+          component: componentKey,
+          element: 'root',
+          parent: null,
+        },
+      ]
+
   elements.forEach((element) => {
     if (element.ref) {
-      results = getComponentRenderNodes(bundle, element.ref, results)
+      results = initializeRenderNodes(bundle, element.ref, results)
       return
     }
 
-    results.push(generateRenderNode(bundle, element))
+    results.push({
+      element: element.title,
+      component: element.component,
+      parent: element.parent || 'root',
+    })
   })
 
   return results
 }
 
-export { generateRenderNode, getComponentRenderNodes }
+const populateRenderNodes = (bundle, renderNodes) => {
+  return renderNodes.map((node) => {
+    const styles = listEntities(bundle, 'styles', {
+      component: node.component,
+      element: node.element,
+    })
+
+    let renderNode = { ...node }
+    styles.forEach((style) => {
+      let styleValue
+
+      switch (style.operation) {
+        case 'token':
+          styleValue = retrieveTokenValue(bundle, node, style)
+          break
+        default:
+          styleValue = style.value
+          break
+      }
+
+      renderNode = { ...renderNode, ...styleProperties[style.property](styleValue) }
+    })
+
+    return renderNode
+  })
+}
+
+export { getComponentRenderNodes, initializeRenderNodes, populateRenderNodes }
 
 export default {
-  generateRenderNode,
   getComponentRenderNodes,
+  initializeRenderNodes,
+  populateRenderNodes,
 }
