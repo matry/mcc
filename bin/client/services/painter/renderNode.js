@@ -2,25 +2,27 @@ import styleProperties from './styleProperties'
 import { listEntities } from './entity'
 import { retrieveTokenValue } from './expression'
 
-const getComponentRenderNodes = (bundle, componentKey) => {
-  const initialNodes = initializeRenderNodes(bundle, componentKey)
-  const populatedNodes = populateRenderNodes(bundle, initialNodes)
+const ROOT_NODE_KEY = 'root'
 
-  return populatedNodes
+const initializeRootNode = (width, height, componentKey) => {
+  return {
+    component: componentKey,
+    element: ROOT_NODE_KEY,
+    parent: null,
+    width,
+    height,
+    top: 0,
+    right: width,
+    bottom: height,
+    left: 0,
+    fillStyle: 'transparent',
+  }
 }
 
-const initializeRenderNodes = (bundle, componentKey, renderNodes) => {
+const initializeRenderNodes = (bundle, componentKey) => {
   const elements = listEntities(bundle, 'elements', { component: componentKey })
 
-  let results = renderNodes
-    ? [...renderNodes]
-    : [
-        {
-          component: componentKey,
-          element: 'root',
-          parent: null,
-        },
-      ]
+  let results = []
 
   elements.forEach((element) => {
     if (element.ref) {
@@ -31,7 +33,7 @@ const initializeRenderNodes = (bundle, componentKey, renderNodes) => {
     results.push({
       element: element.title,
       component: element.component,
-      parent: element.parent || 'root',
+      parent: element.parent || ROOT_NODE_KEY,
     })
   })
 
@@ -65,10 +67,10 @@ const populateRenderNodes = (bundle, renderNodes) => {
   })
 }
 
-export { getComponentRenderNodes, initializeRenderNodes, populateRenderNodes }
+export { initializeRootNode, initializeRenderNodes, populateRenderNodes }
 
 export default {
-  getComponentRenderNodes,
+  initializeRootNode,
   initializeRenderNodes,
   populateRenderNodes,
 }

@@ -1,19 +1,15 @@
 import { paintNode } from './paint'
-import { getComponentRenderNodes } from './renderNode'
+import { initializeRootNode, initializeRenderNodes, populateRenderNodes } from './renderNode'
 
 const painter = {
   render: (ctx, width, height, bundle, componentKey) => {
-    let renderNodes = [
-      {
-        width,
-        height,
-        fillStyle: 'transparent',
-      },
+    const initialNodes = [
+      initializeRootNode(width, height, componentKey),
+      ...initializeRenderNodes(bundle, componentKey),
     ]
+    const populatedNodes = populateRenderNodes(bundle, initialNodes)
 
-    renderNodes = getComponentRenderNodes(bundle, componentKey, renderNodes)
-
-    renderNodes.forEach((node) => {
+    populatedNodes.forEach((node) => {
       paintNode(ctx, width, height, node)
     })
   },
