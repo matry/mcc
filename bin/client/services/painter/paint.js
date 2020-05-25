@@ -1,6 +1,6 @@
 const paintNode = (ctx, width, height, node) => {
-  const x = width / 2 - node.width / 2
-  const y = height / 2 - node.height / 2
+  const x = node.left
+  const y = node.top
 
   ctx.fillStyle = node.fillStyle
   ctx.beginPath()

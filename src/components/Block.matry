@@ -9,13 +9,13 @@ options
   fill color: black
 
 style Container
-  width: 100
+  width: 400
   height: 100
   fill-color: #007BFF
 
 style Shape
-  fill-color: $fill
-  width: 20
-  height: 20
-  left: @parent.left
-  bottom: @parent.bottom
+  fill-color: black
+  top: 0
+  left: 0
+  right: 0
+  bottom: 20
