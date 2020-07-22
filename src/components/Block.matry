@@ -1,5 +1,6 @@
 
 component Block
+  desc Some simple container thing
 
 elements
   Container shape
