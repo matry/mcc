@@ -6,6 +6,7 @@ import { paintGrid } from '../services/canvas/grid'
 import painter from '../services/painter'
 
 const StyledDiv = styled.div`
+  width: 100%;
   max-height: 100%;
   overflow: hidden;
   position: relative;

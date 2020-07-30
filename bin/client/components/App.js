@@ -1,6 +1,7 @@
 import React from 'react'
 import styled from '@emotion/styled'
 import { spacing, colors } from '../theme'
+import Indexer from './Indexer'
 import Canvas from './Canvas'
 
 const AppContainer = styled.main`
@@ -11,7 +12,7 @@ const AppContainer = styled.main`
 
 const AppHeader = styled.header`
   padding: ${spacing(1.5)}px;
-  background: linear-gradient(45deg, ${colors.pink[400]} 30%, ${colors.deepOrange[300]} 90%);
+  background: linear-gradient(45deg, ${colors.lightBlue[500]} 30%, ${colors.cyan[300]} 90%);
   color: #ffffff;
   font-weight: 500;
   font-size: 18px;
@@ -26,13 +27,13 @@ const AppBody = styled.section`
 const AppList = styled.ul`
   padding: ${spacing(2)}px 0px;
   list-style: none;
-  border-right: 1px solid #ddd;
+  border-right: 1px solid ${colors.grey[300]};
 `
 
 const AppItem = styled.li`
   padding: 7px ${spacing(4)}px 7px ${spacing(1.5)}px;
-  background: ${(props) => (props.active ? colors.grey[700] : 'transparent')};
-  color: ${(props) => (props.active ? '#FFFFFF' : colors.grey[700])};
+  background: ${(props) => (props.active ? colors.grey[300] : 'transparent')};
+  color: ${(props) => (props.active ? colors.grey[900] : colors.grey[700])};
   font-weight: 500;
   font-size: 12px;
   line-height: 20px;
@@ -61,6 +62,68 @@ const App = ({ bundle }) => {
           <AppItem active>List</AppItem>
           <AppItem>Button sihudf isduhfg idsfhgu</AppItem>
         </AppList>
+
+        <Indexer
+          page={1}
+          indices={[
+            () => {
+              return (
+                <Canvas
+                  bundle={bundle}
+                  component={name}
+                  gridOptions={{
+                    gridColor: '#ddd',
+                    gridPlacement: 'back',
+                    gridSpacing: 10,
+                    gridLineWidth: 0.5,
+                  }}
+                />
+              )
+            },
+            () => {
+              return (
+                <Canvas
+                  bundle={bundle}
+                  component={name}
+                  gridOptions={{
+                    gridColor: '#ddd',
+                    gridPlacement: 'back',
+                    gridSpacing: 10,
+                    gridLineWidth: 0.5,
+                  }}
+                />
+              )
+            },
+            () => {
+              return (
+                <Canvas
+                  bundle={bundle}
+                  component={name}
+                  gridOptions={{
+                    gridColor: '#ddd',
+                    gridPlacement: 'back',
+                    gridSpacing: 10,
+                    gridLineWidth: 0.5,
+                  }}
+                />
+              )
+            },
+            () => {
+              return (
+                <Canvas
+                  bundle={bundle}
+                  component={name}
+                  gridOptions={{
+                    gridColor: '#ddd',
+                    gridPlacement: 'back',
+                    gridSpacing: 10,
+                    gridLineWidth: 0.5,
+                  }}
+                />
+              )
+            },
+          ]}
+        />
 
         {/* <CanvasDiv>
           <CanvasContainer>
