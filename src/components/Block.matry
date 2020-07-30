@@ -9,10 +9,13 @@ elements
 options
   fill color: black
 
+values
+  isBlack boolean: fill = black
+
 style Container
-  width: 400
-  height: 100
-  fill-color: #007BFF
+  width: 100
+  height: 200
+  fill-color: @fill
 
 style Shape
   fill-color: black
@@ -20,3 +23,6 @@ style Shape
   left: 0
   right: 0
   bottom: 20
+
+style Shape when isBlack
+  width: 200

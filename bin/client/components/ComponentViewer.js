@@ -11,7 +11,8 @@ const StyledSection = styled.section`
 `
 
 const StyledDiv = styled.div`
-  padding: 0px ${spacing(1)}px;
+  padding: 0px ${spacing(2)}px;
+  min-width: 240px;
 `
 
 const StyledHeader = styled.header`
@@ -35,12 +36,6 @@ const StyledH2 = styled.h2`
 const ComponentViewer = ({ name, bundle }) => {
   return (
     <StyledSection>
-      <StyledDiv>
-        <StyledHeader>
-          <StyledSmall>Viewing</StyledSmall>
-          <StyledH2>{name}</StyledH2>
-        </StyledHeader>
-      </StyledDiv>
       <Canvas
         bundle={bundle}
         component={name}

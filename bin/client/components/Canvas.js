@@ -11,6 +11,8 @@ const StyledDiv = styled.div`
   position: relative;
 `
 
+const StyledCanvasDiv = styled.div``
+
 const CanvasHeaderDiv = styled.div`
   position: absolute;
   top: 0px;
@@ -21,34 +23,22 @@ const CanvasHeaderDiv = styled.div`
   border-bottom: 1px solid #aaa;
 `
 
-const render = (ctx, nodes) => {
-  nodes.forEach((node) => {
-    switch (node.type) {
-      case 'text':
-        renderText(ctx, node)
-        break
-      case 'shape':
-        renderShape(ctx, node)
-        break
-      default:
-        break
-    }
-  })
-}
-
 const Canvas = ({ gridOptions, bundle, component }) => {
   const { context, width, height, canvasRef, resizeRef } = useCanvas()
 
   useEffect(() => {
     if (context) {
       paintGrid({ ctx: context, width, height, gridOptions })
-      painter.render(context, width, height, bundle, component)
+      // painter.render(context, width, height, bundle, component)
+
+      context.fillStyle = 'red'
+      context.rect(width / 2 - 100, height / 2 - 100, 200, 200)
+      context.fill()
     }
   }, [width, height])
 
   return (
     <StyledDiv ref={resizeRef}>
-      <CanvasHeaderDiv></CanvasHeaderDiv>
       <canvas
         ref={canvasRef}
         className={css`

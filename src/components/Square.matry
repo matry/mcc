@@ -1,5 +1,6 @@
 
 component Square
+  desc A simple square
 
 elements
   Container boundary
