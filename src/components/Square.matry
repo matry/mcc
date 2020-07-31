@@ -3,17 +3,12 @@ component Square
   desc A simple square
 
 elements
-  Container boundary
-    Shape shape
+  Shape shape
 
 options
   size number: 50
 
-style Container
-  width: 400
-  height: 100
-
 style Shape
   width: $size
   height: $size
-  fill-color: blue
+  fill-color: #007BFF

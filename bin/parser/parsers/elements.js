@@ -36,19 +36,19 @@ const parseElements = (lines, componentName) => {
       type = 'instance'
     }
 
-    let title = elementDatum.key
+    let name = elementDatum.key
 
-    if (title.includes('...')) {
-      title = title.replace('...', '')
+    if (name.includes('...')) {
+      name = name.replace('...', '')
       multi = true
     }
 
-    const elementKey = `${componentName}.${title}`
+    const elementKey = `${componentName}.${name}`
 
     const element = {
       key: elementKey,
       component: componentName,
-      title,
+      name,
       type,
       ref,
       multi,

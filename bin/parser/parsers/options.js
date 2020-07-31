@@ -13,7 +13,7 @@ const parseOptions = (optionsGroup, componentName) => {
     const optionKey = `${componentName}.${optionDatum.key}`
     map[optionKey] = {
       component: componentName,
-      title: optionDatum.key,
+      name: optionDatum.key,
       ...optionValue,
     }
     list.push(optionKey)

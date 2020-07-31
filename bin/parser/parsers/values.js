@@ -29,13 +29,13 @@ const parseValues = (valueGroups, componentName) => {
 
       if (rootValue) {
         map[entryKey] = {
-          title: keyValue.key,
+          name: keyValue.key,
           type: rootValue.type,
           ...parseContextValue(keyValue.value),
         }
       } else {
         map[entryKey] = {
-          title: keyValue.key,
+          name: keyValue.key,
           ...parseValue(keyValue.value),
         }
       }

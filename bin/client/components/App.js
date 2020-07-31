@@ -25,6 +25,24 @@ const AppBody = styled.section`
 `
 
 const App = ({ bundle }) => {
+  const map = {}
+
+  const list = bundle.map((component) => {
+    const id = `${component.name}_default`
+    map[id] = []
+
+    return {
+      id: component.name,
+      name: component.name,
+      frames: [
+        {
+          id,
+          name: 'Default',
+        },
+      ],
+    }
+  })
+
   const stories = [
     {
       id: 'block',
@@ -113,6 +131,34 @@ const App = ({ bundle }) => {
         height: 42,
         fill: '#007BFF',
         strokeWidth: 2,
+        strokeColor: '#007BFF',
+        cornerRadius: 5,
+      },
+      {
+        type: 'text',
+        content: 'Click Me',
+        top: 0,
+        left: 0,
+        width: 180,
+        height: 32,
+        fontSize: 18,
+        fontFamily: 'Helvetica',
+        fontWeight: 'normal',
+        fill: '#FFFFFF',
+        textHeight: 32,
+        textAlignX: 'center',
+        textAlignY: 'center',
+      },
+    ],
+    button_hovered: [
+      {
+        type: 'shape',
+        top: 0,
+        left: 0,
+        width: 180,
+        height: 42,
+        fill: '#0058AA',
+        strokeWidth: 2,
         strokeColor: '#0058AA',
         cornerRadius: 5,
       },
@@ -132,15 +178,41 @@ const App = ({ bundle }) => {
         textAlignY: 'center',
       },
     ],
-    button_hovered: [],
-    button_focused: [],
+    button_focused: [
+      {
+        type: 'shape',
+        top: 0,
+        left: 0,
+        width: 180,
+        height: 42,
+        fill: '#007BFF',
+        strokeWidth: 2,
+        strokeColor: '#003588',
+        cornerRadius: 5,
+      },
+      {
+        type: 'text',
+        content: 'Click Me',
+        top: 0,
+        left: 0,
+        width: 180,
+        height: 32,
+        fontSize: 18,
+        fontFamily: 'Helvetica',
+        fontWeight: 'normal',
+        fill: '#FFFFFF',
+        textHeight: 32,
+        textAlignX: 'center',
+        textAlignY: 'center',
+      },
+    ],
   }
 
   const [frameId, setFrameId] = useState(null)
 
   useEffect(() => {
     const url = new URL(window.location.href)
-    const detectedFrameId = url.searchParams.get('frame') || stories[0].frames[0].id
+    const detectedFrameId = url.searchParams.get('frame') || list[0].frames[0].id
     App.setUrlState(detectedFrameId)
     setFrameId(detectedFrameId)
 
@@ -163,7 +235,7 @@ const App = ({ bundle }) => {
       <AppBody>
         <StoryMenu
           activeFrameId={frameId}
-          stories={stories}
+          stories={list}
           onSelect={(newFrameId) => {
             App.setUrlState(newFrameId)
             setFrameId(newFrameId)
@@ -178,7 +250,7 @@ const App = ({ bundle }) => {
             gridSpacing: 10,
             gridLineWidth: 0.5,
           }}
-          nodes={nodeMap[frameId]}
+          nodes={map[frameId]}
           nodeId={frameId}
         />
       </AppBody>

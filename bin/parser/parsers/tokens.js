@@ -1,13 +1,27 @@
+const { getFile, validateFileStructure } = require('./file')
+
+const parseTokenFile = (tokens, filePath) => {
+  const { lines, fileName } = getFile(filePath)
+
+  validateFileStructure(lines)
+
+  const { map, list } = parseTokens(
+    lines.filter((line) => line !== ''),
+    fileName
+  )
+
+  return {
+    map: {
+      ...tokens.map,
+      ...map,
+    },
+    list: [...tokens.list, ...list],
+  }
+}
+
 const parseTokens = (lines, key) => {
   const map = {}
   const list = []
-
-  // let lines = rawLines
-  // if (!tokenCategory) {
-  //   const parsed = getLines(rawLines)
-  //   lines = parsed.lines
-  //   tokenCategory = parsed.category
-  // }
 
   lines.forEach((line) => {
     const data = parseTypeKeyValue(line)
@@ -19,7 +33,7 @@ const parseTokens = (lines, key) => {
     const tokenKey = `${key}.${data.key}`
 
     map[tokenKey] = {
-      title: data.key,
+      name: data.key,
       type: data.type,
       value: data.value,
     }
@@ -30,16 +44,6 @@ const parseTokens = (lines, key) => {
   return {
     map,
     list,
-  }
-}
-
-const getLines = (lines) => {
-  const linesCopy = [...lines]
-  const category = linesCopy.splice(0, 1)[0].trim().split(' ')[1].trim()
-
-  return {
-    category,
-    lines: linesCopy,
   }
 }
 
@@ -61,5 +65,6 @@ const parseTypeKeyValue = (line) => {
 
 module.exports = {
   parseTokens,
+  parseTokenFile,
   parseTypeKeyValue,
 }

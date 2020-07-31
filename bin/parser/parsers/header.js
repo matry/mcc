@@ -7,7 +7,7 @@ const parseHeader = (lines) => {
     const headerDatum = parseKeyValue(line)
 
     if (headerDatum !== null) {
-      const key = headerDatum.key === 'component' ? 'title' : headerDatum.key
+      const key = headerDatum.key === 'component' ? 'name' : headerDatum.key
       header[key] = headerDatum.value
     }
   })
