@@ -12,18 +12,6 @@ const StyledDiv = styled.div`
   position: relative;
 `
 
-const StyledCanvasDiv = styled.div``
-
-const CanvasHeaderDiv = styled.div`
-  position: absolute;
-  top: 0px;
-  right: 0px;
-  left: 0px;
-  height: 32px;
-  background-color: rgba(255, 255, 255, 0.5);
-  border-bottom: 1px solid #aaa;
-`
-
 const Canvas = ({ gridOptions, bundle, component }) => {
   const { context, width, height, canvasRef, resizeRef } = useCanvas()
 
