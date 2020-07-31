@@ -31,12 +31,16 @@ const App = ({ bundle }) => {
       name: 'Block',
       frames: [
         {
-          id: 'block_default',
-          name: 'Default',
+          id: 'block_small',
+          name: 'Small',
         },
         {
-          id: 'block_highlighted',
-          name: 'Highlighted',
+          id: 'block_medium',
+          name: 'Medium',
+        },
+        {
+          id: 'block_large',
+          name: 'Large',
         },
       ],
     },
@@ -59,6 +63,78 @@ const App = ({ bundle }) => {
       ],
     },
   ]
+
+  const nodeMap = {
+    block_small: [
+      {
+        type: 'shape',
+        top: 0,
+        left: 0,
+        width: 50,
+        height: 50,
+        fill: '#202020',
+        strokeWidth: 0,
+        strokeColor: '#000000',
+        cornerRadius: 0,
+      },
+    ],
+    block_medium: [
+      {
+        type: 'shape',
+        top: 0,
+        left: 0,
+        width: 150,
+        height: 150,
+        fill: '#202020',
+        strokeWidth: 0,
+        strokeColor: '#000000',
+        cornerRadius: 0,
+      },
+    ],
+    block_large: [
+      {
+        type: 'shape',
+        top: 0,
+        left: 0,
+        width: 350,
+        height: 350,
+        fill: '#202020',
+        strokeWidth: 0,
+        strokeColor: '#000000',
+        cornerRadius: 0,
+      },
+    ],
+    button_default: [
+      {
+        type: 'shape',
+        top: 0,
+        left: 0,
+        width: 180,
+        height: 42,
+        fill: '#007BFF',
+        strokeWidth: 2,
+        strokeColor: '#0058AA',
+        cornerRadius: 5,
+      },
+      {
+        type: 'text',
+        content: 'Click Me',
+        top: 0,
+        left: 0,
+        width: 180,
+        height: 32,
+        fontSize: 18,
+        fontFamily: 'Helvetica',
+        fontWeight: 'normal',
+        fill: '#FFFFFF',
+        textHeight: 32,
+        textAlignX: 'center',
+        textAlignY: 'center',
+      },
+    ],
+    button_hovered: [],
+    button_focused: [],
+  }
 
   const [frameId, setFrameId] = useState(null)
 
@@ -102,6 +178,8 @@ const App = ({ bundle }) => {
             gridSpacing: 10,
             gridLineWidth: 0.5,
           }}
+          nodes={nodeMap[frameId]}
+          nodeId={frameId}
         />
       </AppBody>
     </AppContainer>

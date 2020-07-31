@@ -17,8 +17,8 @@ const calculateTextHeight = (document, fontStyle) => {
   return result
 }
 
-const getLines = (ctx, textContent, width) => {
-  let words = textContent.split(' ')
+const getLines = (ctx, content, width) => {
+  let words = content.split(' ')
   let lines = ['']
 
   words.map((word) => {
@@ -34,9 +34,20 @@ const getLines = (ctx, textContent, width) => {
 
 const paintText = (
   ctx,
-  { width, height, left, top },
-  { fontFamily, fontSize, fontWeight, fillColor, textHeight, textAlignX, textAlignY, textContent },
-  ratio
+  {
+    width,
+    height,
+    left,
+    top,
+    fontFamily,
+    fontSize,
+    fontWeight,
+    fill,
+    textHeight,
+    textAlignX,
+    textAlignY,
+    content,
+  }
 ) => {
   ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`
   ctx.textAlign = textAlignX
@@ -53,7 +64,7 @@ const paintText = (
       // fontBoxYAxis = 0
       textY = 0
       break
-    case 'middle':
+    case 'center':
       // ctx.textBaseline = 'middle'
       // fontBoxYAxis = (fontHeight - textHeight) / 2
       textY = (textHeight - calculatedTextHeight) / 2
@@ -69,7 +80,7 @@ const paintText = (
       break
   }
 
-  const lines = getLines(ctx, textContent, width)
+  const lines = getLines(ctx, content, width)
 
   let textX
   switch (ctx.textAlign) {
@@ -85,7 +96,7 @@ const paintText = (
   }
 
   // draw text
-  ctx.fillStyle = fillColor
+  ctx.fillStyle = fill
 
   lines.map((line, i) => {
     ctx.fillText(line, textX, top + i * textHeight + textY)

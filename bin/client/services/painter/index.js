@@ -1,16 +1,22 @@
-import { paintNode } from './paint'
-import { initializeRootNode, initializeRenderNodes, populateRenderNodes } from './renderNode'
+import { paintShape } from '../canvas/shape'
+import { paintText } from '../canvas/text'
 
 const painter = {
-  render: (ctx, width, height, bundle, componentKey) => {
-    const initialNodes = [
-      initializeRootNode(width, height, componentKey),
-      ...initializeRenderNodes(bundle, componentKey),
-    ]
-    const populatedNodes = populateRenderNodes(bundle, initialNodes)
+  render: (ctx, width, height, nodes) => {
+    nodes.forEach((node) => {
+      const left = width / 2 - node.width / 2 + node.left
+      const top = height / 2 - node.height / 2 + node.top
 
-    populatedNodes.forEach((node) => {
-      paintNode(ctx, width, height, node)
+      switch (node.type) {
+        case 'shape':
+          paintShape(ctx, { ...node, top, left })
+          break
+        case 'text':
+          paintText(ctx, { ...node, top, left })
+          break
+        default:
+          break
+      }
     })
   },
 }

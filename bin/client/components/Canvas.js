@@ -12,19 +12,16 @@ const StyledDiv = styled.div`
   position: relative;
 `
 
-const Canvas = ({ gridOptions, bundle, component }) => {
+const Canvas = ({ nodeId, gridOptions, nodes }) => {
   const { context, width, height, canvasRef, resizeRef } = useCanvas()
 
   useEffect(() => {
     if (context) {
+      context.clearRect(0, 0, width, height)
       paintGrid({ ctx: context, width, height, gridOptions })
-      // painter.render(context, width, height, bundle, component)
-
-      context.fillStyle = 'red'
-      context.rect(width / 2 - 100, height / 2 - 100, 200, 200)
-      context.fill()
+      painter.render(context, width, height, nodes)
     }
-  }, [width, height])
+  }, [width, height, nodeId])
 
   return (
     <StyledDiv ref={resizeRef}>
