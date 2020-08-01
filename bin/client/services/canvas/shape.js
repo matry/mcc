@@ -1,6 +1,15 @@
 const paintShape = (
   ctx,
-  { top, left, width, height, fill, strokeWidth, strokeColor, cornerRadius }
+  {
+    top = 0,
+    left = 0,
+    width = 0,
+    height = 0,
+    fill = 'transparent',
+    strokeWidth = 0,
+    strokeColor = 'transparent',
+    cornerRadius = 0,
+  }
 ) => {
   ctx.fillStyle = fill
   ctx.strokeStyle = strokeColor

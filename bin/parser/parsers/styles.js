@@ -51,7 +51,7 @@ const parseStyles = (styleGroups, componentName) => {
         component: componentName,
         element: elementTarget,
         context: contextTarget,
-        property: key,
+        property: toCamelCase(key),
         ...parseExpression(value),
       }
       list.push(styleKey)

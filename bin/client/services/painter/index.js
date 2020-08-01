@@ -3,9 +3,27 @@ import { paintText } from '../canvas/text'
 
 const painter = {
   render: (ctx, width, height, nodes) => {
+    let rootLeft
+    let rootTop
+
     nodes.forEach((node) => {
-      const left = width / 2 - node.width / 2 + node.left
-      const top = height / 2 - node.height / 2 + node.top
+      let top = 0
+      let left = 0
+
+      if (node.root) {
+        top = height / 2 - node.height / 2
+        left = width / 2 - node.width / 2
+        rootTop = top
+        rootLeft = left
+      } else {
+        top = rootTop + node.top
+        left = rootLeft + node.left
+      }
+
+      // let left = width / 2 - offsetLeft - node.width / 2 + node.left
+      // let top = height / 2 - offsetLeft - node.height / 2 + node.top
+
+      console.log(top, left)
 
       switch (node.type) {
         case 'shape':

@@ -37,16 +37,16 @@ const paintText = (
   {
     width,
     height,
-    left,
-    top,
-    fontFamily,
-    fontSize,
-    fontWeight,
-    fill,
-    textHeight,
-    textAlignX,
-    textAlignY,
-    content,
+    left = 0,
+    top = 0,
+    fontFamily = 'Arial',
+    fontSize = 16,
+    fontWeight = 400,
+    fill = '#000000',
+    textHeight = 16,
+    textAlignX = 'left',
+    textAlignY = 'baseline',
+    content = '',
   }
 ) => {
   ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`

@@ -29,7 +29,18 @@ const App = ({ bundle }) => {
 
   const list = bundle.map((component) => {
     const id = `${component.name}_default`
-    map[id] = []
+    map[id] = component.elements.map((element, index) => {
+      if (index === 0) {
+        return {
+          ...element.styles.root,
+          top: 0,
+          left: 0,
+          root: true,
+        }
+      }
+
+      return element.styles.root
+    })
 
     return {
       id: component.name,
@@ -42,171 +53,6 @@ const App = ({ bundle }) => {
       ],
     }
   })
-
-  const stories = [
-    {
-      id: 'block',
-      name: 'Block',
-      frames: [
-        {
-          id: 'block_small',
-          name: 'Small',
-        },
-        {
-          id: 'block_medium',
-          name: 'Medium',
-        },
-        {
-          id: 'block_large',
-          name: 'Large',
-        },
-      ],
-    },
-    {
-      id: 'button',
-      name: 'Button',
-      frames: [
-        {
-          id: 'button_default',
-          name: 'Default',
-        },
-        {
-          id: 'button_hovered',
-          name: 'Hovered',
-        },
-        {
-          id: 'button_focused',
-          name: 'Focused',
-        },
-      ],
-    },
-  ]
-
-  const nodeMap = {
-    block_small: [
-      {
-        type: 'shape',
-        top: 0,
-        left: 0,
-        width: 50,
-        height: 50,
-        fill: '#202020',
-        strokeWidth: 0,
-        strokeColor: '#000000',
-        cornerRadius: 0,
-      },
-    ],
-    block_medium: [
-      {
-        type: 'shape',
-        top: 0,
-        left: 0,
-        width: 150,
-        height: 150,
-        fill: '#202020',
-        strokeWidth: 0,
-        strokeColor: '#000000',
-        cornerRadius: 0,
-      },
-    ],
-    block_large: [
-      {
-        type: 'shape',
-        top: 0,
-        left: 0,
-        width: 350,
-        height: 350,
-        fill: '#202020',
-        strokeWidth: 0,
-        strokeColor: '#000000',
-        cornerRadius: 0,
-      },
-    ],
-    button_default: [
-      {
-        type: 'shape',
-        top: 0,
-        left: 0,
-        width: 180,
-        height: 42,
-        fill: '#007BFF',
-        strokeWidth: 2,
-        strokeColor: '#007BFF',
-        cornerRadius: 5,
-      },
-      {
-        type: 'text',
-        content: 'Click Me',
-        top: 0,
-        left: 0,
-        width: 180,
-        height: 32,
-        fontSize: 18,
-        fontFamily: 'Helvetica',
-        fontWeight: 'normal',
-        fill: '#FFFFFF',
-        textHeight: 32,
-        textAlignX: 'center',
-        textAlignY: 'center',
-      },
-    ],
-    button_hovered: [
-      {
-        type: 'shape',
-        top: 0,
-        left: 0,
-        width: 180,
-        height: 42,
-        fill: '#0058AA',
-        strokeWidth: 2,
-        strokeColor: '#0058AA',
-        cornerRadius: 5,
-      },
-      {
-        type: 'text',
-        content: 'Click Me',
-        top: 0,
-        left: 0,
-        width: 180,
-        height: 32,
-        fontSize: 18,
-        fontFamily: 'Helvetica',
-        fontWeight: 'normal',
-        fill: '#FFFFFF',
-        textHeight: 32,
-        textAlignX: 'center',
-        textAlignY: 'center',
-      },
-    ],
-    button_focused: [
-      {
-        type: 'shape',
-        top: 0,
-        left: 0,
-        width: 180,
-        height: 42,
-        fill: '#007BFF',
-        strokeWidth: 2,
-        strokeColor: '#003588',
-        cornerRadius: 5,
-      },
-      {
-        type: 'text',
-        content: 'Click Me',
-        top: 0,
-        left: 0,
-        width: 180,
-        height: 32,
-        fontSize: 18,
-        fontFamily: 'Helvetica',
-        fontWeight: 'normal',
-        fill: '#FFFFFF',
-        textHeight: 32,
-        textAlignX: 'center',
-        textAlignY: 'center',
-      },
-    ],
-  }
 
   const [frameId, setFrameId] = useState(null)
 

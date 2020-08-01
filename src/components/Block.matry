@@ -5,6 +5,7 @@ component Block
 elements
   Container shape
     Shape shape
+    Label text
 
 options
   fill color: black
@@ -12,17 +13,56 @@ options
 values
   isBlack boolean: fill = black
 
+styles
+  Container
+    width: 250
+    height: 100
+    fill: #3040F0
+    corner-radius: 0
+  Shape
+    fill: #FFFFFF
+    top: 50
+    left: 10
+    width: 10
+    height: 10
+  Label
+    font-family: Helvetica
+    font-size: 22
+    content: Hello World
+    width: 250
+    height: 100
+    top: 30
+    left: 0
+    fill: gradiant 0% #FFF 30% #DDD 100% #333
+    text-align-y: center
+
+styles when isBlack
+  Shape
+    width: 200
+
 style Container
-  width: 100
-  height: 200
-  fill-color: @fill
+  width: 250
+  height: 100
+  fill: #3040F0
+  corner-radius: 0
 
 style Shape
-  fill-color: black
-  top: 0
-  left: 0
-  right: 0
-  bottom: 20
+  fill: #FFFFFF
+  top: 50
+  left: 10
+  width: 10
+  height: 10
 
 style Shape when isBlack
   width: 200
+
+style Label
+  font-family: Helvetica
+  font-size: 22
+  content: Hello World
+  width: 250
+  height: 100
+  top: 30
+  left: 0
+  fill: pink
+  text-align-y: center

@@ -28,6 +28,7 @@ const denormalizeBundle = (bundle) => {
         }
 
         styles[style.context] = styles[style.context] || {}
+        styles[style.context].type = element.type
         styles[style.context][style.property] = style.value
       })
 
