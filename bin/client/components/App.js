@@ -25,55 +25,25 @@ const AppBody = styled.section`
 `
 
 const App = ({ bundle }) => {
-  const map = {}
-
-  const list = bundle.map((component) => {
-    const id = `${component.name}_default`
-    map[id] = component.elements.map((element, index) => {
-      if (index === 0) {
-        return {
-          ...element.styles.root,
-          top: 0,
-          left: 0,
-          root: true,
-        }
-      }
-
-      return element.styles.root
-    })
-
-    return {
-      id: component.name,
-      name: component.name,
-      frames: [
-        {
-          id,
-          name: 'Default',
-        },
-      ],
-    }
-  })
-
   const [frameId, setFrameId] = useState(null)
 
-  useEffect(() => {
-    const url = new URL(window.location.href)
-    const detectedFrameId = url.searchParams.get('frame') || list[0].frames[0].id
-    App.setUrlState(detectedFrameId)
-    setFrameId(detectedFrameId)
+  // useEffect(() => {
+  //   const url = new URL(window.location.href)
+  //   const detectedFrameId = url.searchParams.get('frame') || list[0].frames[0].id
+  //   App.setUrlState(detectedFrameId)
+  //   setFrameId(detectedFrameId)
 
-    window.onpopstate = () => {
-      const url = new URL(window.location.href)
-      const newFrameId = url.searchParams.get('frame')
-      if (newFrameId) {
-        setFrameId(newFrameId)
-      }
-    }
-  }, [])
-
-  if (!frameId) {
-    return null
-  }
+  //   window.onpopstate = () => {
+  //     const url = new URL(window.location.href)
+  //     const newFrameId = url.searchParams.get('frame')
+  //     if (newFrameId) {
+  //       setFrameId(newFrameId)
+  //     }
+  //   }
+  // }, [])
+  // if (!frameId) {
+  //   return null
+  // }
 
   return (
     <AppContainer>
@@ -96,8 +66,6 @@ const App = ({ bundle }) => {
             gridSpacing: 10,
             gridLineWidth: 0.5,
           }}
-          nodes={map[frameId]}
-          nodeId={frameId}
         />
       </AppBody>
     </AppContainer>

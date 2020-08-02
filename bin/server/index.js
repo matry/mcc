@@ -1,6 +1,6 @@
 const { spawn } = require('child_process')
 const watcher = require('./watcher')
-const { project } = require('../parser')
+const { parse } = require('../parser')
 
 const webpackDevServer = spawn('webpack-dev-server', ['--mode development'])
 
@@ -9,7 +9,7 @@ webpackDevServer.stderr.on('data', (data) => console.error(`stderr: ${data}`))
 webpackDevServer.on('close', (code) => console.log(`child process exited with code ${code}`))
 
 const watchProcess = watcher('src', () => {
-  project('src', 'bin/client')
+  parse('src', 'bin/client')
 })
 
 process.on('SIGINT', () => {

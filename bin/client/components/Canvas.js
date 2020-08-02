@@ -13,16 +13,13 @@ const StyledDiv = styled.div`
 `
 
 const Canvas = ({ nodeId, gridOptions, nodes }) => {
-  console.log('>')
-  console.log(nodes)
-  console.log('<')
   const { context, width, height, canvasRef, resizeRef } = useCanvas()
 
   useEffect(() => {
     if (context) {
-      context.clearRect(0, 0, width, height)
-      paintGrid({ ctx: context, width, height, gridOptions })
-      painter.render(context, width, height, nodes)
+      // context.clearRect(0, 0, width, height)
+      // paintGrid({ ctx: context, width, height, gridOptions })
+      // painter.render(context, width, height, nodes)
     }
   }, [width, height, nodeId])
 
