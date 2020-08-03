@@ -39,21 +39,21 @@ const Span = styled.span`
   padding-left: ${(props) => spacing(props.indent)};
 `
 
-const StoryMenu = ({ activeFrameId, stories, onSelect }) => {
+const StoryMenu = ({ activeId, mocks, onSelect }) => {
   return (
     <StoryList>
-      {stories.map((story) => (
-        <StoryItem key={story.id}>
-          <Span indent={1.5}>{story.name}</Span>
+      {mocks.map((mock) => (
+        <StoryItem key={mock.id}>
+          <Span indent={1.5}>{mock.name}</Span>
 
           <FrameList>
-            {story.frames.map((frame) => (
+            {mock.states.map((state) => (
               <FrameItem
-                active={frame.id === activeFrameId}
-                key={`${story.id}-${frame.id}`}
-                onClick={() => onSelect(frame.id)}
+                active={state.id === activeId}
+                key={`${mock.id}-${state.id}`}
+                onClick={() => onSelect(state.id)}
               >
-                <Span indent={3}>{frame.name}</Span>
+                <Span indent={3}>{state.name}</Span>
               </FrameItem>
             ))}
           </FrameList>

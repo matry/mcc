@@ -24,42 +24,44 @@ const AppBody = styled.section`
   overflow: hidden;
 `
 
-const App = ({ bundle }) => {
-  const [frameId, setFrameId] = useState(null)
+const App = ({ dataFrame }) => {
+  const [activeId, setActiveId] = useState(null)
 
-  // useEffect(() => {
-  //   const url = new URL(window.location.href)
-  //   const detectedFrameId = url.searchParams.get('frame') || list[0].frames[0].id
-  //   App.setUrlState(detectedFrameId)
-  //   setFrameId(detectedFrameId)
+  const mocks = dataFrame.groupBy('states', 'mock')
 
-  //   window.onpopstate = () => {
-  //     const url = new URL(window.location.href)
-  //     const newFrameId = url.searchParams.get('frame')
-  //     if (newFrameId) {
-  //       setFrameId(newFrameId)
-  //     }
-  //   }
-  // }, [])
-  // if (!frameId) {
-  //   return null
-  // }
+  useEffect(() => {
+    const url = new URL(window.location.href)
+    const detectedActiveId = url.searchParams.get('frame') || mocks[0].states[0].id
+    App.setUrlState(detectedActiveId)
+    setActiveId(detectedActiveId)
+
+    window.onpopstate = () => {
+      const url = new URL(window.location.href)
+      const newActiveId = url.searchParams.get('id')
+      if (newActiveId) {
+        setActiveId(newActiveId)
+      }
+    }
+  }, [])
+
+  if (!activeId) {
+    return null
+  }
 
   return (
     <AppContainer>
       <AppHeader>Matry | mvp</AppHeader>
       <AppBody>
         <StoryMenu
-          activeFrameId={frameId}
-          stories={list}
-          onSelect={(newFrameId) => {
-            App.setUrlState(newFrameId)
-            setFrameId(newFrameId)
+          activeId={activeId}
+          mocks={mocks}
+          onSelect={(newActiveId) => {
+            App.setUrlState(newActiveId)
+            setActiveId(newActiveId)
           }}
         />
 
         <Canvas
-          bundle={bundle}
           gridOptions={{
             gridColor: '#ddd',
             gridPlacement: 'back',
@@ -72,9 +74,9 @@ const App = ({ bundle }) => {
   )
 }
 
-App.setUrlState = (frameId) => {
+App.setUrlState = (activeId) => {
   const url = new URL(window.location.href)
-  url.searchParams.set('frame', frameId)
+  url.searchParams.set('id', activeId)
   window.history.pushState('', '', url)
 }
 

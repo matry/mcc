@@ -3,19 +3,92 @@
     "map": {
       "branding.primary": {
         "id": "branding.primary",
-        "name": "branding.primary",
-        "scope": "global",
+        "name": "primary",
         "type": "color",
         "expression": "#007BFF"
       },
       "branding.secondary": {
         "id": "branding.secondary",
         "name": "branding.secondary",
-        "scope": "global",
         "type": "color",
         "expression": "#007BFF"
       }
     },
-    "list": []
+    "list": ["branding.primary", "branding.secondary"]
+  },
+  "components": {
+    "ref": "component",
+    "map": {
+      "square": {
+        "id": "square",
+        "name": "Square"
+      }
+    },
+    "list": ["square"]
+  },
+  "elements": {
+    "ref": "element",
+    "map": {
+      "square.container": {
+        "id": "square.container",
+        "name": "Container",
+        "component": "square",
+        "type": "shape"
+      }
+    },
+    "list": ["square.container"]
+  },
+  "styles": {
+    "map": {
+      "square.container.width": {
+        "id": "square.container.width",
+        "component": "square",
+        "element": "container",
+        "name": "width",
+        "type": "number",
+        "expression": "100"
+      },
+      "square.container.height": {
+        "id": "square.container.height",
+        "component": "square",
+        "element": "container",
+        "name": "height",
+        "type": "number",
+        "expression": "100"
+      },
+      "square.container.fill": {
+        "id": "square.container.fill",
+        "component": "square",
+        "element": "container",
+        "name": "fill",
+        "type": "number",
+        "expression": "#007BFF"
+      }
+    },
+    "list": ["square.container.width"]
+  },
+  "mocks": {
+    "ref": "mock",
+    "map": {
+      "square": {
+        "id": "square",
+        "name": "Square",
+        "component": "Square"
+      }
+    },
+    "list": ["square"]
+  },
+  "states": {
+    "map": {
+      "square.defaults": {
+        "id": "square.defaults",
+        "mock": "square",
+        "name": "Defaults",
+        "input": {
+          "Square": {}
+        }
+      }
+    },
+    "list": ["square.defaults"]
   }
 }
