@@ -1,10 +1,12 @@
 const fs = require('fs')
 const path = require('path')
 
-const getDirFiles = (dirPath, subPath, arrayOfFiles = []) => {
+const getDirFiles = (dirPath, subPath = '', arrayOfFiles = []) => {
   const fullPath = path.join(dirPath, subPath)
 
-  fs.readdirSync(fullPath).forEach((file) => {
+  const files = fs.readdirSync(fullPath)
+
+  files.forEach((file) => {
     if (fs.statSync(fullPath + '/' + file).isDirectory()) {
       arrayOfFiles = getDirFiles(fullPath + '/' + file, arrayOfFiles)
       return

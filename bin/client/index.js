@@ -16,3 +16,23 @@ const table = new Table(bundle)
 
 const rootElement = document.getElementById('app')
 render(<App bundle={bundle} />, rootElement)
+
+/*
+
+global space
+  - global token expressions
+  - global parameters expressions
+  - environment (canvas width, canvas height)
+
+component space
+  - 
+
+render:
+  - load environment
+  - load token expressions
+  - calculate token values
+
+
+
+
+*/

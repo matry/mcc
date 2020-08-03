@@ -1,7 +1,0 @@
-
-mock Square {
-  Default
-
-  CustomSize
-    size: 120
-}

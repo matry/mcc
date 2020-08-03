@@ -1,1 +1,124 @@
-{"tokens":{"map":{"branding.primary":{"name":"primary","type":"color","value":"#007BFF"},"branding.secondary":{"name":"secondary","type":"color","value":"#BADA55"},"copy.placeholder-button":{"name":"placeholder-button","type":"string","value":"Click Me"},"copy.login-prompt":{"name":"login-prompt","type":"string","value":"Sign In"},"copy.register-prompt":{"name":"register-prompt","type":"string","value":"Sign Up"},"typography.vertical-rhythm":{"name":"vertical-rhythm","type":"number","value":"1.618"},"typography.body-1":{"name":"body-1","type":"","value":"12"},"typography.body-2":{"name":"body-2","type":"","value":"$body-1 * $vertical-rhythm"},"typography.body-3":{"name":"body-3","type":"","value":"$body-2 * $vertical-rhythm"},"typography.body-4":{"name":"body-4","type":"","value":"$body-3 * $vertical-rhythm"}},"list":["branding.primary","branding.secondary","copy.placeholder-button","copy.login-prompt","copy.register-prompt","typography.vertical-rhythm","typography.body-1","typography.body-2","typography.body-3","typography.body-4"]},"components":{"map":{"Block":{"name":"Block","desc":"Some simple container thing"},"Square":{"name":"Square","desc":"A simple square"}},"list":["Block","Square"]},"elements":{"map":{"Block.Container":{"key":"Block.Container","component":"Block","name":"Container","type":"shape","ref":null,"multi":false,"parent":null},"Block.Shape":{"key":"Block.Shape","component":"Block","name":"Shape","type":"shape","ref":null,"multi":false,"parent":"Block.Container"},"Block.Label":{"key":"Block.Label","component":"Block","name":"Label","type":"text","ref":null,"multi":false,"parent":"Block.Container"},"Square.Shape":{"key":"Square.Shape","component":"Square","name":"Shape","type":"shape","ref":null,"multi":false,"parent":null}},"list":["Block.Container","Block.Shape","Block.Label","Square.Shape"]},"options":{"map":{"Block.fill":{"component":"Block","name":"fill","type":"color","defaultValue":"black","options":[]},"Square.size":{"component":"Square","name":"size","type":"number","defaultValue":"50","options":[]}},"list":["Block.fill","Square.size"]},"values":{"map":{"Block.root.isBlack":{"name":"isBlack","type":"boolean","value":"fill = black","operation":"boolean","leftOperand":"fill","operator":"=","rightOperand":"black"}},"list":["Block.root.isBlack"]},"styles":{"map":{"Block.Container.root.width":{"component":"Block","element":"Container","context":"root","property":"width","operation":"assignment","value":250,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Container.root.height":{"component":"Block","element":"Container","context":"root","property":"height","operation":"assignment","value":100,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Container.root.fill":{"component":"Block","element":"Container","context":"root","property":"fill","operation":"assignment","value":"#3040F0","leftOperand":null,"operator":null,"rightOperand":null},"Block.Container.root.corner-radius":{"component":"Block","element":"Container","context":"root","property":"cornerRadius","operation":"assignment","value":0,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Shape.root.fill":{"component":"Block","element":"Shape","context":"root","property":"fill","operation":"assignment","value":"#FFFFFF","leftOperand":null,"operator":null,"rightOperand":null},"Block.Shape.root.top":{"component":"Block","element":"Shape","context":"root","property":"top","operation":"assignment","value":50,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Shape.root.left":{"component":"Block","element":"Shape","context":"root","property":"left","operation":"assignment","value":10,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Shape.root.width":{"component":"Block","element":"Shape","context":"root","property":"width","operation":"assignment","value":10,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Shape.root.height":{"component":"Block","element":"Shape","context":"root","property":"height","operation":"assignment","value":10,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Shape.isBlack.width":{"component":"Block","element":"Shape","context":"isBlack","property":"width","operation":"assignment","value":200,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Label.root.font-family":{"component":"Block","element":"Label","context":"root","property":"fontFamily","operation":"assignment","value":"Helvetica","leftOperand":null,"operator":null,"rightOperand":null},"Block.Label.root.font-size":{"component":"Block","element":"Label","context":"root","property":"fontSize","operation":"assignment","value":22,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Label.root.content":{"component":"Block","element":"Label","context":"root","property":"content","operation":"assignment","value":"Hello World","leftOperand":null,"operator":null,"rightOperand":null},"Block.Label.root.width":{"component":"Block","element":"Label","context":"root","property":"width","operation":"assignment","value":250,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Label.root.height":{"component":"Block","element":"Label","context":"root","property":"height","operation":"assignment","value":100,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Label.root.top":{"component":"Block","element":"Label","context":"root","property":"top","operation":"assignment","value":30,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Label.root.left":{"component":"Block","element":"Label","context":"root","property":"left","operation":"assignment","value":0,"leftOperand":null,"operator":null,"rightOperand":null},"Block.Label.root.fill":{"component":"Block","element":"Label","context":"root","property":"fill","operation":"assignment","value":"pink","leftOperand":null,"operator":null,"rightOperand":null},"Block.Label.root.text-align-y":{"component":"Block","element":"Label","context":"root","property":"textAlignY","operation":"assignment","value":"center","leftOperand":null,"operator":null,"rightOperand":null},"Square.Shape.root.width":{"component":"Square","element":"Shape","context":"root","property":"width","operation":"token","value":"$size","leftOperand":"$size"},"Square.Shape.root.height":{"component":"Square","element":"Shape","context":"root","property":"height","operation":"token","value":"$size","leftOperand":"$size"},"Square.Shape.root.fill-color":{"component":"Square","element":"Shape","context":"root","property":"fillColor","operation":"assignment","value":"#007BFF","leftOperand":null,"operator":null,"rightOperand":null}},"list":["Block.Container.root.width","Block.Container.root.height","Block.Container.root.fill","Block.Container.root.corner-radius","Block.Shape.root.fill","Block.Shape.root.top","Block.Shape.root.left","Block.Shape.root.width","Block.Shape.root.height","Block.Shape.isBlack.width","Block.Label.root.font-family","Block.Label.root.font-size","Block.Label.root.content","Block.Label.root.width","Block.Label.root.height","Block.Label.root.top","Block.Label.root.left","Block.Label.root.fill","Block.Label.root.text-align-y","Square.Shape.root.width","Square.Shape.root.height","Square.Shape.root.fill-color"]},"mocks":{"map":{},"list":[]}}
+{
+  "tokens": {
+    "map": {
+      "tokens.secondary": {
+        "id": "tokens.secondary",
+        "group": "tokens",
+        "name": "secondary",
+        "type": "color",
+        "expression": "#DDDDDD"
+      },
+      "tokens.lorem-ipsum.branding.colors.primary": {
+        "id": "tokens.lorem-ipsum.branding.colors.primary",
+        "group": "colors",
+        "name": "primary",
+        "type": "color",
+        "expression": "#BADA55"
+      },
+      "tokens.lorem-ipsum.branding.colors.logos.logo-white": {
+        "id": "tokens.lorem-ipsum.branding.colors.logos.logo-white",
+        "group": "logos",
+        "name": "logo-white",
+        "type": "image",
+        "expression": "/assets/images/light_logo.svg"
+      },
+      "tokens.typography.main": {
+        "id": "tokens.typography.main",
+        "group": "typography",
+        "name": "main",
+        "type": "font",
+        "expression": "/assets/fonts/roboto.ttf"
+      },
+      "tokens.typography.sizing.body": {
+        "id": "tokens.typography.sizing.body",
+        "group": "sizing",
+        "name": "body",
+        "type": "number",
+        "expression": "12"
+      },
+      "tokens.typography.sizing.h1": {
+        "id": "tokens.typography.sizing.h1",
+        "group": "sizing",
+        "name": "h1",
+        "type": "number",
+        "expression": "24"
+      },
+      "tokens.typography.sizing.h2": {
+        "id": "tokens.typography.sizing.h2",
+        "group": "sizing",
+        "name": "h2",
+        "type": "number",
+        "expression": "20"
+      },
+      "tokens.dark-mode.branding.colors.primary": {
+        "id": "tokens.dark-mode.branding.colors.primary",
+        "group": "colors",
+        "name": "primary",
+        "type": "color",
+        "expression": "#DDEDEE"
+      }
+    },
+    "list": [
+      "tokens.secondary",
+      "tokens.lorem-ipsum.branding.colors.primary",
+      "tokens.lorem-ipsum.branding.colors.logos.logo-white",
+      "tokens.typography.main",
+      "tokens.typography.sizing.body",
+      "tokens.typography.sizing.h1",
+      "tokens.typography.sizing.h2",
+      "tokens.dark-mode.branding.colors.primary"
+    ]
+  },
+  "test": {
+    "indentation": 0,
+    "tokens": ["tokens"],
+    "children": [
+      { "indentation": 2, "tokens": ["secondary", "color", ":", "#DDDDDD"], "children": [] },
+      {
+        "indentation": 2,
+        "tokens": ["lorem-ipsum", "text", ":"],
+        "children": [
+          { "indentation": 4, "tokens": ["dolor", "sit", "blah", "blah"], "children": [] },
+          {
+            "indentation": 4,
+            "tokens": ["and", "some", "other", "blah", "blah", "blah"],
+            "children": []
+          },
+          {
+            "indentation": 4,
+            "tokens": ["and", "something", "else", "as", "well"],
+            "children": []
+          },
+          {
+            "indentation": 2,
+            "tokens": ["branding"],
+            "children": [
+              {
+                "indentation": 4,
+                "tokens": ["colors"],
+                "children": [
+                  {
+                    "indentation": 6,
+                    "tokens": ["primary", "color", ":", "#BADA55"],
+                    "children": []
+                  },
+                  {
+                    "indentation": 4,
+                    "tokens": ["logos"],
+                    "children": [
+                      {
+                        "indentation": 6,
+                        "tokens": ["logo-white", "image", ":", "/assets/images/light_logo.svg"],
+                        "children": []
+                      }
+                    ]
+                  }
+                ]
+              }
+            ]
+          }
+        ]
+      }
+    ]
+  }
+}

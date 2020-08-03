@@ -1,47 +1,19 @@
 const { getDirFiles } = require('./parsers/dir')
 const { writeJsonBundle } = require('./parsers/file')
-const { parseComponentFile, parseTokenFile } = require('./parsers')
+const { getFile, tokenizeFile, parseBlock } = require('./parsers')
 
 const parse = (inputPath, outputPath) => {
-  let bundle = {
-    tokens: {
-      map: {},
-      list: [],
-    },
-    components: {
-      map: {},
-      list: [],
-    },
-    elements: {
-      map: {},
-      list: [],
-    },
-    options: {
-      map: {},
-      list: [],
-    },
-    values: {
-      map: {},
-      list: [],
-    },
-    styles: {
-      map: {},
-      list: [],
-    },
-    mocks: {
-      map: {},
-      list: [],
-    },
-  }
+  let bundle = {}
 
-  const tokenFilePaths = getDirFiles(inputPath, 'tokens')
-  tokenFilePaths.forEach((tokenFilePath) => {
-    bundle.tokens = parseTokenFile(bundle.tokens, tokenFilePath)
-  })
+  const filePaths = getDirFiles(inputPath)
 
-  const componentFilePaths = getDirFiles(inputPath, 'components')
-  componentFilePaths.forEach((componentFilePath) => {
-    bundle = parseComponentFile(bundle, componentFilePath)
+  filePaths.forEach((filePath) => {
+    const lines = getFile(filePath)
+    const blocks = tokenizeFile(lines)
+
+    blocks.forEach((block) => {
+      parseBlock(block, bundle)
+    })
   })
 
   writeJsonBundle(outputPath, bundle)

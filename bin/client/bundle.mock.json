@@ -1,0 +1,21 @@
+{
+  "tokens": {
+    "map": {
+      "branding.primary": {
+        "id": "branding.primary",
+        "name": "branding.primary",
+        "scope": "global",
+        "type": "color",
+        "expression": "#007BFF"
+      },
+      "branding.secondary": {
+        "id": "branding.secondary",
+        "name": "branding.secondary",
+        "scope": "global",
+        "type": "color",
+        "expression": "#007BFF"
+      }
+    },
+    "list": []
+  }
+}

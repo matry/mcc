@@ -37,14 +37,15 @@ const indentation = (line) => {
   return line.search(/\S|$/)
 }
 
-const captureSmartBlock = (lines, keyword) => {
-  const indices = captureIndices(lines, keyword)
+const captureSmartBlocks = (lines, keyword, blocks = []) => {
+  const linesCopy = [...lines]
+  const indices = captureIndices(linesCopy, keyword)
 
   if (!indices) {
-    return null
+    return blocks
   }
 
-  const bodyLines = lines.slice(indices.start, indices.end)
+  const bodyLines = linesCopy.splice(indices.start, indices.end)
   const header = bodyLines.shift()
 
   const body = []
@@ -68,10 +69,12 @@ const captureSmartBlock = (lines, keyword) => {
     })
   })
 
-  return {
+  blocks.push({
     header,
     body,
-  }
+  })
+
+  return captureSmartBlocks(linesCopy, keyword, blocks)
 }
 
 const captureBlock = (lines, keyword) => {
