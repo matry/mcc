@@ -2,54 +2,32 @@
 
 MCC is intended to be the reference implementation of the Matry language.
 
-## Style Types
+## Language Constructs
 
-- string
-- boolean
-- number
-- percent
-- degree
-- color
-- font
-- image
-- video
-- svg
+Matry is built on the notion of blocks.
+Blocks define entities within a Matry project.
+An entity can be a "parent entity", a "child entity", or both.
+Parent entities form the core of Matry projects, while child entities always belong to a parent entity.
+The available parent entities are Tokens, Properties, Components, and Mocks.
+The available child entities are Info, Elements, Properties, Tokens, Styles, and States.
+There are also anonymous entities defined by user-named identifiers. These are allocated to named entities based on contextual information.
 
-## Design Expressions
+If an anonymous entity is defined at the top level of a Matry project, it is assumed to be a Component.
 
-#### boolean expressions
+### Components
 
-- is Val
-- is not Val
-- is > Num
-- is >= Num
-- is < Num
-- is <= Num
-- is not > Num
-- is MyColor1.saturation > MyColor2.saturation
-- is MyColor.lightness < 50%
+Since components form the core of a Matry project, they are the default context for the language.
+Therefore, components can be declared simply by defining an anonymous block:
 
-#### math expressions
+```
+Button
+```
 
-- SUM( Num1, Num2 )
-- SUB( Num1, Num2 )
-- PCT( Num1, Num2 )
-- NUM( Pct1, MyColor1 )
-- PCT( 5, 10 ) // 50
-- NUM( 25%, 8 ) // 2
+The above code defines a component called "Button".
+A component can also be declared by the "component" keyword:
 
-#### color expressions
+```
+component Button
+```
 
-- SATURATE( MyColor, 25% )
-- DESATURATE( MYColor, 50% )
-- LIGHTEN( MyColor, 10% )
-- DARKEN( MyColor, 80% )
-- ROTATEHUE( MyColor, 24deg )
-- MIX( MyColor1, MyColor2 )
-
-#### layout expressions
-
-- 50% of Elem.width
-- 10 inside Elem.left
-- 20 outside Elem.right
-- Elem1.left: Elem2.right
+This does the same as the above code, however it is more self-documenting.

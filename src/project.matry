@@ -1,0 +1,100 @@
+LINE_SIGNATURES
+keyword
+keyword identifier
+keyword identifier keyword identifier
+keyword separator expression
+keyword separator
+identifier keyword
+identifier separator
+
+component Button
+  info
+    desc:
+      This is a general description of the Button component
+      sidufhsd
+      idfsuhgisdfhgsdfihg
+
+
+  elements
+    Container
+      width: 260
+      height: 60
+      fill: blue
+      when $dark-mode
+        fill: lightblue
+    Label
+      font: Roboto
+      font-size: 16
+      fill: white
+      center-x: $Container.center-x
+      top: 10 from $Container.top
+
+
+
+
+
+
+
+
+
+
+
+Button
+  primary color: red
+
+  Container
+    width: 260
+    height: 260
+    fill: blue
+    corner-radius: 5
+  Label
+    font: Roboto
+    font-size: 16
+    fill: white
+    center-x: @Container.center-x
+    top: 10 from @Container.top
+
+
+tokens
+  primary color: #2368CF
+
+component Button {
+  elements
+    Container shape
+      Label text
+
+  options
+    outline
+    label text: Click Me
+
+  style Container
+    width: 260
+    height: 60
+    fill: $primary
+    corner-radius: 5
+
+    when $outline
+      fill: none
+      stroke-width: 3
+      stroke-color: $primary
+
+  style Label
+    font-size: 24
+    font-family: Roboto
+    fill: #FFFFFF
+    content: $label
+
+    when $outline
+      fill: $primary
+}
+
+mock ButtonStates
+  state Default
+    Button
+  state Outline
+    Button
+      outline: true
+  states
+    Button
+      outline: true, false
+      label: Click Me, Hello, Hello Again

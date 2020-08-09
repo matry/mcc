@@ -1,0 +1,12 @@
+
+tokens
+  light-mode
+    blue color: blue
+    red color: red
+  dark-mode
+    blue color: lightblue
+
+tokens typography
+  small number: 12
+  body number: 16
+  heading number: 20
