@@ -1,5 +1,16 @@
 import { useRef, useEffect, useState } from 'react'
 
+const throttle = (cb, delay) => {
+  if (throttle.timerId) {
+    return
+  }
+
+  throttle.timerId = window.setTimeout(() => {
+    cb()
+    throttle.timerId = undefined
+  }, delay)
+}
+
 const useCanvas = () => {
   const [canvas, setCanvas] = useState({
     width: 0,
@@ -12,32 +23,34 @@ const useCanvas = () => {
 
   useEffect(() => {
     const resizeListener = () => {
-      const { current } = canvasRef
-      const context = current.getContext('2d', { alpha: true })
-      const devicePixelRatio = window.devicePixelRatio || 1
-      const backingStoreRatio =
-        context.webkitBackingStorePixelRatio ||
-        context.mozBackingStorePixelRatio ||
-        context.msBackingStorePixelRatio ||
-        context.oBackingStorePixelRatio ||
-        context.backingStorePixelRatio ||
-        1
+      throttle(() => {
+        const { current } = canvasRef
+        const context = current.getContext('2d', { alpha: true })
+        const devicePixelRatio = window.devicePixelRatio || 1
+        const backingStoreRatio =
+          context.webkitBackingStorePixelRatio ||
+          context.mozBackingStorePixelRatio ||
+          context.msBackingStorePixelRatio ||
+          context.oBackingStorePixelRatio ||
+          context.backingStorePixelRatio ||
+          1
 
-      const ratio = devicePixelRatio / backingStoreRatio
-      const { width, height } = resizeRef.current.getBoundingClientRect()
+        const ratio = devicePixelRatio / backingStoreRatio
+        const { width, height } = resizeRef.current.getBoundingClientRect()
 
-      current.width = width * ratio
-      current.height = height * ratio
-      current.style.width = `${width}px`
-      current.style.height = `${height}px`
-      context.scale(ratio, ratio)
+        current.width = width * ratio
+        current.height = height * ratio
+        current.style.width = `${width}px`
+        current.style.height = `${height}px`
+        context.scale(ratio, ratio)
 
-      setCanvas({
-        width,
-        height,
-        ratio,
-        context,
-      })
+        setCanvas({
+          width,
+          height,
+          ratio,
+          context,
+        })
+      }, 50)
     }
 
     window.addEventListener('resize', resizeListener)

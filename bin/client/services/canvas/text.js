@@ -42,11 +42,12 @@ const paintText = (
     fontFamily = 'Arial',
     fontSize = 16,
     fontWeight = 400,
-    fill = '#000000',
+    fill = 'transparent',
     textHeight = 16,
     textAlignX = 'left',
     textAlignY = 'baseline',
     content = '',
+    clip = false,
   }
 ) => {
   ctx.font = `${fontWeight} ${fontSize}px ${fontFamily}`
@@ -93,6 +94,11 @@ const paintText = (
     default:
       textX = left
       break
+  }
+
+  if (clip) {
+    ctx.rect(left, top, width, height)
+    ctx.clip()
   }
 
   // draw text

@@ -2,12 +2,12 @@ import React from 'react'
 import { render } from 'react-dom'
 import 'typeface-roboto'
 import App from './components/App'
-import './index.css'
 import bundle from './bundle.mock.json'
+import './index.css'
 
-class DataFrame {
-  constructor(bundle) {
-    this.data = bundle
+class Bundle {
+  constructor(data) {
+    this.data = data
   }
 
   getById(entity, id) {
@@ -29,9 +29,6 @@ class DataFrame {
       const refRecord = refEntity.map[refId]
       // console.log(refRecord)
       refRecord[entity] = this.denormalize(entity).filter((record) => {
-        console.log(record)
-        console.log(ref)
-        console.log(refId)
         return record[ref] === refId
       })
 
@@ -40,27 +37,7 @@ class DataFrame {
   }
 }
 
-const dataFrame = new DataFrame(bundle)
+window.bundle = new Bundle(bundle)
 
 const rootElement = document.getElementById('app')
-render(<App dataFrame={dataFrame} />, rootElement)
-
-/*
-
-global space
-  - global token expressions
-  - global parameters expressions
-  - environment (canvas width, canvas height)
-
-component space
-  - 
-
-render:
-  - load environment
-  - load token expressions
-  - calculate token values
-
-
-
-
-*/
+render(<App />, rootElement)

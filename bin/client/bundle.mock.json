@@ -1,94 +1,134 @@
 {
   "tokens": {
+    "ref": "token",
     "map": {
-      "branding.primary": {
-        "id": "branding.primary",
+      "primary": {
+        "id": "primary",
         "name": "primary",
         "type": "color",
         "expression": "#007BFF"
       },
-      "branding.secondary": {
-        "id": "branding.secondary",
-        "name": "branding.secondary",
+      "secondary": {
+        "id": "secondary",
+        "name": "secondary",
         "type": "color",
         "expression": "#007BFF"
       }
     },
-    "list": ["branding.primary", "branding.secondary"]
+    "list": ["primary", "secondary"]
   },
   "components": {
     "ref": "component",
     "map": {
-      "square": {
-        "id": "square",
-        "name": "Square"
+      "button": {
+        "id": "button",
+        "name": "Button"
       }
     },
-    "list": ["square"]
+    "list": ["button"]
   },
   "elements": {
     "ref": "element",
     "map": {
-      "square.container": {
-        "id": "square.container",
+      "button.container": {
+        "id": "button.container",
         "name": "Container",
-        "component": "square",
+        "component": "button",
+        "type": "shape"
+      },
+      "button.label": {
+        "id": "button.label",
+        "name": "Label",
+        "component": "button",
         "type": "shape"
       }
     },
-    "list": ["square.container"]
+    "list": ["button.container", "button.label"]
   },
   "styles": {
+    "ref": "style",
     "map": {
-      "square.container.width": {
-        "id": "square.container.width",
-        "component": "square",
+      "button.container.width": {
+        "id": "button.container.width",
+        "component": "button",
         "element": "container",
         "name": "width",
         "type": "number",
         "expression": "100"
       },
-      "square.container.height": {
-        "id": "square.container.height",
-        "component": "square",
+      "button.container.height": {
+        "id": "button.container.height",
+        "component": "button",
         "element": "container",
         "name": "height",
         "type": "number",
         "expression": "100"
       },
-      "square.container.fill": {
-        "id": "square.container.fill",
-        "component": "square",
+      "button.container.fill": {
+        "id": "button.container.fill",
+        "component": "button",
         "element": "container",
         "name": "fill",
-        "type": "number",
+        "type": "color",
         "expression": "#007BFF"
+      },
+      "button.label.font": {
+        "id": "button.label.font",
+        "component": "button",
+        "element": "label",
+        "name": "font",
+        "type": "string",
+        "expression": "arial"
+      },
+      "button.label.font-size": {
+        "id": "button.label.font-size",
+        "component": "button",
+        "element": "label",
+        "name": "font-size",
+        "type": "number",
+        "expression": "14"
+      },
+      "button.label.fill": {
+        "id": "button.label.fill",
+        "component": "button",
+        "element": "label",
+        "name": "fill",
+        "type": "color",
+        "expression": "#FFFFFF"
+      },
+      "button.label.content": {
+        "id": "button.label.content",
+        "component": "button",
+        "element": "label",
+        "name": "content",
+        "type": "string",
+        "expression": "Click Me"
       }
     },
-    "list": ["square.container.width"]
+    "list": ["button.container.width"]
   },
   "mocks": {
     "ref": "mock",
     "map": {
-      "square": {
-        "id": "square",
-        "name": "Square",
-        "component": "Square"
+      "button": {
+        "id": "button",
+        "name": "Button"
       }
     },
-    "list": ["square"]
+    "list": ["button"]
   },
   "states": {
+    "ref": "state",
     "map": {
-      "square.defaults": {
-        "id": "square.defaults",
-        "mock": "square",
+      "button.defaults": {
+        "id": "button.defaults",
+        "mock": "button",
         "name": "Defaults",
         "input": {
-          "Square": {}
+          "Button": {}
         }
       }
     },
-    "list": ["square.defaults"]
+    "list": ["button.defaults"]
   }
 }

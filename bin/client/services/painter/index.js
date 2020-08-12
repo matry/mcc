@@ -23,8 +23,6 @@ const painter = {
       // let left = width / 2 - offsetLeft - node.width / 2 + node.left
       // let top = height / 2 - offsetLeft - node.height / 2 + node.top
 
-      console.log(top, left)
-
       switch (node.type) {
         case 'shape':
           paintShape(ctx, { ...node, top, left })

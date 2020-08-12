@@ -24,10 +24,10 @@ const AppBody = styled.section`
   overflow: hidden;
 `
 
-const App = ({ dataFrame }) => {
+const App = () => {
   const [activeId, setActiveId] = useState(null)
 
-  const mocks = dataFrame.groupBy('states', 'mock')
+  const mocks = window.bundle.groupBy('states', 'mock')
 
   useEffect(() => {
     const url = new URL(window.location.href)

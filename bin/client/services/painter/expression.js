@@ -39,6 +39,12 @@ const getPropertyValue = (bundle, nodes, node, style) => {
   return null
 }
 
+// Given a component, return total list of expressions to be evaluated into render_values
+const createExpressionMap = () => {}
+
+// Given a bundle and a component ID, return total list of values to be rendered
+const createRenderMap = (component_id) => {}
+
 export { getTokenValue, getPropertyValue }
 
 export default {

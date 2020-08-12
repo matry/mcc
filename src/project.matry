@@ -1,19 +1,6 @@
-LINE_SIGNATURES
-keyword
-keyword identifier
-keyword identifier keyword identifier
-keyword separator expression
-keyword separator
-identifier keyword
-identifier separator
-
 component Button
   info
-    desc:
-      This is a general description of the Button component
-      sidufhsd
-      idfsuhgisdfhgsdfihg
-
+    desc: This is a general description of the Button component
 
   elements
     Container

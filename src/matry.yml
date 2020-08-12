@@ -1,9 +1,15 @@
+Branding:
+  type: tokens
+  primary: "#007BFF"
 Button:
+  type: component
   elements:
     - container: shape
     - label: text
   options:
     - label: Click Me
+    - fill: '#007BFF'
+    - state: "enabled", "disabled"
   styles:
     container:
       width: 100
