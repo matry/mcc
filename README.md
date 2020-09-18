@@ -1,33 +1,46 @@
+# Matry
+
+Matry is the first language built entirely for interface designers. The goal of the language is to provide designers with a language with which they can use their own verbiage and mental models to define the visual logic and behavior of digital applications.
+
 # MCC (Matry Canvas Compiler)
 
-MCC is intended to be the reference implementation of the Matry language.
+MCC is intended to be the reference implementation of the Matry language. In this project you will find the parser for the language, as well as a test server and interface for demonstrating the output of the language.
 
-## Language Constructs
+Matry is comprised of three core modules:
 
-Matry is built on the notion of blocks.
-Blocks define entities within a Matry project.
-An entity can be a "parent entity", a "child entity", or both.
-Parent entities form the core of Matry projects, while child entities always belong to a parent entity.
-The available parent entities are Tokens, Properties, Components, and Mocks.
-The available child entities are Info, Elements, Properties, Tokens, Styles, and States.
-There are also anonymous entities defined by user-named identifiers. These are allocated to named entities based on contextual information.
-
-If an anonymous entity is defined at the top level of a Matry project, it is assumed to be a Component.
-
-### Components
-
-Since components form the core of a Matry project, they are the default context for the language.
-Therefore, components can be declared simply by defining an anonymous block:
+## Tokens
 
 ```
-Button
+tokens branding
+  color primary: #BADA55
+  color secondary: #123456
 ```
 
-The above code defines a component called "Button".
-A component can also be declared by the "component" keyword:
+## Components
 
 ```
-component Button
+component Square
+  elements
+    shape container
+
+  properties
+    color background: #FF0000
+
+  style container
+    width: 100
+    height: 100
+    fill: $background
 ```
 
-This does the same as the above code, however it is more self-documenting.
+## Mocks
+
+```
+mock SquaresInDifferentColors
+  state Red
+    Square
+      background: red
+
+  state Blue
+    Square
+      background: blue
+```
