@@ -1,6 +1,6 @@
 # Matry
 
-Matry is the first language built entirely for interface designers. The goal of the language is to provide designers with a language with which they can use their own verbiage and mental models to define the visual logic and behavior of digital applications.
+Matry is the first language built entirely for interface designers. The goal is to give designers a language with which they can use their own verbiage and mental models to define the visual logic and behavior of digital applications.
 
 # MCC (Matry Canvas Compiler)
 
